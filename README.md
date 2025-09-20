@@ -84,4 +84,5 @@ func application(_ application: UIApplication, didDiscardSceneSessions sceneSess
 
   * **Purpose**: This is the place to release resources associated with the scene that is being closed. For instance, if a scene was responsible for a specific file, you can close that file here.
 
+
 ---
