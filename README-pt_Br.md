@@ -86,3 +86,210 @@ func application(_ application: UIApplication, didDiscardSceneSessions sceneSess
 
 ---
 
+## O que é a `SceneDelegate`?
+
+A `SceneDelegate` é a classe responsável por gerenciar o ciclo de vida de uma "cena" em um aplicativo iOS. Introduzida no iOS 13, ela divide as responsabilidades que antes eram apenas da `AppDelegate`. Enquanto a `AppDelegate` lida com o ciclo de vida do aplicativo como um todo (o processo), a `SceneDelegate` gerencia o ciclo de vida das janelas individuais.
+
+Isso é fundamental para aplicativos que suportam múltiplas janelas, como no **iPadOS** e **macOS Catalyst**, onde o usuário pode ter mais de uma instância do seu app aberta ao mesmo tempo.
+
+### Estrutura e Protocolos
+
+A `SceneDelegate` também é uma subclasse de `UIResponder` e implementa o protocolo `UIWindowSceneDelegate`.
+
+```swift
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+// ...
+}
+```
+
+  * **`UIWindowSceneDelegate`**: Este protocolo define os métodos que permitem que o seu aplicativo reaja a eventos do ciclo de vida de uma cena específica, como a conexão, desconexão ou transições de estado (ativo, inativo, em segundo plano).
+
+-----
+
+## Métodos Essenciais da `SceneDelegate`
+
+Os métodos da `SceneDelegate` são acionados em momentos específicos do ciclo de vida de uma cena, permitindo que você responda a eventos de forma granular.
+
+### `scene(_:willConnectTo:options:)`
+
+Este é o primeiro método chamado quando uma nova cena (janela) está sendo criada e conectada ao aplicativo.
+
+```swift
+func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    // Use este método para configurar e anexar a UIWindow 'window' à UIWindowScene 'scene'.
+    guard let windowScene = (scene as? UIWindowScene) else { return }
+    
+    // 1. Criar uma nova UIWindow usando a scene
+    let window = UIWindow(windowScene: windowScene)
+    
+    // 2. Criar e atribuir um ViewController inicial
+    let viewController = ViewController() // Substitua pelo seu ViewController
+    window.rootViewController = viewController
+    
+    // 3. Tornar a janela a janela principal e visível
+    self.window = window
+    window.makeKeyAndVisible()
+}
+```
+
+  * **Finalidade**: Este é o local principal para configurar a interface de usuário da sua cena. É onde você cria a `UIWindow`, atribui a ela a `rootViewController` (a tela inicial do app) e a torna visível.
+
+### `sceneDidDisconnect(_:)`
+
+Chamado quando uma cena é desconectada do aplicativo pelo sistema. Isso pode acontecer quando o usuário fecha uma janela ou quando o sistema libera recursos.
+
+```swift
+func sceneDidDisconnect(_ scene: UIScene) {
+    // Libere quaisquer recursos associados a esta cena que podem ser recriados
+    // na próxima vez que a cena se conectar.
+}
+```
+
+  * **Finalidade**: Use este método para liberar recursos que são específicos da cena que está sendo descartada, como fechar conexões de rede ou arquivos abertos, garantindo que o seu aplicativo não consuma memória desnecessariamente.
+
+### `sceneDidBecomeActive(_:)`
+
+Invocado quando a cena transita de um estado inativo para um estado ativo. Uma cena é considerada "ativa" quando está visível e o usuário pode interagir com ela.
+
+```swift
+func sceneDidBecomeActive(_ scene: UIScene) {
+    // Use este método para reiniciar quaisquer tarefas que foram pausadas
+    // quando a cena estava inativa.
+}
+```
+
+  * **Finalidade**: Ideal para iniciar tarefas que só devem ser executadas quando o app está em primeiro plano e interativo. Por exemplo, iniciar animações, atualizar dados ou reiniciar a entrada de dados.
+
+### `sceneWillResignActive(_:)`
+
+Chamado quando a cena está prestes a sair do estado ativo para o estado inativo. Isso pode ocorrer devido a interrupções temporárias, como uma chamada telefônica, ou quando o usuário muda para outro aplicativo.
+
+```swift
+func sceneWillResignActive(_ scene: UIScene) {
+    // Chamado quando a cena transitará de um estado ativo para um estado inativo.
+}
+```
+
+  * **Finalidade**: Ótimo para pausar tarefas que não precisam ser executadas em segundo plano, como parar animações ou salvar o estado atual para que o usuário possa retomar de onde parou.
+
+### `sceneWillEnterForeground(_:)`
+
+Acionado quando a cena está prestes a transitar do segundo plano para o primeiro plano.
+
+```swift
+func sceneWillEnterForeground(_ scene: UIScene) {
+    // Chamado quando a cena transita do segundo plano para o primeiro plano.
+}
+```
+
+  * **Finalidade**: Use este método para "acordar" seu aplicativo. Por exemplo, você pode revalidar o token do usuário ou reativar a interface de usuário que estava em segundo plano.
+
+### `sceneDidEnterBackground(_:)`
+
+Este método é chamado quando a cena transita do primeiro plano para o segundo plano. O sistema pode encerrar seu aplicativo a qualquer momento enquanto ele estiver em segundo plano.
+
+```swift
+func sceneDidEnterBackground(_ scene: UIScene) {
+    // Use este método para salvar dados, liberar recursos compartilhados e armazenar
+    // informações de estado da cena o suficiente para restaurá-la para seu estado atual.
+}
+```
+
+  * **Finalidade**: Este é o momento crucial para salvar qualquer dado que o usuário tenha modificado e liberar recursos que não são essenciais, como grandes arquivos de mídia ou conexões de rede. Isso garante que o aplicativo possa ser restaurado corretamente e que o sistema possa liberar memória.
+
+-----
+
+## O que é uma `ViewController`?
+
+A `ViewController` é a **principal classe de uma tela** em uma aplicação iOS. Ela age como um intermediário entre a interface de usuário (o `View`) e os dados (`Model`), seguindo o padrão de design **MVC** (Model-View-Controller). Sua responsabilidade é gerenciar o ciclo de vida da tela, manipular as interações do usuário e exibir os dados corretamente.
+
+Cada tela em seu aplicativo, como a tela de login, a tela principal ou a tela de configurações, geralmente é controlada por sua própria `ViewController`.
+
+### Estrutura e Protocolos
+
+A `ViewController` é uma subclasse de `UIViewController`, que é a classe fundamental para gerenciar telas no iOS.
+
+```swift
+class ViewController: UIViewController {
+// ...
+}
+```
+
+  * **`UIViewController`**: Esta é a classe base do framework **UIKit** para gerenciar a interface de usuário. Ela fornece todos os métodos e propriedades necessários para carregar, exibir e liberar uma `view` (uma tela), e para responder a eventos do sistema e do usuário.
+
+-----
+
+## Métodos Essenciais do Ciclo de Vida
+
+A `ViewController` tem um ciclo de vida bem definido, com métodos que são chamados em momentos específicos. Você pode sobrescrever esses métodos para executar ações em cada etapa.
+
+### `viewDidLoad()`
+
+Este é o método mais comum e importante. Ele é chamado **uma única vez** quando a `view` da `ViewController` é carregada na memória pela primeira vez.
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    // Faça qualquer configuração inicial aqui.
+}
+```
+
+  * **Finalidade**: É o local ideal para realizar **configurações iniciais** que não mudam durante a vida útil da tela. Por exemplo:
+      * **Configuração da UI**: Adicionar subviews, configurar cores de fundo ou ajustar constraints.
+      * **Carregamento de Dados**: Fazer uma requisição de rede para buscar dados que serão exibidos na tela.
+      * **Configuração de Gestos**: Adicionar reconhecedores de gestos (como toques ou swipes) à tela.
+
+### Outros Métodos Importantes
+
+  * `viewWillAppear(_:)`: Chamado **toda vez** que a `view` está prestes a aparecer na tela. Use-o para tarefas que precisam ser atualizadas antes da tela ser visível, como recarregar dados de uma lista.
+  * `viewDidAppear(_:)`: Chamado **toda vez** que a `view` já apareceu na tela. Útil para iniciar animações ou tarefas que devem ocorrer apenas depois que a tela estiver completamente visível para o usuário.
+  * `viewWillDisappear(_:)`: Chamado quando a `view` está prestes a ser removida da tela. Use-o para salvar o estado da tela ou para fechar teclados.
+  * `viewDidDisappear(_:)`: Chamado quando a `view` já foi completamente removida da hierarquia de visualização. É o local para parar tarefas em andamento, como parar animações.
+
+Entender a diferença entre esses métodos é crucial para criar aplicativos eficientes e sem bugs. Por exemplo, colocar uma chamada de API em `viewDidLoad` é eficiente, pois ela só será executada uma vez. Se a mesma chamada estivesse em `viewWillAppear`, ela seria executada toda vez que o usuário voltasse para a tela, o que poderia causar um consumo desnecessário de dados e bateria.
+
+---
+
+## O que é o `Main.storyboard`?
+
+No ecossistema de desenvolvimento iOS, o **`Main.storyboard`** não é um arquivo de código, mas sim um arquivo de interface que descreve o fluxo visual e o layout das telas do seu aplicativo.
+
+O `Main.storyboard` é um arquivo **XML** que armazena informações sobre a interface de usuário de uma aplicação. Ele funciona como uma "planta baixa" visual, permitindo que você crie e organize telas (`View Controllers`), elementos de interface (`UIButtons`, `UILabels`, etc.) e as transições entre eles (`Segues`).
+
+Em vez de escrever código para posicionar cada botão e label, você pode usar uma interface gráfica no **Xcode** para arrastar e soltar esses elementos.
+
+### Componentes Principais
+
+* **View Controllers**: Representam cada tela do seu aplicativo. No Storyboard, cada `View Controller` é uma cena distinta.
+* **Views**: São os elementos visuais que compõem a interface, como botões, rótulos de texto e campos de entrada.
+* **Segues**: São as setas que ligam um `View Controller` a outro. Elas definem a transição de uma tela para a próxima, seja ao clicar em um botão ou após uma ação específica.
+* **Auto Layout**: Um sistema de restrições que garante que sua interface se adapte a diferentes tamanhos de tela (iPhones e iPads de diferentes gerações), orientações (retrato e paisagem) e tamanhos de texto dinâmico.
+
+### Como Funciona?
+
+Quando o seu aplicativo é iniciado, o sistema carrega o `Main.storyboard` e cria as instâncias dos `View Controllers` e das `views` que ele descreve. As **`Segues`** também são configuradas, aguardando serem acionadas para executar a transição entre telas.
+
+É importante notar que o uso de Storyboards é uma abordagem tradicional no iOS. Embora ainda sejam muito usados, muitos desenvolvedores mais experientes também optam por construir interfaces inteiramente por código, especialmente em projetos grandes e complexos, para ter um controle mais preciso e facilitar o trabalho em equipe. No entanto, para iniciantes e protótipos rápidos, o `Main.storyboard` é uma ferramenta poderosa e intuitiva.
+
+---
+
+## O que é a Pasta `Assets`?
+
+A pasta `Assets.xcassets` (comumente chamada apenas de `Assets`) é um contêiner no seu projeto do Xcode usado para gerenciar de forma organizada todos os recursos visuais do seu aplicativo, como imagens, ícones de aplicativo e cores.
+
+Ela atua como um catálogo central onde você pode adicionar, configurar e otimizar recursos sem precisar lidar diretamente com arquivos individuais.
+
+### Componentes Principais e Finalidade
+
+* **Imagens**: Em vez de simplesmente arrastar um arquivo `.png` para o projeto, você o adiciona na pasta `Assets`. O Xcode então gerencia automaticamente as diferentes resoluções de imagem (`@1x`, `@2x`, `@3x`) para garantir que as imagens fiquem nítidas em todos os dispositivos Apple, independentemente da densidade de pixels da tela.
+* **Ícone do Aplicativo**: O ícone que aparece na tela inicial do seu dispositivo é gerenciado aqui. A pasta `Assets` permite que você forneça variações do ícone para diferentes tamanhos e contextos (como na tela de início, nas notificações ou na App Store), garantindo que ele se adapte corretamente.
+* **Cores**: Você pode definir cores personalizadas e reutilizáveis em seu projeto. Ao adicionar uma cor na pasta `Assets`, ela pode ser acessada por nome em todo o seu aplicativo, tanto no código quanto no Storyboard. Isso facilita a manutenção e garante uma paleta de cores consistente, especialmente ao trabalhar com modos claro e escuro.
+
+### Por que Usar `Assets`?
+
+1.  **Organização**: Mantém todos os recursos visuais em um único lugar centralizado, tornando o projeto mais limpo e fácil de navegar.
+2.  **Otimização Automática**: O Xcode otimiza as imagens para o formato correto e as empacota de forma eficiente no seu aplicativo, o que ajuda a reduzir o tamanho final do arquivo.
+3.  **Suporte a Múltiplas Resoluções**: O sistema sabe automaticamente qual versão de imagem usar para cada dispositivo, eliminando a necessidade de escrever código manual para isso.
+4.  **Suporte a `Dark Mode`**: A pasta `Assets` facilita a configuração de variações de cores e imagens para os modos claro e escuro, permitindo que seu aplicativo se adapte dinamicamente à preferência do usuário.
+
+Em resumo, a pasta `Assets` é uma ferramenta essencial que simplifica o gerenciamento de recursos visuais, garantindo que seu aplicativo seja eficiente e visualmente consistente em todos os dispositivos iOS.
