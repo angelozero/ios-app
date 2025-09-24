@@ -84,6 +84,7 @@ func application(_ application: UIApplication, didDiscardSceneSessions sceneSess
 
   * **Purpose**: This is the place to release resources associated with the scene that is being closed. For instance, if a scene was responsible for a specific file, you can close that file here.
 
+<<<<<<< HEAD
 ---
 
 
@@ -294,3 +295,7 @@ It acts as a central catalog where you can add, configure, and optimize resource
 4.  **Dark Mode Support**: The `Assets` folder makes it easy to set up color and image variations for light and dark modes, allowing your app to dynamically adapt to the user's preference.
 
 In summary, the `Assets` folder is an essential tool that simplifies the management of visual resources, ensuring your app is efficient and visually consistent across all iOS devices.
+=======
+
+---
+>>>>>>> acbf53d55ea7077b63922efb9746f6b52dfa1ba3
