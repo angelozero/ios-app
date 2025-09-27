@@ -2,12 +2,10 @@
 //  AppDelegate.swift
 //  KingBurguer
 //
-//  Created by angelo on 18/09/25.
+//  Created by angelo on 26/09/25.
 //
 
 import UIKit
-
-// Ponto de inicializacao do meu app
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

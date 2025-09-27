@@ -7,27 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		177DEB3F2E7CEB4D00CC267D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177DEB3E2E7CEB4D00CC267D /* AppDelegate.swift */; };
-		177DEB412E7CEB4D00CC267D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177DEB402E7CEB4D00CC267D /* SceneDelegate.swift */; };
-		177DEB432E7CEB4D00CC267D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177DEB422E7CEB4D00CC267D /* ViewController.swift */; };
-		177DEB462E7CEB4D00CC267D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 177DEB452E7CEB4D00CC267D /* Base */; };
-		177DEB482E7CEB4E00CC267D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 177DEB472E7CEB4E00CC267D /* Assets.xcassets */; };
-		177DEB4B2E7CEB4E00CC267D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 177DEB4A2E7CEB4E00CC267D /* Base */; };
+		170572C62E876BD9009A53B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170572C52E876BD9009A53B2 /* AppDelegate.swift */; };
+		170572C82E876BD9009A53B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170572C72E876BD9009A53B2 /* SceneDelegate.swift */; };
+		170572CA2E876BD9009A53B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170572C92E876BD9009A53B2 /* ViewController.swift */; };
+		170572CF2E876BDA009A53B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170572CE2E876BDA009A53B2 /* Assets.xcassets */; };
+		170572D22E876BDA009A53B2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 170572D12E876BDA009A53B2 /* Base */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		177DEB3B2E7CEB4D00CC267D /* KingBurguer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KingBurguer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		177DEB3E2E7CEB4D00CC267D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		177DEB402E7CEB4D00CC267D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		177DEB422E7CEB4D00CC267D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		177DEB452E7CEB4D00CC267D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		177DEB472E7CEB4E00CC267D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		177DEB4A2E7CEB4E00CC267D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		177DEB4C2E7CEB4E00CC267D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		170572C22E876BD9009A53B2 /* KingBurguer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KingBurguer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		170572C52E876BD9009A53B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		170572C72E876BD9009A53B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		170572C92E876BD9009A53B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		170572CE2E876BDA009A53B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		170572D12E876BDA009A53B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		170572D32E876BDA009A53B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		177DEB382E7CEB4D00CC267D /* Frameworks */ = {
+		170572BF2E876BD9009A53B2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,32 +35,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		177DEB322E7CEB4D00CC267D = {
+		170572B92E876BD9009A53B2 = {
 			isa = PBXGroup;
 			children = (
-				177DEB3D2E7CEB4D00CC267D /* KingBurguer */,
-				177DEB3C2E7CEB4D00CC267D /* Products */,
+				170572C42E876BD9009A53B2 /* KingBurguer */,
+				170572C32E876BD9009A53B2 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		177DEB3C2E7CEB4D00CC267D /* Products */ = {
+		170572C32E876BD9009A53B2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				177DEB3B2E7CEB4D00CC267D /* KingBurguer.app */,
+				170572C22E876BD9009A53B2 /* KingBurguer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		177DEB3D2E7CEB4D00CC267D /* KingBurguer */ = {
+		170572C42E876BD9009A53B2 /* KingBurguer */ = {
 			isa = PBXGroup;
 			children = (
-				177DEB3E2E7CEB4D00CC267D /* AppDelegate.swift */,
-				177DEB402E7CEB4D00CC267D /* SceneDelegate.swift */,
-				177DEB422E7CEB4D00CC267D /* ViewController.swift */,
-				177DEB442E7CEB4D00CC267D /* Main.storyboard */,
-				177DEB472E7CEB4E00CC267D /* Assets.xcassets */,
-				177DEB492E7CEB4E00CC267D /* LaunchScreen.storyboard */,
-				177DEB4C2E7CEB4E00CC267D /* Info.plist */,
+				170572C52E876BD9009A53B2 /* AppDelegate.swift */,
+				170572C72E876BD9009A53B2 /* SceneDelegate.swift */,
+				170572C92E876BD9009A53B2 /* ViewController.swift */,
+				170572CE2E876BDA009A53B2 /* Assets.xcassets */,
+				170572D02E876BDA009A53B2 /* LaunchScreen.storyboard */,
+				170572D32E876BDA009A53B2 /* Info.plist */,
 			);
 			path = KingBurguer;
 			sourceTree = "<group>";
@@ -70,13 +67,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		177DEB3A2E7CEB4D00CC267D /* KingBurguer */ = {
+		170572C12E876BD9009A53B2 /* KingBurguer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 177DEB4F2E7CEB4E00CC267D /* Build configuration list for PBXNativeTarget "KingBurguer" */;
+			buildConfigurationList = 170572D62E876BDA009A53B2 /* Build configuration list for PBXNativeTarget "KingBurguer" */;
 			buildPhases = (
-				177DEB372E7CEB4D00CC267D /* Sources */,
-				177DEB382E7CEB4D00CC267D /* Frameworks */,
-				177DEB392E7CEB4D00CC267D /* Resources */,
+				170572BE2E876BD9009A53B2 /* Sources */,
+				170572BF2E876BD9009A53B2 /* Frameworks */,
+				170572C02E876BD9009A53B2 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -84,25 +81,25 @@
 			);
 			name = KingBurguer;
 			productName = KingBurguer;
-			productReference = 177DEB3B2E7CEB4D00CC267D /* KingBurguer.app */;
+			productReference = 170572C22E876BD9009A53B2 /* KingBurguer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		177DEB332E7CEB4D00CC267D /* Project object */ = {
+		170572BA2E876BD9009A53B2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
-					177DEB3A2E7CEB4D00CC267D = {
+					170572C12E876BD9009A53B2 = {
 						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
-			buildConfigurationList = 177DEB362E7CEB4D00CC267D /* Build configuration list for PBXProject "KingBurguer" */;
+			buildConfigurationList = 170572BD2E876BD9009A53B2 /* Build configuration list for PBXProject "KingBurguer" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,55 +107,46 @@
 				en,
 				Base,
 			);
-			mainGroup = 177DEB322E7CEB4D00CC267D;
-			productRefGroup = 177DEB3C2E7CEB4D00CC267D /* Products */;
+			mainGroup = 170572B92E876BD9009A53B2;
+			productRefGroup = 170572C32E876BD9009A53B2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				177DEB3A2E7CEB4D00CC267D /* KingBurguer */,
+				170572C12E876BD9009A53B2 /* KingBurguer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		177DEB392E7CEB4D00CC267D /* Resources */ = {
+		170572C02E876BD9009A53B2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				177DEB482E7CEB4E00CC267D /* Assets.xcassets in Resources */,
-				177DEB4B2E7CEB4E00CC267D /* Base in Resources */,
-				177DEB462E7CEB4D00CC267D /* Base in Resources */,
+				170572CF2E876BDA009A53B2 /* Assets.xcassets in Resources */,
+				170572D22E876BDA009A53B2 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		177DEB372E7CEB4D00CC267D /* Sources */ = {
+		170572BE2E876BD9009A53B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				177DEB432E7CEB4D00CC267D /* ViewController.swift in Sources */,
-				177DEB3F2E7CEB4D00CC267D /* AppDelegate.swift in Sources */,
-				177DEB412E7CEB4D00CC267D /* SceneDelegate.swift in Sources */,
+				170572CA2E876BD9009A53B2 /* ViewController.swift in Sources */,
+				170572C62E876BD9009A53B2 /* AppDelegate.swift in Sources */,
+				170572C82E876BD9009A53B2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		177DEB442E7CEB4D00CC267D /* Main.storyboard */ = {
+		170572D02E876BDA009A53B2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				177DEB452E7CEB4D00CC267D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		177DEB492E7CEB4E00CC267D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				177DEB4A2E7CEB4E00CC267D /* Base */,
+				170572D12E876BDA009A53B2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -166,7 +154,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		177DEB4D2E7CEB4E00CC267D /* Debug */ = {
+		170572D42E876BDA009A53B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -229,7 +217,7 @@
 			};
 			name = Debug;
 		};
-		177DEB4E2E7CEB4E00CC267D /* Release */ = {
+		170572D52E876BDA009A53B2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -285,7 +273,7 @@
 			};
 			name = Release;
 		};
-		177DEB502E7CEB4E00CC267D /* Debug */ = {
+		170572D72E876BDA009A53B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -296,10 +284,8 @@
 				INFOPLIST_FILE = KingBurguer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,7 +299,7 @@
 			};
 			name = Debug;
 		};
-		177DEB512E7CEB4E00CC267D /* Release */ = {
+		170572D82E876BDA009A53B2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -324,10 +310,8 @@
 				INFOPLIST_FILE = KingBurguer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,25 +328,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		177DEB362E7CEB4D00CC267D /* Build configuration list for PBXProject "KingBurguer" */ = {
+		170572BD2E876BD9009A53B2 /* Build configuration list for PBXProject "KingBurguer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				177DEB4D2E7CEB4E00CC267D /* Debug */,
-				177DEB4E2E7CEB4E00CC267D /* Release */,
+				170572D42E876BDA009A53B2 /* Debug */,
+				170572D52E876BDA009A53B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		177DEB4F2E7CEB4E00CC267D /* Build configuration list for PBXNativeTarget "KingBurguer" */ = {
+		170572D62E876BDA009A53B2 /* Build configuration list for PBXNativeTarget "KingBurguer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				177DEB502E7CEB4E00CC267D /* Debug */,
-				177DEB512E7CEB4E00CC267D /* Release */,
+				170572D72E876BDA009A53B2 /* Debug */,
+				170572D82E876BDA009A53B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 177DEB332E7CEB4D00CC267D /* Project object */;
+	rootObject = 170572BA2E876BD9009A53B2 /* Project object */;
 }
