@@ -298,4 +298,85 @@ In summary, the `Assets` folder is an essential tool that simplifies the managem
 =======
 
 ---
->>>>>>> acbf53d55ea7077b63922efb9746f6b52dfa1ba3
+
+## `SignInViewController`
+
+### 1\. Configuration in `SceneDelegate` (App Entry Point)
+
+The `SceneDelegate` is responsible for defining the first screen the user sees. We configure the **`SignInViewController`** as the **`rootViewController`** of the main window so it loads immediately upon app launch.
+
+```swift
+func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    guard let windowScene = (scene as? UIWindowScene) else { return }
+
+    window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+    // 💡 Key point: Sets the SignInViewController as the first screen
+    window?.rootViewController = SignInViewController()
+    window?.windowScene = windowScene
+    window?.makeKeyAndVisible()
+}
+```
+
+-----
+
+### 2\. `SignInViewController` Implementation (The Screen)
+
+The class inherits from `UIViewController` and uses **Auto Layout** (Constraints) to position the elements, which are set up inside `viewDidLoad()`.
+
+#### Auto Layout Anchors Quick Guide:
+
+These are the properties used to define position and size relative to other views:
+
+```swift
+// leadingAnchor ----- left (start)
+// trailingAnchor ---- right (end)
+// topAnchor --------- top
+// bottomAchor -------- bottom
+
+// centerYAnchor ------ Y-axis | vertical center
+// centerXAnchor ------ X-axis | horizontal center
+
+// heightAnchor ------- height
+// widthAnchor -------- width
+```
+
+#### A. Creating the UI Elements
+
+The text fields (`UITextField`) for email and password are initialized. It is **critical** to set **`translatesAutoresizingMaskIntoConstraints = false`** so Auto Layout can manage the positioning.
+
+```swift
+// Example:
+let emailTextField: UITextField = {
+    let editText = UITextField()
+    // ... styling and placeholder configurations ...
+    editText.translatesAutoresizingMaskIntoConstraints = false // Enables Auto Layout
+    return editText
+}()
+
+// ... Similar definition for passwordTextField ...
+```
+
+#### B. Applying Constraints (Positioning)
+
+In `viewDidLoad()`, we add the elements to the main View (`view.addSubview`) and activate the positioning rules (`NSLayoutConstraint.activate`).
+
+  * **Email:** Centered vertically (`centerYAnchor`) with an offset (`-100.0`), and occupies the full width (`leadingAnchor` and `trailingAnchor`).
+  * **Password:** Positioned **relative** to the email field, aligning its side edges and sitting 10 points below the email field (`topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10.0)`).
+
+<!-- end list -->
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = UIColor.orange
+    view.addSubview(emailTextField)
+    view.addSubview(passwordTextField)
+
+    let emailConstraints = [ /* ... email rules ... */ ]
+    let passwordConstraints = [ /* ... password rules ... */ ]
+
+    // Activates all the positioning rules
+    NSLayoutConstraint.activate(emailConstraints)
+    NSLayoutConstraint.activate(passwordConstraints)
+}
+```

@@ -293,3 +293,210 @@ Ela atua como um catálogo central onde você pode adicionar, configurar e otimi
 4.  **Suporte a `Dark Mode`**: A pasta `Assets` facilita a configuração de variações de cores e imagens para os modos claro e escuro, permitindo que seu aplicativo se adapte dinamicamente à preferência do usuário.
 
 Em resumo, a pasta `Assets` é uma ferramenta essencial que simplifica o gerenciamento de recursos visuais, garantindo que seu aplicativo seja eficiente e visualmente consistente em todos os dispositivos iOS.
+
+---
+
+## `SignInViewController`
+
+### 1\. Configuração no `SceneDelegate` (Ponto de Partida)
+
+Mantemos a configuração inicial, definindo a **`SignInViewController`** como a **`rootViewController`** (tela raiz) do aplicativo.
+
+```swift
+func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    // ... Código para criar a janela (UIWindow) ...
+    // Define a SignInViewController como a primeira tela
+    window?.rootViewController = SignInViewController()
+    // ... Código para exibir a janela ...
+}
+```
+
+-----
+
+### 2\. Implementação da `SignInViewController`
+
+A classe agora incluirá um terceiro elemento, o **`sendButton`**, e suas regras de posicionamento (Constraints).
+
+#### Guia Rápido de Âncoras do Auto Layout:
+
+| Âncora | Significado |
+| :--- | :--- |
+| `leadingAnchor` | Esquerda (início) |
+| `trailingAnchor` | Direita (fim) |
+| `topAnchor` | Cima |
+| `bottomAchor` | Baixo |
+| `centerYAnchor` | Eixo Y | Centro Vertical |
+| `centerXAnchor` | Eixo X | Centro Horizontal |
+| `heightAnchor` | Altura |
+| `widthAnchor` | Largura |
+
+#### A. Criação dos Elementos de UI (Adicionando o Botão)
+
+Adicionamos a definição do `sendButton` e garantimos que todos os elementos tenham **`translatesAutoresizingMaskIntoConstraints = false`**.
+
+```swift
+// Elementos de Texto (emailTextField e passwordTextField) ...
+
+let sendButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitle("Entrar", for: .normal)
+    button.backgroundColor = .blue 
+    button.setTitleColor(.white, for: .normal)
+    // ESSENCIAL para usar constraints
+    button.translatesAutoresizingMaskIntoConstraints = false 
+    return button
+}()
+```
+
+#### B. Configuração em `viewDidLoad()`
+
+Em `viewDidLoad()`, adicionamos o novo botão à view e definimos suas constraints.
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = UIColor.orange
+    
+    // Adicionamos os elementos à view
+    view.addSubview(emailTextField)
+    view.addSubview(passwordTextField)
+    view.addSubview(sendButton) // ⬅️ Novo elemento
+
+    let emailConstraints = [ /* ... regras de email ... */ ]
+    let passwordConstraints = [
+        // Posicionamento baseado no campo email
+        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10.0),
+        // ... outras regras ...
+    ]
+    
+    // ➡️ Novas Constraints do Botão:
+    let sendButtonConstraints = [
+        // Distância de 50 pontos da borda esquerda da View
+        sendButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50.0),
+        // Distância de 50 pontos da borda direita da View (usando valor negativo)
+        sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50.0),
+        // O TOPO do botão fica 10 pontos ABAIXO de passwordTextField
+        sendButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10.0), 
+        // Define a altura do botão
+        sendButton.heightAnchor.constraint(equalToConstant: 50.0)
+    ]
+    
+    // Ativa todas as regras
+    NSLayoutConstraint.activate(emailConstraints)
+    NSLayoutConstraint.activate(passwordConstraints)
+    NSLayoutConstraint.activate(sendButtonConstraints) // ⬅️ Ativa constraints do botão
+}
+```
+
+\***Nota sobre a Constraint do Botão:** O trecho original (`sendButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 10.0)`) posicionaria o botão para fora da tela (10 pontos abaixo da borda inferior). Para um botão de login típico, o correto é ancorá-lo abaixo do último campo de texto (`passwordTextField`), como ajustado no código acima:
+
+```swift
+sendButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 30.0)
+```
+
+### 3\. Manipulação do Evento de Clique do Botão (Ação)
+
+Para que o botão **`sendButton`** seja funcional, precisamos definir qual método será chamado quando o usuário tocá-lo, além de implementar esse método.
+
+#### A. Anexando o Método de Ação (`addTarget`)
+
+O método `addTarget` anexa um evento (`.touchUpInside`) a um método específico (`#selector`) dentro do controlador (`self`).
+
+```swift
+override func viewDidLoad() {
+    // ... Ativação das Constraints ...
+    NSLayoutConstraint.activate(emailConstraints)
+    NSLayoutConstraint.activate(passwordConstraints)
+    NSLayoutConstraint.activate(sendButtonConstraints) 
+
+    // ➡️ Anexo do Evento de Clique:
+    // self: O objeto (target) que irá executar o método (neste caso, a própria ViewController)
+    // action: O método a ser chamado, referenciado por #selector
+    // for: O evento que irá disparar o método (toque completo e soltura dentro dos limites do botão)
+    sendButton.addTarget(self, action: #selector(didTapSendButton), for: .touchUpInside)
+}
+```
+
+#### B. Implementação do Método de Ação
+
+O método que será executado pelo botão deve ser definido com o prefixo **`@objc`** para ser acessível pelo runtime do Objective-C (necessário para o `#selector`). Adotamos a nomenclatura recomendada **`didTapSendButton`** para clareza.
+
+```swift
+// Implementação do Método de Ação
+@objc func didTapSendButton() {
+    // 💡 Lógica de Sign-In será implementada aqui.
+    // Exemplo: Recuperar o texto dos campos
+    let email = emailTextField.text ?? ""
+    let password = passwordTextField.text ?? ""
+    
+    print("Email: \(email)")
+    print("Password: \(password)")
+    
+    // Futuramente: Chamar a API de autenticação e navegar para outra tela.
+}
+```
+
+-----
+
+#### A. Criação dos Elementos de UI (Adicionando o Botão com `lazy var`)
+
+Os elementos são declarados como **`lazy var`** para que a inicialização ocorra **somente no primeiro acesso**, e agora o **`sendButton`** inclui o **`addTarget`** em sua própria definição.
+
+| Tipo | Uso |
+| :--- | :--- |
+| **`lazy var`** | A inicialização (o bloco `{ ... }`) só roda quando a variável é acessada pela primeira vez. Isso é comum para elementos de UI que precisam de acesso a `self` (como o `addTarget`). |
+
+```swift
+// Elementos de Texto (emailTextField e passwordTextField) ...
+
+lazy var sendButton: UIButton = {
+    let button = UIButton()
+    button.setTitle("send", for: .normal)
+    button.setTitleColor(.white, for: .normal)
+    button.backgroundColor = .black
+    // ESSENCIAL para usar constraints
+    button.translatesAutoresizingMaskIntoConstraints = false
+    
+    // ➡️ Anexo do Evento de Clique (dentro do 'lazy var'):
+    // self: A própria ViewController é o alvo do método.
+    // action: Referencia o método que será implementado abaixo.
+    // for: O evento que dispara a ação (toque dentro dos limites do botão).
+    button.addTarget(self, action: #selector(didTapSendButton), for: .touchUpInside)
+    
+    return button
+}()
+```
+
+#### B. Implementação do Método de Ação
+
+O método que será chamado pelo botão precisa ser implementado na classe com o prefixo **`@objc`**:
+
+```swift
+@objc func didTapSendButton() {
+    // Lógica de Sign-In / Autenticação será executada aqui.
+    print("Botão 'Send' foi tocado. Iniciando autenticação...")
+}
+```
+
+#### C. Configuração em `viewDidLoad()`
+
+O código em `viewDidLoad()` agora fica mais limpo, pois não é mais necessário chamar o `addTarget` separadamente, apenas adicionar o botão à view e ativar as *constraints*.
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = UIColor.orange
+    
+    // Adicionamos os elementos à view
+    view.addSubview(emailTextField)
+    view.addSubview(passwordTextField)
+    view.addSubview(sendButton) // O evento já foi configurado acima!
+
+    // ... Ativação das Constraints (inalterada) ...
+    
+    // Ativa todas as regras
+    NSLayoutConstraint.activate(emailConstraints)
+    NSLayoutConstraint.activate(passwordConstraints)
+    NSLayoutConstraint.activate(sendButtonConstraints) 
+}
+```
