@@ -9,7 +9,28 @@ import Foundation
 import UIKit
 
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, SigninViewModelDelegate {
+    
+    // Tornamos a viewModel obrigatória (não-opcional)
+    let signInViewModel: SignInViewModel
+    
+    // Inicializador que requer o ViewModel
+    init(signInViewModel: SignInViewModel) {
+        // 1. Inicialização Própria: Garante que 'signInViewModel' está pronto.
+        self.signInViewModel = signInViewModel
+        
+        // 2. Inicialização da Superclasse: Torna 'self' seguro e completo.
+        super.init(nibName: nil, bundle: nil)
+        
+        // 3. Configuração Pós-Inicialização: Usa 'self' e 'signInViewModel' que agora são válidos.
+        self.signInViewModel.delegate = self
+    }
+    
+    // Este é um inicializador obrigatório em UIViewController que usa storyboards ou NIBs,
+    // mas precisamos dele mesmo usando programação pura para conformidade.
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // leadingAnchor ----- esquerda
     // trailingAnchor ---- direita
@@ -92,6 +113,10 @@ class SignInViewController: UIViewController {
     }
     
     @objc func didTapSendButton(_ sender: UIButton){
-        print("OK")
+        signInViewModel.send()
+    }
+    
+    func viewModelDidChanged(viewModel: SignInViewModel){
+        print("TESSTEEEEE")
     }
 }

@@ -20,8 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Cria uma nova janela (UIWindow) que cobre toda a área da tela da cena.
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         
-        // Define a tela (ViewController) que será mostrada primeiro na janela.
-        window?.rootViewController = SignInViewController()
+        // Define a tela (ViewController) que será mostrada primeiro na janela injetando SignInViewModel como dependencia.
+        window?.rootViewController = SignInViewController(signInViewModel: SignInViewModel())
         
         // Associa esta nova janela à cena de janela (windowScene) que acabamos de obter.
         window?.windowScene = windowScene
