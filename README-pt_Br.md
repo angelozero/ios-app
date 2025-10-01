@@ -500,3 +500,5 @@ override func viewDidLoad() {
     NSLayoutConstraint.activate(sendButtonConstraints) 
 }
 ```
+
+## VIEW / VIEW MODEL / MODEL 
