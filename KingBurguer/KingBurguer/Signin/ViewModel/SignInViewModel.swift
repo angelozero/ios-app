@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol SigninViewModelDelegate: AnyObject {
-    func viewModelDidChanged(viewModel: SignInViewModel)
+    func viewModelDidChanged(state: SignInState)
 }
 
 
@@ -17,7 +17,17 @@ class SignInViewModel {
     
     weak var delegate: SigninViewModelDelegate?
     
+    var state: SignInState = .none {
+        didSet {
+            delegate?.viewModelDidChanged(state: state)
+        }
+    }
+    
     func send(){
-        delegate?.viewModelDidChanged(viewModel: self)
+        state = .loading
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+            self.state = .error(errorMessage: "Lele is blocked")
+        }
     }
 }

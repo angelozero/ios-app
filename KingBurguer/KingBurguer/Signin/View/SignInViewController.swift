@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class SignInViewController: UIViewController, SigninViewModelDelegate {
+class SignInViewController: UIViewController {
     
     // Tornamos a viewModel obrigatória (não-opcional)
     let signInViewModel: SignInViewModel
@@ -67,7 +67,7 @@ class SignInViewController: UIViewController, SigninViewModelDelegate {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .black
         button.translatesAutoresizingMaskIntoConstraints = false
-        // Evento de clique do botao
+        // evento de clique do botao
         // self -------- referencia que o alvo a ser executado esta nesta classe
         // #selector --- método a ser executado, deve ter na frente a annotation @objc
         // for --------- evento do qual o botão ira executar a funcao
@@ -84,6 +84,7 @@ class SignInViewController: UIViewController, SigninViewModelDelegate {
         view.addSubview(sendButton)
         
         let emailConstraints = [
+            // posicionamento baseado no tamanho da tela inteira
             emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100.0),
@@ -99,6 +100,7 @@ class SignInViewController: UIViewController, SigninViewModelDelegate {
         ]
         
         let sendButtonConstraints = [
+            // posicionamento baseado no tamanho da tela inteira
             sendButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50.0),
             sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50.0),
             sendButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10.0),
@@ -116,7 +118,37 @@ class SignInViewController: UIViewController, SigninViewModelDelegate {
         signInViewModel.send()
     }
     
-    func viewModelDidChanged(viewModel: SignInViewModel){
-        print("TESSTEEEEE")
+    
+}
+
+// Observador do ViewModel
+extension SignInViewController: SigninViewModelDelegate {
+    func viewModelDidChanged(state: SignInState){
+        
+        switch(state){
+            
+        case .none:
+            printState(state: .none)
+            break
+            
+        case .loading:
+            printState(state: .loading)
+            break
+            
+        case .success:
+            printState(state: .success)
+            break
+            
+        case .error(errorMessage: let errorMessage):
+            let alert  = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true)
+            break
+            
+        }
+    }
+    
+    func printState(state: SignInState){
+        print("Status \(state)")
     }
 }
