@@ -14,6 +14,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        let signInViewModel: SignInViewModel = SignInViewModel()
+        let signInViewController = SignInViewController(signInViewModel: signInViewModel)
+        let navigationViewController = UINavigationController(rootViewController: signInViewController)
+
+        
         // Tenta converter a cena (scene) para UIWindowScene; se falhar, sai do método.
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
@@ -21,8 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         
         // Define a tela (ViewController) que será mostrada primeiro na janela injetando SignInViewModel como dependencia.
-        let signInViewModel: SignInViewModel = SignInViewModel()
-        window?.rootViewController = SignInViewController(signInViewModel: signInViewModel)
+        window?.rootViewController = navigationViewController
         
         // Associa esta nova janela à cena de janela (windowScene) que acabamos de obter.
         window?.windowScene = windowScene
