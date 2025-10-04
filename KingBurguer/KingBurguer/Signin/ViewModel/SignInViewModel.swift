@@ -8,18 +8,15 @@
 import Foundation
 
 
-protocol SigninViewModelDelegate: AnyObject {
-    func viewModelDidChanged(state: SignInState)
-}
-
-
 class SignInViewModel {
     
-    weak var delegate: SigninViewModelDelegate?
+    weak var signInViewModelDelegate: SignInViewModelDelegate?
+    var coordinatorSignIn: SignInCoordinator?
+    //var coordinatorSignUp: SignUpCoordinator?
     
     var state: SignInState = .none {
         didSet {
-            delegate?.viewModelDidChanged(state: state)
+            signInViewModelDelegate?.viewModelDidChanged(state: state)
         }
     }
     
@@ -27,7 +24,12 @@ class SignInViewModel {
         state = .loading
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-            self.state = .error(errorMessage: "Lele is blocked")
+            self.state = .error(errorMessage: "Not Authorized")
         }
     }
+    
+    func goToSignUp(){
+        coordinatorSignIn?.goToSignUp()
+    }
+
 }

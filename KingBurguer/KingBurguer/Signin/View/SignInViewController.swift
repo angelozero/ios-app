@@ -23,7 +23,7 @@ class SignInViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         // 3. Configuração Pós-Inicialização: Usa 'self' e 'signInViewModel' que agora são válidos.
-        self.signInViewModel.delegate = self
+        self.signInViewModel.signInViewModelDelegate = self
     }
     
     // Este é um inicializador obrigatório em UIViewController que usa storyboards ou NIBs,
@@ -143,15 +143,15 @@ class SignInViewController: UIViewController {
     }
     
     @objc func didTapRegisterButton(_ sender: UIButton){
-        let signUpViewController = SignUpViewController()
-        navigationController?.pushViewController(signUpViewController, animated: true)
+        signInViewModel.goToSignUp()
     }
 }
 
 // Observador do ViewModel
-extension SignInViewController: SigninViewModelDelegate {
+// Implementacao do protocolo SigninViewModelDelegate
+extension SignInViewController: SignInViewModelDelegate {
+    
     func viewModelDidChanged(state: SignInState){
-        
         switch(state){
             
         case .none:
@@ -173,9 +173,12 @@ extension SignInViewController: SigninViewModelDelegate {
             break
             
         }
+        
     }
-    
-    func printState(state: SignInState){
-        print("Status \(state)")
-    }
+
 }
+
+func printState(state: SignInState){
+    print("Status \(state)")
+}
+

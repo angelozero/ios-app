@@ -20,8 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let coordinator = SignInCoordinator(window: window)
         self.signInCoordinator = coordinator
         coordinator.start()
-        
-        window?.makeKeyAndVisible()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

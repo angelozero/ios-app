@@ -12,6 +12,7 @@ class SignInCoordinator {
     
     private let window: UIWindow?
     private let navigationController: UINavigationController
+    var coordinatorSignUP: SignUpCoordinator?
     
     init(window: UIWindow?){
         self.window = window
@@ -20,11 +21,21 @@ class SignInCoordinator {
     
     func start(){
         let signInViewModel = SignInViewModel()
+        signInViewModel.coordinatorSignIn = self
         let signInViewController = SignInViewController(signInViewModel: signInViewModel)
         
-        self.navigationController.viewControllers = [signInViewController]
+        signInViewController.navigationItem.title = "Login"
+        
+        self.navigationController.pushViewController(signInViewController, animated: true)
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
+    
+    
+    func goToSignUp(){
+        let coordinate = SignUpCoordinator(window: window, navigationController: self.navigationController)
+        coordinate.start()
+    }
+    
 }
