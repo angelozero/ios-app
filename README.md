@@ -309,3 +309,6 @@ class SignUpViewController: UIViewController {
 ### 🎯 Ponto-Chave
 
 O `UINavigationController` é essencial para gerenciar o fluxo de telas de forma sequencial. Ao usar `pushViewController`, o `UIViewController` de origem **permanece na memória**, mas oculto, permitindo que a tela de destino possa ser removida (`pop`) para retornar ao ponto de partida.
+
+
+## Rotas com o Pattern Coordinator

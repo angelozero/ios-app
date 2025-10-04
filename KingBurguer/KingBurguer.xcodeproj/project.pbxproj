@@ -13,6 +13,7 @@
 		170572D22E876BDA009A53B2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 170572D12E876BDA009A53B2 /* Base */; };
 		170572DC2E877F43009A53B2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170572DB2E877F43009A53B2 /* SignInViewController.swift */; };
 		17EF70662E8CA940004C077E /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF70652E8CA940004C077E /* SignInViewModel.swift */; };
+		17F0C1DC2E90AF1300D63FF7 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F0C1DB2E90AF1300D63FF7 /* SignInCoordinator.swift */; };
 		17FABE3A2E8F50C40055ADD2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FABE392E8F50C40055ADD2 /* SignUpViewController.swift */; };
 		17FED1E62E8DFEF600C877E9 /* SignInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FED1E52E8DFEF600C877E9 /* SignInState.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		170572D32E876BDA009A53B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		170572DB2E877F43009A53B2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		17EF70652E8CA940004C077E /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		17F0C1DB2E90AF1300D63FF7 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		17FABE392E8F50C40055ADD2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		17FED1E52E8DFEF600C877E9 /* SignInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +78,7 @@
 			children = (
 				17EF70642E8CA91B004C077E /* ViewModel */,
 				170572DA2E877F1C009A53B2 /* View */,
+				17F0C1DB2E90AF1300D63FF7 /* SignInCoordinator.swift */,
 			);
 			path = Signin;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				17EF70662E8CA940004C077E /* SignInViewModel.swift in Sources */,
 				170572DC2E877F43009A53B2 /* SignInViewController.swift in Sources */,
 				170572C62E876BD9009A53B2 /* AppDelegate.swift in Sources */,
+				17F0C1DC2E90AF1300D63FF7 /* SignInCoordinator.swift in Sources */,
 				170572C82E876BD9009A53B2 /* SceneDelegate.swift in Sources */,
 				17FED1E62E8DFEF600C877E9 /* SignInState.swift in Sources */,
 			);

@@ -10,28 +10,17 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    
+    var signInCoordinator: SignInCoordinator?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
-        let signInViewModel: SignInViewModel = SignInViewModel()
-        let signInViewController = SignInViewController(signInViewModel: signInViewModel)
-        let navigationViewController = UINavigationController(rootViewController: signInViewController)
-
-        
-        // Tenta converter a cena (scene) para UIWindowScene; se falhar, sai do método.
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        // Cria uma nova janela (UIWindow) que cobre toda a área da tela da cena.
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        
-        // Define a tela (ViewController) que será mostrada primeiro na janela injetando SignInViewModel como dependencia.
-        window?.rootViewController = navigationViewController
-        
-        // Associa esta nova janela à cena de janela (windowScene) que acabamos de obter.
         window?.windowScene = windowScene
         
-        // Torna a janela a principal e a visível na tela.
+        let coordinator = SignInCoordinator(window: window)
+        self.signInCoordinator = coordinator
+        coordinator.start()
+        
         window?.makeKeyAndVisible()
     }
     
