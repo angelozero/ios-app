@@ -18,7 +18,8 @@ class SignUpCoordinator {
     }
     
     func start(){
-        let signUpViewController = SignUpViewController();
+        let signUpViewModel = SignUpViewModel()
+        let signUpViewController = SignUpViewController(signUpViewModel: signUpViewModel);
         signUpViewController.navigationItem.title = "Register"
         
         self.navigationController.pushViewController(signUpViewController, animated: true)

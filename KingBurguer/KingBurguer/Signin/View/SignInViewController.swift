@@ -155,15 +155,15 @@ extension SignInViewController: SignInViewModelDelegate {
         switch(state){
             
         case .none:
-            printState(state: .none)
+            printState(state: SignInState.none)
             break
             
         case .loading:
-            printState(state: .loading)
+            printState(state: SignInState.loading)
             break
             
         case .success:
-            printState(state: .success)
+            printState(state: SignInState.success)
             break
             
         case .error(errorMessage: let errorMessage):

@@ -12,7 +12,6 @@ class SignInViewModel {
     
     weak var signInViewModelDelegate: SignInViewModelDelegate?
     var coordinatorSignIn: SignInCoordinator?
-    //var coordinatorSignUp: SignUpCoordinator?
     
     var state: SignInState = .none {
         didSet {
@@ -26,10 +25,6 @@ class SignInViewModel {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2){
             self.state = .error(errorMessage: "Not Authorized")
         }
-    }
-    
-    func goToSignUp(){
-        coordinatorSignIn?.goToSignUp()
     }
 
 }

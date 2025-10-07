@@ -12,6 +12,8 @@
 		170572CF2E876BDA009A53B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170572CE2E876BDA009A53B2 /* Assets.xcassets */; };
 		170572D22E876BDA009A53B2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 170572D12E876BDA009A53B2 /* Base */; };
 		170572DC2E877F43009A53B2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170572DB2E877F43009A53B2 /* SignInViewController.swift */; };
+		1716C1372E94904800CBA6AB /* SignUpViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716C1362E94904800CBA6AB /* SignUpViewModelDelegate.swift */; };
+		1716C13A2E94988200CBA6AB /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716C1392E94988200CBA6AB /* SignUpState.swift */; };
 		17EEBFE72E91588E00CAC9C7 /* SigninViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */; };
 		17EEBFE92E91969600CAC9C7 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE82E91969600CAC9C7 /* SignUpCoordinator.swift */; };
 		17EEBFEC2E91971F00CAC9C7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFEB2E91971F00CAC9C7 /* SignUpViewModel.swift */; };
@@ -29,6 +31,8 @@
 		170572D12E876BDA009A53B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		170572D32E876BDA009A53B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		170572DB2E877F43009A53B2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		1716C1362E94904800CBA6AB /* SignUpViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModelDelegate.swift; sourceTree = "<group>"; };
+		1716C1392E94988200CBA6AB /* SignUpState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
 		17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModelDelegate.swift; sourceTree = "<group>"; };
 		17EEBFE82E91969600CAC9C7 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		17EEBFEB2E91971F00CAC9C7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				17EEBFEB2E91971F00CAC9C7 /* SignUpViewModel.swift */,
+				1716C1362E94904800CBA6AB /* SignUpViewModelDelegate.swift */,
+				1716C1392E94988200CBA6AB /* SignUpState.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -210,9 +216,11 @@
 				170572C62E876BD9009A53B2 /* AppDelegate.swift in Sources */,
 				17F0C1DC2E90AF1300D63FF7 /* SignInCoordinator.swift in Sources */,
 				170572C82E876BD9009A53B2 /* SceneDelegate.swift in Sources */,
+				1716C13A2E94988200CBA6AB /* SignUpState.swift in Sources */,
 				17FED1E62E8DFEF600C877E9 /* SignInState.swift in Sources */,
 				17EEBFE72E91588E00CAC9C7 /* SigninViewModelDelegate.swift in Sources */,
 				17EEBFE92E91969600CAC9C7 /* SignUpCoordinator.swift in Sources */,
+				1716C1372E94904800CBA6AB /* SignUpViewModelDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
