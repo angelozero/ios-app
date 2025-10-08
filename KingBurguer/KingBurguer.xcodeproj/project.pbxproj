@@ -14,6 +14,11 @@
 		170572DC2E877F43009A53B2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170572DB2E877F43009A53B2 /* SignInViewController.swift */; };
 		1716C1372E94904800CBA6AB /* SignUpViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716C1362E94904800CBA6AB /* SignUpViewModelDelegate.swift */; };
 		1716C13A2E94988200CBA6AB /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716C1392E94988200CBA6AB /* SignUpState.swift */; };
+		176660D52E95F3FA00DBC79A /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660D42E95F3FA00DBC79A /* HomeCoordinator.swift */; };
+		176660D82E95F46600DBC79A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660D72E95F46600DBC79A /* HomeViewModel.swift */; };
+		176660DA2E95F47D00DBC79A /* HomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660D92E95F47D00DBC79A /* HomeViewModelDelegate.swift */; };
+		176660DC2E95F48F00DBC79A /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660DB2E95F48F00DBC79A /* HomeState.swift */; };
+		176660DF2E95F55B00DBC79A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660DE2E95F55B00DBC79A /* HomeViewController.swift */; };
 		17EEBFE72E91588E00CAC9C7 /* SigninViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */; };
 		17EEBFE92E91969600CAC9C7 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE82E91969600CAC9C7 /* SignUpCoordinator.swift */; };
 		17EEBFEC2E91971F00CAC9C7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFEB2E91971F00CAC9C7 /* SignUpViewModel.swift */; };
@@ -33,6 +38,11 @@
 		170572DB2E877F43009A53B2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		1716C1362E94904800CBA6AB /* SignUpViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModelDelegate.swift; sourceTree = "<group>"; };
 		1716C1392E94988200CBA6AB /* SignUpState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
+		176660D42E95F3FA00DBC79A /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		176660D72E95F46600DBC79A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		176660D92E95F47D00DBC79A /* HomeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelDelegate.swift; sourceTree = "<group>"; };
+		176660DB2E95F48F00DBC79A /* HomeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
+		176660DE2E95F55B00DBC79A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModelDelegate.swift; sourceTree = "<group>"; };
 		17EEBFE82E91969600CAC9C7 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		17EEBFEB2E91971F00CAC9C7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -72,6 +82,7 @@
 		170572C42E876BD9009A53B2 /* KingBurguer */ = {
 			isa = PBXGroup;
 			children = (
+				176660D32E95F37600DBC79A /* Home */,
 				17FABE372E8F50980055ADD2 /* SignUp */,
 				170572D92E877F06009A53B2 /* Signin */,
 				170572C52E876BD9009A53B2 /* AppDelegate.swift */,
@@ -97,6 +108,34 @@
 			isa = PBXGroup;
 			children = (
 				170572DB2E877F43009A53B2 /* SignInViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		176660D32E95F37600DBC79A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				176660DD2E95F53C00DBC79A /* View */,
+				176660D62E95F45600DBC79A /* ViewModel */,
+				176660D42E95F3FA00DBC79A /* HomeCoordinator.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		176660D62E95F45600DBC79A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				176660D72E95F46600DBC79A /* HomeViewModel.swift */,
+				176660D92E95F47D00DBC79A /* HomeViewModelDelegate.swift */,
+				176660DB2E95F48F00DBC79A /* HomeState.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		176660DD2E95F53C00DBC79A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				176660DE2E95F55B00DBC79A /* HomeViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,11 +251,16 @@
 				17FABE3A2E8F50C40055ADD2 /* SignUpViewController.swift in Sources */,
 				17EF70662E8CA940004C077E /* SignInViewModel.swift in Sources */,
 				17EEBFEC2E91971F00CAC9C7 /* SignUpViewModel.swift in Sources */,
+				176660DF2E95F55B00DBC79A /* HomeViewController.swift in Sources */,
 				170572DC2E877F43009A53B2 /* SignInViewController.swift in Sources */,
+				176660DC2E95F48F00DBC79A /* HomeState.swift in Sources */,
 				170572C62E876BD9009A53B2 /* AppDelegate.swift in Sources */,
 				17F0C1DC2E90AF1300D63FF7 /* SignInCoordinator.swift in Sources */,
 				170572C82E876BD9009A53B2 /* SceneDelegate.swift in Sources */,
 				1716C13A2E94988200CBA6AB /* SignUpState.swift in Sources */,
+				176660DA2E95F47D00DBC79A /* HomeViewModelDelegate.swift in Sources */,
+				176660D52E95F3FA00DBC79A /* HomeCoordinator.swift in Sources */,
+				176660D82E95F46600DBC79A /* HomeViewModel.swift in Sources */,
 				17FED1E62E8DFEF600C877E9 /* SignInState.swift in Sources */,
 				17EEBFE72E91588E00CAC9C7 /* SigninViewModelDelegate.swift in Sources */,
 				17EEBFE92E91969600CAC9C7 /* SignUpCoordinator.swift in Sources */,

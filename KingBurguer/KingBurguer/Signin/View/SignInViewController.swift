@@ -163,8 +163,7 @@ extension SignInViewController: SignInViewModelDelegate {
             break
             
         case .success:
-            printState(state: SignInState.success)
-            break
+            signInViewModel.goToHome()
             
         case .error(errorMessage: let errorMessage):
             let alert  = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)

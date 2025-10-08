@@ -23,8 +23,16 @@ class SignInViewModel {
         state = .loading
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-            self.state = .error(errorMessage: "Not Authorized")
+            //self.state = .error(errorMessage: "Not Authorized")
+            self.state = .success
         }
     }
-
+    
+    func goToSignUp(){
+        coordinatorSignIn?.goToSignUp()
+    }
+    
+    func goToHome(){
+        coordinatorSignIn?.goToHome()
+    }
 }

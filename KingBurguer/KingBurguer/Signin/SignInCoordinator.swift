@@ -13,6 +13,7 @@ class SignInCoordinator {
     private let window: UIWindow?
     private let navigationController: UINavigationController
     var coordinatorSignUP: SignUpCoordinator?
+    var coordinatorHome: HomeCoordinator?
     
     init(window: UIWindow?){
         self.window = window
@@ -34,8 +35,12 @@ class SignInCoordinator {
     
     
     func goToSignUp(){
-        let coordinate = SignUpCoordinator(window: window, navigationController: self.navigationController)
-        coordinate.start()
+        let signUpcoordinate = SignUpCoordinator(window: window, navigationController: self.navigationController)
+        signUpcoordinate.start()
     }
     
+    func goToHome(){
+        let homeCoordinate = HomeCoordinator(window: window, navigationController: self.navigationController)
+        homeCoordinate.start()
+    }
 }
