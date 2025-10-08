@@ -12,9 +12,9 @@ class HomeCoordinator {
     private let window: UIWindow?
     private let navigationController: UINavigationController
     
-    init(window: UIWindow?, navigationController: UINavigationController){
+    init(window: UIWindow?){
         self.window = window
-        self.navigationController = navigationController
+        self.navigationController = UINavigationController()
     }
     
     func start(){
@@ -24,5 +24,7 @@ class HomeCoordinator {
         
         self.navigationController.pushViewController(homeViewController, animated: true)
 
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
 }

@@ -40,7 +40,7 @@ class SignInCoordinator {
     }
     
     func goToHome(){
-        let homeCoordinate = HomeCoordinator(window: window, navigationController: self.navigationController)
+        let homeCoordinate = HomeCoordinator(window: window)
         homeCoordinate.start()
     }
 }
