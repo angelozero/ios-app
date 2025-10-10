@@ -376,3 +376,125 @@ Apesar de o código estar atualmente em `SignInViewController`, a navegação re
   ```
 
 Essa estrutura garante que a View Controller não precise saber nada sobre os resultados da ViewModel, e o Coordinator não precise saber nada sobre a lógica interna da ViewModel.
+
+Claro, aqui está o item 8 do seu README, explicando a nova implementação e as correções arquiteturais necessárias.
+
+````markdown
+## 7\. Orquestração de Fluxo (Coordinator e Reatividade)
+
+O projeto migrou para o **Padrão Coordinator**, que separa a lógica de navegação dos View Controllers, garantindo que cada classe mantenha uma única responsabilidade.
+
+O fluxo de controle do aplicativo segue a seguinte hierarquia:
+
+### 7.1. Ordem de Inicialização e Controle (De Cima para Baixo)
+
+A inicialização e o controle do fluxo são estabelecidos através de **Injeção de Dependência** e **Referência Forte** no `SceneDelegate`.
+
+| Sequência | Componente | Responsabilidade Principal |
+| :--- | :--- | :--- |
+| **1.** | `SceneDelegate` | **Ponto de Entrada.** Cria e **armazena** (`var`) o `SignInCoordinator` (referência forte), garantindo sua sobrevivência na memória. |
+| **2.** | `SignInCoordinator` | **Diretor de Fluxo.** Cria a `UINavigationController` e o `SignInViewController`. Define o `SignInViewController` como a **raiz** (`rootViewController`) da navegação. |
+| **3.** | `UINavigationController` | **Gerenciador de Pilha.** Objeto principal de navegação que hospeda as telas. |
+| **4.** | `SignInViewController` | **A View (Interface).** Recebe o `SignInViewModel` no construtor. É responsável apenas por **coletar dados** e **atualizar a UI** com base no `state`. |
+
+### 7.2. Comunicação de Ação (MVVM Reativo)
+
+A comunicação dentro da tela (login ou erro) utiliza o padrão MVVM com Delegate e `didSet`:
+
+1.  **Ação do Usuário:** O usuário clica no `logInButton`. O método `@objc func didTapLogInButton` é chamado.
+2.  **Controller Inicia a Lógica:** O `SignInViewController` invoca a ação na sua dependência: `signInViewModel.send()`.
+3.  **ViewModel Altera Estado:** O método `send()` na `SignInViewModel` processa a lógica e, em algum momento, **altera** a variável reativa `state` (ex: `self.state = .loading`).
+4.  **Callback Automático (`didSet`):** A alteração na variável `state` dispara o *Property Observer* `didSet`, que é o **mecanismo reativo** do Swift.
+5.  **Notificação do Delegate:** O `didSet` invoca o método do protocolo: `delegate?.viewModelDidChanged(state: self.state)`.
+6.  **View Atualiza UI:** O `SignInViewController` (que implementa `SignInViewModelDelegate`) executa o `viewModelDidChanged(state:)` e atualiza a UI (ex: mostra o alerta de erro ou esconde o spinner).
+
+### 7.3. Ação de Navegação (`didTapRegisterButton`)
+
+Apesar de o código estar atualmente em `SignInViewController`, a navegação respeita o `UINavigationController`:
+
+```swift
+// Em SignInViewController.swift
+@objc func didTapRegisterButton(_ sender: UIButton){
+    let signUpViewController = SignUpViewController()
+    // ➡️ O Controller empurra a nova tela para o topo da pilha de navegação.
+    navigationController?.pushViewController(signUpViewController, animated: true)
+}
+````
+
+**Conclusão Arquitetural:**
+
+  * A **`SignInViewModel`** gerencia o **estado** da lógica de autenticação.
+  * O **`SignInViewController`** gerencia a **exibição** e é o **observador** desse estado.
+  * O **`SignInCoordinator`** gerencia o **fluxo de telas**, decidindo qual tela é a próxima e como ela será apresentada na pilha do **`UINavigationController`**.
+
+<!-- end list -->
+
+```shell
+  1 - scene delegate
+  2 - coordinator
+  3 - sign in coordinator 
+  4 - navigation controller 
+  5 - sign in view controller
+      5.1 - tem o metodo didTapRegisterButton que insere em navigation controller o controller signUpviewController
+      5.2 - o metodo didTapLogInButton executa o metodo send em signInViewModel 
+      5.1 - implementa viewModelDidChanged
+  6 - sign in view model 
+      6.1 - sign in view tem um parametro chamado state que é alterado toda vez que send é invocado
+      6.1 - state tendo seu valor sobrescrito seu método didSet, um callback, sera invocado chamando o metodo viewModelDidChanged do SignInViewModelDelegate
+  7 - sign in view controller
+      7.0 sign in view controller 'observa' qualquer estimulo da view model
+      7.1 - o metodo viewModelDidChanged implementado sera executado
+```
+
+Essa estrutura garante que a View Controller não precise saber nada sobre os resultados da ViewModel, e o Coordinator não precise saber nada sobre a lógica interna da ViewModel.
+
+-----
+
+## 8\. Refatoração da Navegação (Fluxo Reversível e Memória)
+
+A necessidade de delegar a navegação de volta para a Home a partir do fluxo de Cadastro (`SignUp`) exigiu a criação de uma **referência parental** no `SignUpCoordinator`. Isso garante que as decisões de fluxo tomadas no fluxo "filho" possam ser repassadas ao fluxo "pai".
+
+### 8.1. Injeção Explícita de Dependência (Corrigindo Referência Nula)
+
+A solução para garantir que o `parentCoordinator` não seja `nil` no momento da navegação foi a **Injeção de Dependência via Construtor**.
+
+| Antes | Depois (Correto) |
+| :--- | :--- |
+| `parentCoordinator` era opcional e atribuído separadamente após a inicialização. | O `parentCoordinator` é uma dependência obrigatória passada no `init()`. |
+
+**No `SignInCoordinator.swift` (O Pai):**
+
+```swift
+func goToSignUp(){
+    // ➡️ O Pai (self) injeta sua própria referência diretamente no construtor do Filho.
+    signUpcoordinator = SignUpCoordinator(
+        window: window, 
+        navigationController: self.navigationController, 
+        parentCoordinator: self 
+    )
+    signUpcoordinator?.start()
+}
+```
+
+Essa mudança estabelece a comunicação clara e **direta** para o caminho de volta: `SignUpViewModel` -\> `SignUpCoordinator` -\> `parentCoordinator.goToHome()`.
+
+### 8.2. Gerenciamento de Memória (O Uso Crucial de `weak var`)
+
+A injeção do `parentCoordinator` via construtor, embora resolva o problema da navegação, cria um **Ciclo de Retenção** (Retain Cycle) que leva a vazamentos de memória (Memory Leaks).
+
+**O problema:**
+
+1.  O `SignInCoordinator` (Pai) tem uma referência **forte** para o `SignUpCoordinator` (Filho) via `var signUpcoordinator`.
+2.  O `SignUpCoordinator` (Filho) teria uma referência **forte** para o `SignInCoordinator` (Pai) via `let parentCoordinator`.
+3.  Essa referência mútua forte impede que ambos os objetos sejam desalocados da memória, mesmo quando as telas são fechadas.
+
+**A Solução (Referências Fracas):**
+
+Para quebrar o ciclo, a referência do objeto "filho" para o objeto "pai" **DEVE** ser **fraca** (`weak`).
+
+| Classe | Propriedade | Tipo de Referência Aplicada | Motivo |
+| :--- | :--- | :--- | :--- |
+| `SignUpCoordinator` | `parentCoordinator` | **`weak var`** | Quebra o ciclo de retenção `Pai -> Filho -> Pai`. |
+| `SignUpViewModel` | `signUpcoordinator` | **`weak var`** | Quebra o ciclo de retenção `ViewModel <-> Coordinator`. |
+
+A implementação está correta e segue as melhores práticas do Swift: a **Injeção de Dependência** garante a funcionalidade da navegação reversa, e o uso de **`weak var`** garante a saúde do aplicativo, evitando *memory leaks*.
