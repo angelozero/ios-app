@@ -137,7 +137,7 @@ class SignUpViewController: UIViewController {
     }
     
     @objc func didTapSaveButton(_ sender: UIButton){
-        signUpViewModel.registerUser()
+       // signUpViewModel.registerUser()
         signUpViewModel.send()
     }
 }
@@ -156,7 +156,7 @@ extension SignUpViewController: SignUpViewModelDelegate {
             break
             
         case .success:
-            printState(state: SignUpState.success)
+            signUpViewModel.goToHome()
             break
             
         case .error(errorMessage: let errorMessage):

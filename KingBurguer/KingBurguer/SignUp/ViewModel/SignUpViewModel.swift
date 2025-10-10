@@ -22,12 +22,17 @@ class SignUpViewModel {
         state =  .loading
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-            self.state = .error(errorMessage: "Fail to save user")
+//            self.state = .error(errorMessage: "Fail to save user")
+            self.state = .success
         }
     }
    
     func registerUser(){
-        print("Register ok")
+        print("User saved")
+    }
+    
+    func goToHome(){
+        signUpcoordinator?.goToHome()
     }
     
 }
