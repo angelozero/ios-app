@@ -497,6 +497,4 @@ Para quebrar o ciclo, a referência do objeto "filho" para o objeto "pai" **DEVE
 | `SignUpCoordinator` | `parentCoordinator` | **`weak var`** | Quebra o ciclo de retenção `Pai -> Filho -> Pai`. |
 | `SignUpViewModel` | `signUpcoordinator` | **`weak var`** | Quebra o ciclo de retenção `ViewModel <-> Coordinator`. |
 
-
-
 A implementação está correta e segue as melhores práticas do Swift: a **Injeção de Dependência** garante a funcionalidade da navegação reversa, e o uso de **`weak var`** garante a saúde do aplicativo, evitando *memory leaks*.
