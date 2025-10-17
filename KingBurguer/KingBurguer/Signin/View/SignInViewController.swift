@@ -44,18 +44,22 @@ class SignInViewController: UIViewController {
     // widthAnchor -------- largura
     
     
-    let emailTextField: UITextField = {
+    lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .clear
         textField.placeholder = "email"
+        textField.returnKeyType = .next
+        textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
-    let passwordTextField: UITextField = {
+    lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .clear
         textField.placeholder = "password"
+        textField.returnKeyType = .done
+        textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -138,12 +142,34 @@ class SignInViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard(_ view: UITapGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
     @objc func didTapLogInButton(_ sender: UIButton){
         signInViewModel.send()
     }
     
     @objc func didTapRegisterButton(_ sender: UIButton){
         signInViewModel.goToSignUp()
+    }
+}
+
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if(textField.returnKeyType == .done){
+            view.endEditing(true)
+            print("Botao Password - Entrando")
+        } else {
+            passwordTextField.becomeFirstResponder()
+        }
+        return false
     }
 }
 
