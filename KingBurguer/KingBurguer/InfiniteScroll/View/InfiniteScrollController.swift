@@ -53,7 +53,7 @@ class InfiniteScrollController: UIViewController {
         
         for i in 0..<30 {
             let text = UITextField()
-            //text.backgroundColor = .clear
+            text.backgroundColor = .clear
             text.placeholder = "test - \(i)"
             text.borderStyle = .roundedRect
             text.translatesAutoresizingMaskIntoConstraints = false
@@ -113,6 +113,9 @@ class InfiniteScrollController: UIViewController {
         NSLayoutConstraint.activate(scrollConstraints)
         NSLayoutConstraint.activate(containerConstraints)
         NSLayoutConstraint.activate(simpleButtonConstraints)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -127,5 +130,26 @@ class InfiniteScrollController: UIViewController {
     
     @objc func didTapSimpleButton(_ sender: UIButton){
         print("OK")
+    }
+    
+    @objc func onKeyboardNotification(_ notification: Notification){
+        let isVisibile = notification.name == UIResponder.keyboardWillShowNotification
+        
+        let keyboardFrame = isVisibile ? UIResponder.keyboardFrameEndUserInfoKey : UIResponder.keyboardFrameBeginUserInfoKey
+        
+        if let keyboardSize = (notification.userInfo?[keyboardFrame] as? NSValue)?.cgRectValue {
+            onKeyboardChanged(isVisibile, height: keyboardSize.height)
+        }
+    }
+    
+    func onKeyboardChanged(_ isVisible: Bool, height: CGFloat){
+        if(!isVisible){
+            scroll.contentInset = .zero
+            scroll.scrollIndicatorInsets = .zero
+        } else {
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: height, right: 0.0)
+            scroll.contentInset = contentInsets
+            scroll.scrollIndicatorInsets = contentInsets
+        }
     }
 }
