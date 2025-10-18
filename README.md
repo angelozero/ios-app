@@ -498,4 +498,98 @@ Para quebrar o ciclo, a referência do objeto "filho" para o objeto "pai" **DEVE
 | `SignUpViewModel` | `signUpcoordinator` | **`weak var`** | Quebra o ciclo de retenção `ViewModel <-> Coordinator`. |
 
 
-A implementação está correta e segue as melhores práticas do Swift: a **Injeção de Dependência** garante a funcionalidade da navegação reversa, e o uso de **`weak var`** garante a saúde do aplicativo, evitando *memory leaks*.
+---
+
+## 9\. Controlador de Rolagem Infinito (`InfiniteScrollController`)
+
+O `InfiniteScrollController` encapsula uma `UIScrollView` e um contêiner de views (`container`) para gerenciar uma interface com um número potencialmente grande de campos de texto (`UITextField`). Ele lida especificamente com o ajuste da UI quando o **teclado virtual é apresentado ou oculto**, garantindo que o campo de texto ativo permaneça visível.
+
+-----
+
+### 9.1. Injeção Explícita de Dependência (Passando o Modelo)
+
+O controlador adota o padrão de **Injeção de Dependência via Construtor** para receber seu modelo de dados, o `InfiniteScrollModel`, garantindo que ele seja um objeto totalmente funcional após a inicialização.
+
+**No `InfiniteScrollController.swift`:**
+
+```swift
+let infiniteScrollModel: InfiniteScrollModel
+
+init(infiniteScrollModel: InfiniteScrollModel) {
+    self.infiniteScrollModel = infiniteScrollModel // Injeção de Dependência
+    super.init(nibName: nil, bundle: nil)
+}
+```
+
+Isso torna a dependência `infiniteScrollModel` **obrigatória** e **imutável** (`let`), melhorando a segurança e clareza do código.
+
+-----
+
+### 9.2. Gerenciamento da Interação com o Teclado
+
+Para proporcionar uma experiência de usuário fluida em formulários longos, o controlador usa `NotificationCenter` para observar os eventos do teclado (`keyboardWillShowNotification` e `keyboardWillHideNotification`).
+
+O método `onKeyboardChanged(_:height:)` é responsável por:
+
+1.  **Ajustar `contentInset`**: Quando o teclado aparece, ele adiciona a altura do teclado ao `contentInset.bottom` da `UIScrollView`.
+2.  **Ajustar `scrollIndicatorInsets`**: As barras de rolagem também são ajustadas para não ficarem escondidas pelo teclado.
+3.  **Restaurar** as insets para `.zero` quando o teclado é ocultado.
+
+O ajuste é feito da seguinte forma, onde `height` é a altura do teclado:
+
+```swift
+// No InfiniteScrollController.swift
+func onKeyboardChanged(_ isVisible: Bool, height: CGFloat){
+    if(!isVisible){
+        scroll.contentInset = .zero // Restaura
+        scroll.scrollIndicatorInsets = .zero
+    } else {
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: height, right: 0.0)
+        scroll.contentInset = contentInsets // Aplica
+        scroll.scrollIndicatorInsets = contentInsets
+    }
+}
+```
+
+-----
+
+### 9.3. Auto Layout e o Papel do Contêiner
+
+Para que a `UIScrollView` funcione corretamente com o Auto Layout, é fundamental que ela tenha um tamanho de conteúdo (content size) **não ambíguo**. Isso é alcançado usando um `container` (`UIView`) interno com as seguintes regras:
+
+1.  O `container` é ancorado nas quatro bordas do `scroll` (`top`, `bottom`, `leading`, `trailing`).
+2.  O `container` tem a mesma **largura** do `view` principal do `UIViewController` (`container.widthAnchor.constraint(equalTo: view.widthAnchor)`).
+3.  O `container` define sua **altura** (`height`) a partir do empilhamento de seus subviews (os 30 `UITextField` e o `simpleButton`). O sistema de layout consegue calcular a altura total necessária.
+
+A restrição de altura opcional (`heightConstraint.priority = .defaultLow`) no `container` permite que a altura do conteúdo se estique além da altura da tela, ativando a rolagem:
+
+```swift
+let heightConstraint = container.heightAnchor.constraint(equalTo: view.heightAnchor)
+heightConstraint.priority = .defaultLow // Permite que a altura do conteúdo seja maior que a altura da tela
+heightConstraint.isActive = true
+```
+
+-----
+
+### 9.4. Gerenciamento de Memória (`addTarget` e `Selector`)
+
+No contexto deste controlador, é importante notar que o método `addTarget` para o `simpleButton` não cria um ciclo de retenção que precise de `weak self` neste nível, pois o `button` é uma subview do `view` do controlador, e o `view` (e, portanto, o `button`) será desalocado quando o controlador for desalocado.
+
+```swift
+// No InfiniteScrollController.swift
+button.addTarget(self, action: #selector(didTapSimpleButton), for: .touchUpInside)
+```
+
+No entanto, ao usar o `NotificationCenter`, você está adicionando uma referência do `self` (o controlador) como um observador. Para um gerenciamento de memória correto, a prática recomendada é **remover o observador** quando o controlador for desalocado.
+
+**A Solução (Remoção do Observador):**
+
+Para quebrar qualquer ciclo de retenção potencial com o `NotificationCenter`, adicione o método `deinit`:
+
+```swift
+// Adicionar ao final da classe InfiniteScrollController
+deinit {
+    // ⚠️ Crucial: Remove o controlador de ser um observador
+    NotificationCenter.default.removeObserver(self) 
+}
+```
