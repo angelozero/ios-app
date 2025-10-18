@@ -12,9 +12,10 @@ class SignInCoordinator {
     
     private let window: UIWindow?
     private let navigationController: UINavigationController
-    var parentCoordinator: SignInCoordinator?
+    //var parentCoordinator: SignInCoordinator?
     var signUpcoordinator: SignUpCoordinator?
     var homeCoordinator: HomeCoordinator?
+    var infiniteScrollCoordinator: InfiniteScrollCoordinator?
     
     init(window: UIWindow?){
         self.window = window
@@ -43,5 +44,10 @@ class SignInCoordinator {
     func goToHome(){
         homeCoordinator = HomeCoordinator(window: window)
         homeCoordinator?.start()
+    }
+    
+    func goToInfiniteScrollPage(){
+        infiniteScrollCoordinator = InfiniteScrollCoordinator(window: window, navigationController: self.navigationController)
+        infiniteScrollCoordinator?.start()
     }
 }

@@ -93,6 +93,16 @@ class SignInViewController: UIViewController {
         return button
     }()
     
+    lazy var infiniteScrollButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("infinite scroll", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .lightGray
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapInfiniteScrollButton), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -103,6 +113,7 @@ class SignInViewController: UIViewController {
         view.addSubview(passwordTextField)
         view.addSubview(logInButton)
         view.addSubview(registerButton)
+        view.addSubview(infiniteScrollButton)
         
         let emailConstraints = [
             // posicionamento baseado no tamanho da tela inteira
@@ -135,10 +146,18 @@ class SignInViewController: UIViewController {
             registerButton.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
+        let infiniteScrollButtonConstraints = [
+            infiniteScrollButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50.0),
+            infiniteScrollButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50.0),
+            infiniteScrollButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 10.0),
+            infiniteScrollButton.heightAnchor.constraint(equalToConstant: 50.0)
+        ]
+        
         NSLayoutConstraint.activate(emailConstraints)
         NSLayoutConstraint.activate(passwordConstraints)
         NSLayoutConstraint.activate(logInButtonConstraints)
         NSLayoutConstraint.activate(registerButtonConstraints)
+        NSLayoutConstraint.activate(infiniteScrollButtonConstraints)
         
     }
     
@@ -159,8 +178,13 @@ class SignInViewController: UIViewController {
     @objc func didTapRegisterButton(_ sender: UIButton){
         signInViewModel.goToSignUp()
     }
+    
+    @objc func didTapInfiniteScrollButton(_ sender: UIButton){
+        signInViewModel.goToInfiniteScrollPage()
+    }
 }
 
+// Evento para alternar campos entre campos
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if(textField.returnKeyType == .done){

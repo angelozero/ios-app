@@ -35,4 +35,8 @@ class SignInViewModel {
     func goToHome(){
         coordinatorSignIn?.goToHome()
     }
+    
+    func goToInfiniteScrollPage(){
+        coordinatorSignIn?.goToInfiniteScrollPage()
+    }
 }
