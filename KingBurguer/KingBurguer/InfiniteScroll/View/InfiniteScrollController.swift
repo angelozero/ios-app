@@ -34,13 +34,12 @@ class InfiniteScrollController: UIViewController {
         return view
     }()
     
-    lazy var simpleButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("test", for: UIControl.State.normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .lightGray
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(didTapSimpleButton), for: .touchUpInside)
+    lazy var simpleButton: LoadingButton = {
+        let button = LoadingButton()
+        button.title = "test"
+        button.titleColor = .white
+        button.backgroundColor = .systemBlue
+        button.addTarget(self, action: #selector(didTapSimpleButton))
         return button
     }()
     

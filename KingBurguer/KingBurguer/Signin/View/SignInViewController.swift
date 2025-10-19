@@ -11,42 +11,23 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
-    // Tornamos a viewModel obrigatória (não-opcional)
     let signInViewModel: SignInViewModel
     
-    // Inicializador que requer o ViewModel
     init(signInViewModel: SignInViewModel) {
-        // 1. Inicialização Própria: Garante que 'signInViewModel' está pronto.
         self.signInViewModel = signInViewModel
-        
-        // 2. Inicialização da Superclasse: Torna 'self' seguro e completo.
         super.init(nibName: nil, bundle: nil)
-        
-        // 3. Configuração Pós-Inicialização: Usa 'self' e 'signInViewModel' que agora são válidos.
         self.signInViewModel.signInViewModelDelegate = self
     }
     
-    // Este é um inicializador obrigatório em UIViewController que usa storyboards ou NIBs,
-    // mas precisamos dele mesmo usando programação pura para conformidade.
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // leadingAnchor ----- esquerda
-    // trailingAnchor ---- direita
-    // topAnchor --------- cima
-    // bottomAchor -------- baixo
-    
-    // centerYAnchor ------ eixo Y | vertical
-    // centerXAnchor ------ eixo X | horizontal
-    
-    // heightAnchor ------- altura
-    // widthAnchor -------- largura
-    
-    
+    // declarar o componente como lazy var faz com que ele seja construido apos a inicializacao da classe
     lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .clear
+        textField.borderStyle = .roundedRect
         textField.placeholder = "email"
         textField.returnKeyType = .next
         textField.delegate = self
@@ -57,6 +38,7 @@ class SignInViewController: UIViewController {
     lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .clear
+        textField.borderStyle = .roundedRect
         textField.placeholder = "password"
         textField.returnKeyType = .done
         textField.delegate = self
@@ -64,42 +46,30 @@ class SignInViewController: UIViewController {
         return textField
     }()
     
-    // declarar o componente logInButton como lazy var faz com que ele seja construido apos a inicializacao da classe
-    lazy var logInButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("log in", for: UIControl.State.normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .lightGray
-        button.translatesAutoresizingMaskIntoConstraints = false
-        // evento de clique do botao
-        // self -------- referencia que o alvo a ser executado esta nesta classe
-        // #selector --- método a ser executado, deve ter na frente a annotation @objc
-        // for --------- evento do qual o botão ira executar a funcao
-        button.addTarget(self, action: #selector(didTapLogInButton), for: .touchUpInside)
+    lazy var logInButton: LoadingButton = {
+        let button = LoadingButton()
+        button.title = "log in"
+        button.titleColor = .white
+        button.backgroundColor = .systemBlue
+        button.addTarget(self, action: #selector(didTapLogInButton))
         return button
     }()
     
-    lazy var registerButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("register", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .lightGray
-        button.translatesAutoresizingMaskIntoConstraints = false
-        // evento de clique do botao
-        // self -------- referencia que o alvo a ser executado esta nesta classe
-        // #selector --- método a ser executado, deve ter na frente a annotation @objc
-        // for --------- evento do qual o botão ira executar a funcao
-        button.addTarget(self, action: #selector(didTapRegisterButton), for: .touchUpInside)
+    lazy var registerButton: LoadingButton = {
+        let button = LoadingButton()
+        button.title = "register"
+        button.titleColor = .white
+        button.backgroundColor = .systemBlue
+        button.addTarget(self, action: #selector(didTapRegisterButton))
         return button
     }()
     
-    lazy var infiniteScrollButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("infinite scroll", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .lightGray
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(didTapInfiniteScrollButton), for: .touchUpInside)
+    lazy var infiniteScrollButton: LoadingButton = {
+        let button = LoadingButton()
+        button.title = "infinite scroll"
+        button.titleColor = .white
+        button.backgroundColor = .systemBlue
+        button.addTarget(self, action: #selector(didTapInfiniteScrollButton))
         return button
     }()
     
@@ -114,6 +84,13 @@ class SignInViewController: UIViewController {
         view.addSubview(logInButton)
         view.addSubview(registerButton)
         view.addSubview(infiniteScrollButton)
+        
+        // leadingAnchor ------ esquerda
+        // trailingAnchor ----- direita
+        // topAnchor ---------- cima
+        // bottomAchor -------- baixo
+        // heightAnchor ------- altura
+        // widthAnchor -------- largura
         
         let emailConstraints = [
             // posicionamento baseado no tamanho da tela inteira
@@ -132,7 +109,6 @@ class SignInViewController: UIViewController {
         ]
         
         let logInButtonConstraints = [
-            // posicionamento baseado no tamanho da tela inteira
             logInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50.0),
             logInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50.0),
             logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10.0),
@@ -153,6 +129,7 @@ class SignInViewController: UIViewController {
             infiniteScrollButton.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
+        // ativando
         NSLayoutConstraint.activate(emailConstraints)
         NSLayoutConstraint.activate(passwordConstraints)
         NSLayoutConstraint.activate(logInButtonConstraints)
@@ -197,8 +174,7 @@ extension SignInViewController: UITextFieldDelegate {
     }
 }
 
-// Observador do ViewModel
-// Implementacao do protocolo SigninViewModelDelegate
+// Observador do ViewModel - Implementacao do protocolo SigninViewModelDelegate
 extension SignInViewController: SignInViewModelDelegate {
     
     func viewModelDidChanged(state: SignInState){
@@ -209,6 +185,7 @@ extension SignInViewController: SignInViewModelDelegate {
             break
             
         case .loading:
+            logInButton.startLoading(true)
             printState(state: SignInState.loading)
             break
             
@@ -220,11 +197,8 @@ extension SignInViewController: SignInViewModelDelegate {
             alert.addAction(UIAlertAction(title: "Ok", style: .default))
             self.present(alert, animated: true)
             break
-            
         }
-        
     }
-
 }
 
 func printState(state: SignInState){

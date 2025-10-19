@@ -61,17 +61,15 @@ class SignUpViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-    
-    lazy var saveButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("save", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .lightGray
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+
+    lazy var saveButton: LoadingButton = {
+        let button = LoadingButton()
+        button.title = "save"
+        button.titleColor = .white
+        button.backgroundColor = .systemBlue
+        button.addTarget(self, action: #selector(didTapSaveButton))
         return button
     }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,7 +135,7 @@ class SignUpViewController: UIViewController {
     }
     
     @objc func didTapSaveButton(_ sender: UIButton){
-       // signUpViewModel.registerUser()
+        saveButton.startLoading(true)
         signUpViewModel.send()
     }
 }
