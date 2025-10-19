@@ -593,3 +593,85 @@ deinit {
     NotificationCenter.default.removeObserver(self) 
 }
 ```
+
+---
+
+## 10\. Componente de Botão com Carregamento (`LoadingButton`)
+
+O `LoadingButton` é uma subclasse de `UIView` que encapsula um `UIButton` e um `UIActivityIndicatorView` para criar um componente de botão que pode exibir um estado de carregamento. Ele permite que as ações do usuário sejam bloqueadas e um indicador de progresso seja exibido durante operações assíncronas (como chamadas de rede).
+
+-----
+
+### 10.1. Estrutura e Composição
+
+O `LoadingButton` adota o padrão **Composição**, onde o componente complexo é construído a partir de componentes mais simples (`UIButton` e `UIActivityIndicatorView`).
+
+| Componente | Função |
+| :--- | :--- |
+| **`button` (UIButton)** | É o elemento interativo principal, onde o título e a cor de fundo são aplicados. O componente **delega** a ação do *tap* para este botão. |
+| **`progress` (UIActivityIndicatorView)** | O indicador de atividade que aparece quando o botão está no estado de carregamento. |
+
+### 10.2. Encapsulamento de Propriedades e Configuração
+
+Para manter a interface de uso simples e similar a um `UIButton` padrão, o `LoadingButton` **expõe** propriedades-chave (`title`, `titleColor`, `backgroundColor`) e as **repassa** internamente para o `button` encapsulado. O uso do *property observer* `willSet` garante que a alteração do valor na propriedade do `LoadingButton` seja imediatamente aplicada ao `UIButton` interno.
+
+```swift
+// Exemplo de Encapsulamento de Propriedade
+var title: String? {
+    willSet {
+        button.setTitle(newValue, for: .normal )
+    }
+}
+```
+
+### 10.3. Gerenciamento do Estado de Carregamento (Loading)
+
+A função central do componente é o método `startLoading(_:)`, que gerencia a transição de estado visual e interativa.
+
+| Estado | Ação | Efeito no Botão |
+| :--- | :--- | :--- |
+| **`loading: true` (Carregando)** | 1. `progress.startAnimating()` 2. `button.setTitle("")` 3. `button.isEnabled = false` 4. `alpha = 0.5` | O botão fica **desativado**, o título é ocultado e o spinner de carregamento é exibido. A opacidade é reduzida para indicar o estado. |
+| **`loading: false` (Normal)** | 1. `progress.stopAnimating()` 2. `button.setTitle(title)` 3. `button.isEnabled = true` 4. `alpha = 1.0` | O botão volta ao seu estado **ativado**, o título original é restaurado e o spinner é ocultado. |
+
+### 10.4. Delegação de Ações (`addTarget`)
+
+Para que o `LoadingButton` possa ser conectado a um *target* e *action* (como o `@selector(didTapLogInButton)`), ele expõe seu próprio método `addTarget(_:action:)` que, por sua vez, **chama o `addTarget` do `UIButton` interno**.
+
+```swift
+// No LoadingButton.swift
+func addTarget(_ target: Any?, action: Selector){
+    button.addTarget(target, action: action , for: .touchUpInside)
+}
+```
+
+**Importante sobre Ciclos de Retenção:**
+
+O uso do `addTarget` com `self` (como feito na utilização) **não** cria um Ciclo de Retenção Mútuo entre o `UIViewController` (Pai) e o `LoadingButton` (Filho), pois:
+
+1.  O `UIViewController` tem uma referência forte para o `LoadingButton` como uma *subview* ou *propriedade*.
+2.  O mecanismo de `addTarget` do UIKit **não** cria uma referência forte do `UIButton` (Filho) de volta para o *target* (`UIViewController` - Pai).
+
+Portanto, **não** é necessário o uso de `weak` ou `unowned` ao definir a propriedade `logInButton`.
+
+### 10.5. Exemplo de Utilização
+
+```swift
+lazy var logInButton: LoadingButton = {
+    let button = LoadingButton()
+    button.title = "log in" // Propriedades customizadas
+    button.titleColor = .white
+    button.backgroundColor = .systemBlue
+    // Repassando a ação de toque
+    button.addTarget(self, action: #selector(didTapLogInButton)) 
+    return button
+}()
+
+// Em um método de ação ou API call:
+func didTapLogInButton() {
+    logInButton.startLoading(true) // ➡️ Inicia o spinner e desativa o botão
+    // ... lógica assíncrona ...
+    
+    // Ao receber o retorno:
+    // logInButton.startLoading(false) // ⬅️ Restaura o título e ativa o botão
+}
+```
