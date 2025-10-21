@@ -39,7 +39,8 @@ class InfiniteScrollController: UIViewController {
         button.title = "test"
         button.titleColor = .white
         button.backgroundColor = .systemBlue
-        button.addTarget(self, action: #selector(didTapSimpleButton))
+        button.addTarget(self, action: #selector(didTouchDownSimpleButton), event: .touchDown)
+        button.addTarget(self, action: #selector(didTouchUpSimpleButton), event: .touchUpInside)
         button.roundedButton(button)
         return button
     }()
@@ -127,9 +128,15 @@ class InfiniteScrollController: UIViewController {
     @objc func dismissKeyboard(_ view: UITapGestureRecognizer){
         self.view.endEditing(true)
     }
+        
+    @objc func didTouchDownSimpleButton(_ sender: UIButton){
+        print("Botão Pressionado")
+        simpleButton.effectIn()
+    }
     
-    @objc func didTapSimpleButton(_ sender: UIButton){
-        print("OK")
+    @objc func didTouchUpSimpleButton(_ sender: UIButton){
+        print("Botão Liberado")
+        simpleButton.effectOut()
     }
     
     @objc func onKeyboardNotification(_ notification: Notification){

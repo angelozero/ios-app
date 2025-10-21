@@ -55,6 +55,10 @@ class LoadingButton: UIView {
         button.addTarget(target, action: action , for: .touchUpInside)
     }
     
+    func addTarget(_ target: Any?, action: Selector, event: UIControl.Event){
+        button.addTarget(target, action: action , for: event)
+    }
+    
     func startLoading(_ loading: Bool){
         button.isEnabled = !loading
         if (loading){
@@ -67,6 +71,30 @@ class LoadingButton: UIView {
             progress.stopAnimating()
         }
     }
+    
+    func clickEffect(){
+        button.isEnabled = false
+        button.setTitle("", for: .normal)
+        alpha = 0.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+            self.button.setTitle(self.title, for: .normal)
+            self.alpha = 1.0
+        }
+        button.isEnabled = true
+    }
+    
+    func effectIn(){
+        button.isEnabled = false
+        button.setTitle("", for: .normal)
+        alpha = 0.5
+    }
+    
+    func effectOut(){
+        button.isEnabled = true
+        self.button.setTitle(self.title, for: .normal)
+        self.alpha = 1.0
+    }
+        
     
     func roundedButton(_ button: LoadingButton){
         button.layer.masksToBounds = true

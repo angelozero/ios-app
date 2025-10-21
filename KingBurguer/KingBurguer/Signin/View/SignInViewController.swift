@@ -157,10 +157,12 @@ class SignInViewController: UIViewController {
     }
     
     @objc func didTapRegisterButton(_ sender: UIButton){
+        registerButton.clickEffect()
         signInViewModel.goToSignUp()
     }
     
     @objc func didTapInfiniteScrollButton(_ sender: UIButton){
+        infiniteScrollButton.clickEffect()
         signInViewModel.goToInfiniteScrollPage()
     }
 }
