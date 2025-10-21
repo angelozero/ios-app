@@ -41,7 +41,6 @@ class LoadingButton: UIView {
         }
     }
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -69,8 +68,13 @@ class LoadingButton: UIView {
         }
     }
     
+    func roundedButton(_ button: LoadingButton){
+        button.layer.masksToBounds = true
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 12.5
+    }
+    
     private func setupViews(){
-        backgroundColor = .red
         addSubview(button)
         addSubview(progress)
         

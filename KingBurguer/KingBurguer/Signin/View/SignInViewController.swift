@@ -52,6 +52,7 @@ class SignInViewController: UIViewController {
         button.titleColor = .white
         button.backgroundColor = .systemBlue
         button.addTarget(self, action: #selector(didTapLogInButton))
+        button.roundedButton(button)
         return button
     }()
     
@@ -61,6 +62,7 @@ class SignInViewController: UIViewController {
         button.titleColor = .white
         button.backgroundColor = .systemBlue
         button.addTarget(self, action: #selector(didTapRegisterButton))
+        button.roundedButton(button)
         return button
     }()
     
@@ -70,6 +72,7 @@ class SignInViewController: UIViewController {
         button.titleColor = .white
         button.backgroundColor = .systemBlue
         button.addTarget(self, action: #selector(didTapInfiniteScrollButton))
+        button.roundedButton(button)
         return button
     }()
     
@@ -78,7 +81,8 @@ class SignInViewController: UIViewController {
         
         navigationItem.title = "Login"
         
-        view.backgroundColor = UIColor.systemBackground
+        view.backgroundColor = .systemBackground
+        
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(logInButton)

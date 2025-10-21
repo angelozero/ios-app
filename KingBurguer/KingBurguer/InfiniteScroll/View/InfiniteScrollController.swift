@@ -40,13 +40,14 @@ class InfiniteScrollController: UIViewController {
         button.titleColor = .white
         button.backgroundColor = .systemBlue
         button.addTarget(self, action: #selector(didTapSimpleButton))
+        button.roundedButton(button)
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Infinte Scroll"
-        view.backgroundColor = UIColor.systemBackground
+        view.backgroundColor = .systemBackground
         
         var texts: [UITextField] = []
         
@@ -102,8 +103,8 @@ class InfiniteScrollController: UIViewController {
         }
         
         let simpleButtonConstraints = [
-            simpleButton.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            simpleButton.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            simpleButton.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 50.0),
+            simpleButton.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -50.0),
             simpleButton.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -20.0),
             simpleButton.topAnchor.constraint(greaterThanOrEqualTo: texts.last!.bottomAnchor, constant: 10.0),
             simpleButton.heightAnchor.constraint(equalToConstant: 50.0),
