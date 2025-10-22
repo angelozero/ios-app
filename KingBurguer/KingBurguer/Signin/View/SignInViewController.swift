@@ -50,7 +50,7 @@ class SignInViewController: UIViewController {
         let button = LoadingButton()
         button.title = "log in"
         button.titleColor = .white
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemRed
         button.addTarget(self, action: #selector(didTapLogInButton))
         button.roundedButton(button)
         return button
@@ -60,7 +60,7 @@ class SignInViewController: UIViewController {
         let button = LoadingButton()
         button.title = "register"
         button.titleColor = .white
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemRed
         button.addTarget(self, action: #selector(didTapRegisterButton))
         button.roundedButton(button)
         return button
@@ -70,7 +70,7 @@ class SignInViewController: UIViewController {
         let button = LoadingButton()
         button.title = "infinite scroll"
         button.titleColor = .white
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemRed
         button.addTarget(self, action: #selector(didTapInfiniteScrollButton))
         button.roundedButton(button)
         return button

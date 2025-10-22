@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class InfiniteScrollController: UIViewController {
+class InfiniteScrollViewController: UIViewController {
     
     let infiniteScrollModel: InfiniteScrollModel
     
@@ -38,7 +38,7 @@ class InfiniteScrollController: UIViewController {
         let button = LoadingButton()
         button.title = "test"
         button.titleColor = .white
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemRed
         button.addTarget(self, action: #selector(didTouchDownSimpleButton), event: .touchDown)
         button.addTarget(self, action: #selector(didTouchUpSimpleButton), event: .touchUpInside)
         button.roundedButton(button)

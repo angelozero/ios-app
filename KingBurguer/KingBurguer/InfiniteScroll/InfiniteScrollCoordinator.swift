@@ -21,7 +21,7 @@ class InfiniteScrollCoordinator {
     func start(){
         let infiniteScrollModel = InfiniteScrollModel()
         infiniteScrollModel.infiniteScrollCoordinator = self
-        let infiniteScrollController = InfiniteScrollController(infiniteScrollModel: infiniteScrollModel)
+        let infiniteScrollController = InfiniteScrollViewController(infiniteScrollModel: infiniteScrollModel)
         
         infiniteScrollController.navigationItem.title = "Infinite Scroll"
         

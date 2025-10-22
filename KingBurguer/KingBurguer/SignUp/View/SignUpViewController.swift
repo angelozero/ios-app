@@ -99,7 +99,7 @@ class SignUpViewController: UIViewController {
         let button = LoadingButton()
         button.title = "save"
         button.titleColor = .white
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemRed
         button.addTarget(self, action: #selector(didTapSaveButton))
         button.roundedButton(button)
         return button

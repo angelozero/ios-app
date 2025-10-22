@@ -13,7 +13,7 @@
 		170572D22E876BDA009A53B2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 170572D12E876BDA009A53B2 /* Base */; };
 		170572DC2E877F43009A53B2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170572DB2E877F43009A53B2 /* SignInViewController.swift */; };
 		170E53552EA3CB2D00D3CF32 /* InfiniteScrollCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E53542EA3CB2D00D3CF32 /* InfiniteScrollCoordinator.swift */; };
-		170E53592EA3CE4100D3CF32 /* InfiniteScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E53582EA3CE4100D3CF32 /* InfiniteScrollController.swift */; };
+		170E53592EA3CE4100D3CF32 /* InfiniteScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E53582EA3CE4100D3CF32 /* InfiniteScrollViewController.swift */; };
 		170E535B2EA3CF4000D3CF32 /* InfiniteScrollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E535A2EA3CF4000D3CF32 /* InfiniteScrollModel.swift */; };
 		170E535F2EA468E200D3CF32 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E535E2EA468E200D3CF32 /* LoadingButton.swift */; };
 		1716C1372E94904800CBA6AB /* SignUpViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716C1362E94904800CBA6AB /* SignUpViewModelDelegate.swift */; };
@@ -23,6 +23,12 @@
 		176660DA2E95F47D00DBC79A /* HomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660D92E95F47D00DBC79A /* HomeViewModelDelegate.swift */; };
 		176660DC2E95F48F00DBC79A /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660DB2E95F48F00DBC79A /* HomeState.swift */; };
 		176660DF2E95F55B00DBC79A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660DE2E95F55B00DBC79A /* HomeViewController.swift */; };
+		17D6AD062EA85E3200B8891B /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD052EA85E3200B8891B /* FeedCoordinator.swift */; };
+		17D6AD0B2EA85E7A00B8891B /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD0A2EA85E7A00B8891B /* ProfileCoordinator.swift */; };
+		17D6AD102EA85ED700B8891B /* CoupomCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD0F2EA85ED700B8891B /* CoupomCoordinator.swift */; };
+		17D6AD142EA85FA000B8891B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD132EA85FA000B8891B /* FeedViewController.swift */; };
+		17D6AD162EA85FB800B8891B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD152EA85FB800B8891B /* ProfileViewController.swift */; };
+		17D6AD182EA85FC800B8891B /* CoupomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD172EA85FC800B8891B /* CoupomViewController.swift */; };
 		17EEBFE72E91588E00CAC9C7 /* SigninViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */; };
 		17EEBFE92E91969600CAC9C7 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE82E91969600CAC9C7 /* SignUpCoordinator.swift */; };
 		17EEBFEC2E91971F00CAC9C7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFEB2E91971F00CAC9C7 /* SignUpViewModel.swift */; };
@@ -41,7 +47,7 @@
 		170572D32E876BDA009A53B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		170572DB2E877F43009A53B2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		170E53542EA3CB2D00D3CF32 /* InfiniteScrollCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollCoordinator.swift; sourceTree = "<group>"; };
-		170E53582EA3CE4100D3CF32 /* InfiniteScrollController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollController.swift; sourceTree = "<group>"; };
+		170E53582EA3CE4100D3CF32 /* InfiniteScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollViewController.swift; sourceTree = "<group>"; };
 		170E535A2EA3CF4000D3CF32 /* InfiniteScrollModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollModel.swift; sourceTree = "<group>"; };
 		170E535E2EA468E200D3CF32 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		1716C1362E94904800CBA6AB /* SignUpViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModelDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +57,12 @@
 		176660D92E95F47D00DBC79A /* HomeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelDelegate.swift; sourceTree = "<group>"; };
 		176660DB2E95F48F00DBC79A /* HomeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
 		176660DE2E95F55B00DBC79A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		17D6AD052EA85E3200B8891B /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
+		17D6AD0A2EA85E7A00B8891B /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		17D6AD0F2EA85ED700B8891B /* CoupomCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupomCoordinator.swift; sourceTree = "<group>"; };
+		17D6AD132EA85FA000B8891B /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		17D6AD152EA85FB800B8891B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		17D6AD172EA85FC800B8891B /* CoupomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupomViewController.swift; sourceTree = "<group>"; };
 		17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModelDelegate.swift; sourceTree = "<group>"; };
 		17EEBFE82E91969600CAC9C7 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		17EEBFEB2E91971F00CAC9C7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -90,6 +102,9 @@
 		170572C42E876BD9009A53B2 /* KingBurguer */ = {
 			isa = PBXGroup;
 			children = (
+				17D6AD0E2EA85EC600B8891B /* Coupom */,
+				17D6AD092EA85E6100B8891B /* Profile */,
+				17D6AD042EA85E0D00B8891B /* Feed */,
 				170E535C2EA468C700D3CF32 /* Common */,
 				170E53532EA3CB0500D3CF32 /* InfiniteScroll */,
 				176660D32E95F37600DBC79A /* Home */,
@@ -107,8 +122,8 @@
 		170572D92E877F06009A53B2 /* Signin */ = {
 			isa = PBXGroup;
 			children = (
-				17EF70642E8CA91B004C077E /* ViewModel */,
 				170572DA2E877F1C009A53B2 /* View */,
+				17EF70642E8CA91B004C077E /* ViewModel */,
 				17F0C1DB2E90AF1300D63FF7 /* SignInCoordinator.swift */,
 			);
 			path = Signin;
@@ -125,8 +140,8 @@
 		170E53532EA3CB0500D3CF32 /* InfiniteScroll */ = {
 			isa = PBXGroup;
 			children = (
-				170E53572EA3CE1F00D3CF32 /* ViewModel */,
 				170E53562EA3CE1500D3CF32 /* View */,
+				170E53572EA3CE1F00D3CF32 /* ViewModel */,
 				170E53542EA3CB2D00D3CF32 /* InfiniteScrollCoordinator.swift */,
 			);
 			path = InfiniteScroll;
@@ -135,7 +150,7 @@
 		170E53562EA3CE1500D3CF32 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				170E53582EA3CE4100D3CF32 /* InfiniteScrollController.swift */,
+				170E53582EA3CE4100D3CF32 /* InfiniteScrollViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +207,81 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		17D6AD042EA85E0D00B8891B /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				17D6AD082EA85E4900B8891B /* View */,
+				17D6AD072EA85E3B00B8891B /* ViewModel */,
+				17D6AD052EA85E3200B8891B /* FeedCoordinator.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		17D6AD072EA85E3B00B8891B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		17D6AD082EA85E4900B8891B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				17D6AD132EA85FA000B8891B /* FeedViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		17D6AD092EA85E6100B8891B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				17D6AD0C2EA85E8000B8891B /* View */,
+				17D6AD0D2EA85E8800B8891B /* ViewModel */,
+				17D6AD0A2EA85E7A00B8891B /* ProfileCoordinator.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		17D6AD0C2EA85E8000B8891B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				17D6AD152EA85FB800B8891B /* ProfileViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		17D6AD0D2EA85E8800B8891B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		17D6AD0E2EA85EC600B8891B /* Coupom */ = {
+			isa = PBXGroup;
+			children = (
+				17D6AD122EA85EE700B8891B /* View */,
+				17D6AD112EA85EDC00B8891B /* ViewModel */,
+				17D6AD0F2EA85ED700B8891B /* CoupomCoordinator.swift */,
+			);
+			path = Coupom;
+			sourceTree = "<group>";
+		};
+		17D6AD112EA85EDC00B8891B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		17D6AD122EA85EE700B8891B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				17D6AD172EA85FC800B8891B /* CoupomViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		17EEBFEA2E9196A400CAC9C7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,8 +305,8 @@
 		17FABE372E8F50980055ADD2 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				17EEBFEA2E9196A400CAC9C7 /* ViewModel */,
 				17FABE382E8F50B20055ADD2 /* View */,
+				17EEBFEA2E9196A400CAC9C7 /* ViewModel */,
 				17EEBFE82E91969600CAC9C7 /* SignUpCoordinator.swift */,
 			);
 			path = SignUp;
@@ -302,23 +392,29 @@
 			files = (
 				17FABE3A2E8F50C40055ADD2 /* SignUpViewController.swift in Sources */,
 				17EF70662E8CA940004C077E /* SignInViewModel.swift in Sources */,
-				170E53592EA3CE4100D3CF32 /* InfiniteScrollController.swift in Sources */,
+				170E53592EA3CE4100D3CF32 /* InfiniteScrollViewController.swift in Sources */,
 				17EEBFEC2E91971F00CAC9C7 /* SignUpViewModel.swift in Sources */,
 				176660DF2E95F55B00DBC79A /* HomeViewController.swift in Sources */,
 				170572DC2E877F43009A53B2 /* SignInViewController.swift in Sources */,
 				176660DC2E95F48F00DBC79A /* HomeState.swift in Sources */,
+				17D6AD182EA85FC800B8891B /* CoupomViewController.swift in Sources */,
 				170572C62E876BD9009A53B2 /* AppDelegate.swift in Sources */,
 				17F0C1DC2E90AF1300D63FF7 /* SignInCoordinator.swift in Sources */,
 				170572C82E876BD9009A53B2 /* SceneDelegate.swift in Sources */,
+				17D6AD162EA85FB800B8891B /* ProfileViewController.swift in Sources */,
 				1716C13A2E94988200CBA6AB /* SignUpState.swift in Sources */,
 				176660DA2E95F47D00DBC79A /* HomeViewModelDelegate.swift in Sources */,
 				176660D52E95F3FA00DBC79A /* HomeCoordinator.swift in Sources */,
+				17D6AD0B2EA85E7A00B8891B /* ProfileCoordinator.swift in Sources */,
 				176660D82E95F46600DBC79A /* HomeViewModel.swift in Sources */,
 				170E535B2EA3CF4000D3CF32 /* InfiniteScrollModel.swift in Sources */,
 				170E535F2EA468E200D3CF32 /* LoadingButton.swift in Sources */,
+				17D6AD102EA85ED700B8891B /* CoupomCoordinator.swift in Sources */,
 				17FED1E62E8DFEF600C877E9 /* SignInState.swift in Sources */,
 				17EEBFE72E91588E00CAC9C7 /* SigninViewModelDelegate.swift in Sources */,
+				17D6AD062EA85E3200B8891B /* FeedCoordinator.swift in Sources */,
 				170E53552EA3CB2D00D3CF32 /* InfiniteScrollCoordinator.swift in Sources */,
+				17D6AD142EA85FA000B8891B /* FeedViewController.swift in Sources */,
 				17EEBFE92E91969600CAC9C7 /* SignUpCoordinator.swift in Sources */,
 				1716C1372E94904800CBA6AB /* SignUpViewModelDelegate.swift in Sources */,
 			);

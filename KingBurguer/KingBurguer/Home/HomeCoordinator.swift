@@ -19,7 +19,7 @@ class HomeCoordinator {
     
     func start(){
         let homeViewModel = HomeViewModel()
-        let homeViewController = HomeViewController(homeViewModel: homeViewModel);
+        let homeViewController = HomeViewController()
         homeViewController.navigationItem.title = "Home"
         
         self.navigationController.pushViewController(homeViewController, animated: true)
