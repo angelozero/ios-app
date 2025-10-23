@@ -5,13 +5,6 @@
 //  Created by angelo on 22/10/25.
 //
 
-//
-//  GridViewController.swift
-//
-//  Criado por IA Assistant
-//  Data: 22/10/2025
-//
-
 import UIKit
 
 class GridViewController: UIViewController {
