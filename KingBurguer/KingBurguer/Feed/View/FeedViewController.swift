@@ -9,14 +9,58 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    let viewTest: UIView = {
-        let view = UIView(frame: CGRect(x: 50, y: 100, width: 50, height: 50))
-        view.backgroundColor = .red
-        return view
+    // Para que uma UITableView funcione é necessário
+    
+    // 1 - registrar uma classe que seja uma UITableViewCell ou filha dela
+    // tableView.register(UITableViewCell.self,...
+    
+    // 2 - definir o dataSource / delegate (ViewController)
+    // extension FeedViewController: UITableViewDataSource {...
+    
+    // 3 - nos metodos implementados 'func tableView' você deve definir:
+    // --- o numero de linhas 'numberOfRowsInSection' que deve ser retornado
+    // --- qual é a celula especifica daquela linha com 'cellForRowAt' aonde o 'indexPath' devolve a celula correta sendo renderizada
+    // nesse caso voce ira visualizar apenas 14 linhas mas ao rolar as proximas serao geradas apartir de linhas que ja foram anteriormente criadas
+    // por exemplo: a linha 0 sai da vizualizacao da tela na rolagem e a linha 15 surge, e assim por diante
+    
+    // UITableView só funciona se houver uma UITableViewCell
+    private let homeFeedTable: UITableView = {
+       let tableView = UITableView()
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell-id")
+        tableView.backgroundColor = .systemBackground
+        
+        return tableView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(viewTest)
+        
+        view.backgroundColor = .systemBackground
+        
+        view.addSubview(homeFeedTable)
+        
+        homeFeedTable.dataSource = self
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        homeFeedTable.frame = view.bounds
+    }
+}
+
+extension FeedViewController: UITableViewDataSource {
+    
+    // numero de linhas da sessao
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 30
+    }
+    
+    // celulas das linhas
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell-id", for: indexPath)
+        cell.textLabel?.text = "celula - \(indexPath.row)"
+        return cell
+    }
+    
 }
