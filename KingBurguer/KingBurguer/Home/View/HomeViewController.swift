@@ -19,16 +19,19 @@ class HomeViewController: UITabBarController {
         let feedViewController = UINavigationController(rootViewController: FeedViewController())
         let coupomViewController = UINavigationController(rootViewController: CoupomViewController())
         let profileViewController = UINavigationController(rootViewController: ProfileViewController())
+        let gridViewController = UINavigationController(rootViewController: GridViewController())
         
         feedViewController.title = "Feed"
         coupomViewController.title = "Coupom"
         profileViewController.title = "Profile"
+        gridViewController.title = "Grid"
         
         // adicionando icones ---> SF Symbols
         feedViewController.tabBarItem.image = UIImage(systemName: "house")
         coupomViewController.tabBarItem.image = UIImage(systemName: "arrow.down.to.line")
         profileViewController.tabBarItem.image = UIImage(systemName: "person.circle")
+        gridViewController.tabBarItem.image = UIImage(systemName: "square.grid.3x3")
         
-        setViewControllers([feedViewController, coupomViewController, profileViewController], animated: true)
+        setViewControllers([feedViewController, coupomViewController, profileViewController, gridViewController], animated: true)
     }
 }

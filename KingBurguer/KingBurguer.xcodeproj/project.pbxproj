@@ -18,6 +18,8 @@
 		170E535F2EA468E200D3CF32 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E535E2EA468E200D3CF32 /* LoadingButton.swift */; };
 		1716C1372E94904800CBA6AB /* SignUpViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716C1362E94904800CBA6AB /* SignUpViewModelDelegate.swift */; };
 		1716C13A2E94988200CBA6AB /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716C1392E94988200CBA6AB /* SignUpState.swift */; };
+		1721F4432EA9C03300140F97 /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1721F4422EA9C03300140F97 /* GridViewController.swift */; };
+		1721F4452EA9C05000140F97 /* GridViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1721F4442EA9C05000140F97 /* GridViewCoordinator.swift */; };
 		176660D52E95F3FA00DBC79A /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660D42E95F3FA00DBC79A /* HomeCoordinator.swift */; };
 		176660D82E95F46600DBC79A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660D72E95F46600DBC79A /* HomeViewModel.swift */; };
 		176660DA2E95F47D00DBC79A /* HomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660D92E95F47D00DBC79A /* HomeViewModelDelegate.swift */; };
@@ -52,6 +54,8 @@
 		170E535E2EA468E200D3CF32 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		1716C1362E94904800CBA6AB /* SignUpViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModelDelegate.swift; sourceTree = "<group>"; };
 		1716C1392E94988200CBA6AB /* SignUpState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
+		1721F4422EA9C03300140F97 /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
+		1721F4442EA9C05000140F97 /* GridViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewCoordinator.swift; sourceTree = "<group>"; };
 		176660D42E95F3FA00DBC79A /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		176660D72E95F46600DBC79A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		176660D92E95F47D00DBC79A /* HomeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 		170572C42E876BD9009A53B2 /* KingBurguer */ = {
 			isa = PBXGroup;
 			children = (
+				1721F43F2EA9BFED00140F97 /* Grid */,
 				17D6AD0E2EA85EC600B8891B /* Coupom */,
 				17D6AD092EA85E6100B8891B /* Profile */,
 				17D6AD042EA85E0D00B8891B /* Feed */,
@@ -175,6 +180,31 @@
 			isa = PBXGroup;
 			children = (
 				170E535E2EA468E200D3CF32 /* LoadingButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1721F43F2EA9BFED00140F97 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				1721F4412EA9C02100140F97 /* View */,
+				1721F4402EA9C01500140F97 /* ViewModel */,
+				1721F4442EA9C05000140F97 /* GridViewCoordinator.swift */,
+			);
+			path = Grid;
+			sourceTree = "<group>";
+		};
+		1721F4402EA9C01500140F97 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1721F4422EA9C03300140F97 /* GridViewController.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1721F4412EA9C02100140F97 /* View */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -414,7 +444,9 @@
 				17EEBFE72E91588E00CAC9C7 /* SigninViewModelDelegate.swift in Sources */,
 				17D6AD062EA85E3200B8891B /* FeedCoordinator.swift in Sources */,
 				170E53552EA3CB2D00D3CF32 /* InfiniteScrollCoordinator.swift in Sources */,
+				1721F4432EA9C03300140F97 /* GridViewController.swift in Sources */,
 				17D6AD142EA85FA000B8891B /* FeedViewController.swift in Sources */,
+				1721F4452EA9C05000140F97 /* GridViewCoordinator.swift in Sources */,
 				17EEBFE92E91969600CAC9C7 /* SignUpCoordinator.swift in Sources */,
 				1716C1372E94904800CBA6AB /* SignUpViewModelDelegate.swift in Sources */,
 			);
