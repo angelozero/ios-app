@@ -25,9 +25,9 @@ class FeedViewController: UIViewController {
     
     // UITableView só funciona se houver uma UITableViewCell
     private let homeFeedTable: UITableView = {
-       let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell-id")
+        tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.identifier)
         tableView.backgroundColor = .systemBackground
         
         return tableView
@@ -40,6 +40,7 @@ class FeedViewController: UIViewController {
         
         view.addSubview(homeFeedTable)
         
+        homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
     }
     
@@ -49,17 +50,25 @@ class FeedViewController: UIViewController {
     }
 }
 
-extension FeedViewController: UITableViewDataSource {
+extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 20
+    }
     
     // numero de linhas da sessao
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
     
     // celulas das linhas
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell-id", for: indexPath)
-        cell.textLabel?.text = "celula - \(indexPath.row)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as! FeedTableViewCell
+        cell.textLabel?.text = "sessão: \(indexPath.section) - linha: \(indexPath.row)"
         return cell
     }
     
