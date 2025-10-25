@@ -72,7 +72,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     // celulas das linhas
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as! FeedTableViewCell
-        cell.textLabel?.text = "sessão: \(indexPath.section) - linha: \(indexPath.row)"
+        //cell.textLabel?.text = "sessão: \(indexPath.section) - linha: \(indexPath.row)"
         return cell
     }
     
