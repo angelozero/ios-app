@@ -22,7 +22,7 @@ class SignInViewModel {
     func send(){
         state = .loading
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             //self.state = .error(errorMessage: "Not Authorized")
             self.state = .success
         }
