@@ -8,7 +8,6 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-    
     // Para que uma UITableView funcione é necessário
     
     // 1 - registrar uma classe que seja uma UITableViewCell ou filha dela
