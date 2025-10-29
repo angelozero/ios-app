@@ -22,9 +22,10 @@ class HighlightView: UIView {
     lazy var infoButton: UIButton = {
         let button = UIButton()
         
-        button.setTitle("Resgatar Cupom", for: .normal)
-        button.layer.borderColor = UIColor.systemBackground.cgColor
+        button.setTitle("Redeem Coupon", for: .normal)
+        button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 2.5
+        button.layer.cornerRadius = 7
         button.translatesAutoresizingMaskIntoConstraints = false
         button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
@@ -47,7 +48,7 @@ class HighlightView: UIView {
             UIColor.clear.cgColor,
             UIColor.clear.cgColor,
             UIColor.clear.cgColor,
-            UIColor.systemBlue.cgColor
+            UIColor.systemRed.cgColor
         ]
         gradientLayer.frame = bounds
         layer.addSublayer(gradientLayer)

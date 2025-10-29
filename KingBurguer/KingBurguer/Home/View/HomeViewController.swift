@@ -22,7 +22,7 @@ class HomeViewController: UITabBarController {
         let gridViewController = UINavigationController(rootViewController: GridViewController())
         
         feedViewController.title = "Feed"
-        coupomViewController.title = "Coupom"
+        coupomViewController.title = "Coupon"
         profileViewController.title = "Profile"
         gridViewController.title = "Grid"
         
