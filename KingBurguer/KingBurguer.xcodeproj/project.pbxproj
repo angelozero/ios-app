@@ -33,6 +33,7 @@
 		17D6AD162EA85FB800B8891B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD152EA85FB800B8891B /* ProfileViewController.swift */; };
 		17D6AD182EA85FC800B8891B /* CoupomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD172EA85FC800B8891B /* CoupomViewController.swift */; };
 		17DBBE9A2EAB023600871E5B /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DBBE992EAB023500871E5B /* FeedTableViewCell.swift */; };
+		17E62F912EB2CE7100AF96F6 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E62F902EB2CE7100AF96F6 /* TextField.swift */; };
 		17EB3D442EAC4F6F0001A188 /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EB3D432EAC4F6F0001A188 /* HighlightView.swift */; };
 		17EEBFE72E91588E00CAC9C7 /* SigninViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */; };
 		17EEBFE92E91969600CAC9C7 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE82E91969600CAC9C7 /* SignUpCoordinator.swift */; };
@@ -72,6 +73,7 @@
 		17D6AD152EA85FB800B8891B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		17D6AD172EA85FC800B8891B /* CoupomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupomViewController.swift; sourceTree = "<group>"; };
 		17DBBE992EAB023500871E5B /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		17E62F902EB2CE7100AF96F6 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		17EB3D432EAC4F6F0001A188 /* HighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
 		17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModelDelegate.swift; sourceTree = "<group>"; };
 		17EEBFE82E91969600CAC9C7 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				170E535E2EA468E200D3CF32 /* LoadingButton.swift */,
+				17E62F902EB2CE7100AF96F6 /* TextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				17F0C1DC2E90AF1300D63FF7 /* SignInCoordinator.swift in Sources */,
 				170572C82E876BD9009A53B2 /* SceneDelegate.swift in Sources */,
 				17D6AD162EA85FB800B8891B /* ProfileViewController.swift in Sources */,
+				17E62F912EB2CE7100AF96F6 /* TextField.swift in Sources */,
 				1716C13A2E94988200CBA6AB /* SignUpState.swift in Sources */,
 				176660DA2E95F47D00DBC79A /* HomeViewModelDelegate.swift in Sources */,
 				176660D52E95F3FA00DBC79A /* HomeCoordinator.swift in Sources */,

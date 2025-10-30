@@ -24,14 +24,14 @@ class SignInViewController: UIViewController {
     }
     
     // declarar o componente como lazy var faz com que ele seja construido apos a inicializacao da classe
-    lazy var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .clear
-        textField.borderStyle = .roundedRect
+    lazy var emailTextField: TextField = {
+        let textField = TextField()
         textField.placeholder = "email"
         textField.returnKeyType = .next
-        textField.delegate = self
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.errorMessage = "Invalid Email"
+        textField.failureFunc = validationCharactersEmailFiedl
+        //        textField.delegate = self
+        //        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
@@ -98,10 +98,10 @@ class SignInViewController: UIViewController {
         
         let emailConstraints = [
             // posicionamento baseado no tamanho da tela inteira
-            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0),
+            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10.0),
             emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100.0),
-            emailTextField.heightAnchor.constraint(equalToConstant: 50.0)
+            //            emailTextField.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
         let passwordConstraints = [
@@ -205,9 +205,15 @@ extension SignInViewController: SignInViewModelDelegate {
             break
         }
     }
+    
+    func validationCharactersEmailFiedl() -> Bool {
+        return emailTextField.text != "" && emailTextField.text.count <= 3
+    }
 }
 
 func printState(state: SignInState){
     print("Status \(state)")
 }
+
+
 
