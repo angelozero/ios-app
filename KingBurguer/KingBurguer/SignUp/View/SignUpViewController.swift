@@ -35,63 +35,74 @@ class SignUpViewController: UIViewController {
         return view
     }()
     
-    lazy var nameTextField: UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .clear
-        textField.borderStyle = .roundedRect
+    lazy var nameTextField: TextField = {
+        let textField = TextField()
         textField.placeholder = "enter your name..."
         textField.returnKeyType = .next
         textField.delegate = self
         textField.tag = 1
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.errorMessage = "Invalid Name"
+        textField.failureFunc = {
+            return textField.text != "" && textField.text.count <= 3
+        }
         return textField
     }()
     
-    lazy var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .clear
-        textField.borderStyle = .roundedRect
+    lazy var emailTextField: TextField = {
+        let textField = TextField()
         textField.placeholder = "enter your email..."
+        textField.keyboardType = .emailAddress
         textField.returnKeyType = .next
         textField.delegate = self
         textField.tag = 2
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.errorMessage = "Invalid Email (format: aaa@bbb.com)"
+        textField.failureFunc = {
+            return !textField.text.isEmpty && !textField.text.isInvalidEmail
+        }
         return textField
     }()
     
-    lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .clear
-        textField.borderStyle = .roundedRect
+    lazy var passwordTextField: TextField = {
+        let textField = TextField()
         textField.placeholder = "enter your password..."
         textField.returnKeyType = .next
         textField.delegate = self
         textField.tag = 3
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.errorMessage = "Invalid Password"
+        textField.failureFunc = {
+            return textField.text != "" && textField.text.count <= 5
+        }
         return textField
     }()
     
-    lazy var cpfTextField: UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .clear
-        textField.borderStyle = .roundedRect
+    lazy var cpfTextField: TextField = {
+        let textField = TextField()
         textField.placeholder = "enter your CPF..."
         textField.returnKeyType = .next
         textField.delegate = self
         textField.tag = 4
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.errorMessage = "Invalid CPF (format: 000.000.000-00)"
+        textField.failureFunc = {
+            return !textField.text.isEmpty && !textField.text.isIvalidCPFFormat
+        }
         return textField
     }()
     
-    lazy var birthdayTextField: UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .clear
-        textField.borderStyle = .roundedRect
+    lazy var birthdayTextField: TextField = {
+        let textField = TextField()
         textField.placeholder = "enter your birthday..."
         textField.returnKeyType = .done
         textField.delegate = self
         textField.tag = 5
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.errorMessage = "Invalid Birthday (format: DD/MM/YYYY)"
+        textField.failureFunc = {
+            return !textField.text.isEmpty && !textField.text.isInvalidBirthDate
+        }
         return textField
     }()
     
@@ -142,38 +153,38 @@ class SignUpViewController: UIViewController {
         ]
         
         let nameConstraints = [
-            nameTextField.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            nameTextField.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            nameTextField.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 10.0),
+            nameTextField.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -10.0),
             nameTextField.topAnchor.constraint(equalTo: container.topAnchor, constant: 70.0),
-            nameTextField.heightAnchor.constraint(equalToConstant: 50.0)
+            //            nameTextField.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
         let emailConstraints = [
             emailTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: nameTextField.trailingAnchor),
             emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10.0),
-            emailTextField.heightAnchor.constraint(equalToConstant: 50.0),
+            //            emailTextField.heightAnchor.constraint(equalToConstant: 50.0),
         ]
         
         let passwordConstraints = [
             passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
             passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10.0),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 50.0),
+            //            passwordTextField.heightAnchor.constraint(equalToConstant: 50.0),
         ]
         
         let cpfConstraints = [
             cpfTextField.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor),
             cpfTextField.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor),
             cpfTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10.0),
-            cpfTextField.heightAnchor.constraint(equalToConstant: 50.0),
+            //            cpfTextField.heightAnchor.constraint(equalToConstant: 50.0),
         ]
         
         let birthdayConstraints = [
             birthdayTextField.leadingAnchor.constraint(equalTo: cpfTextField.leadingAnchor),
             birthdayTextField.trailingAnchor.constraint(equalTo: cpfTextField.trailingAnchor),
             birthdayTextField.topAnchor.constraint(equalTo: cpfTextField.bottomAnchor, constant: 10.0),
-            birthdayTextField.heightAnchor.constraint(equalToConstant: 50.0),
+            //            birthdayTextField.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
         let saveButtonConstraints = [
@@ -242,10 +253,10 @@ extension SignUpViewController: UITextFieldDelegate {
             
         } else {
             let nextTag =  textField.tag + 1
-            let component = container.findViewByTag(tag: nextTag)
+            let component = container.findViewByTag(tag: nextTag) as? TextField
             
             if(component != nil){
-                component?.becomeFirstResponder()
+                component?.gainFocus()
             } else {
                 view.endEditing(true)
             }

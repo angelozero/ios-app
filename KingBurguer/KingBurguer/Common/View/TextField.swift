@@ -27,6 +27,28 @@ class TextField: UIView {
         }
     }
     
+    var delegate: UITextFieldDelegate? {
+        willSet {
+            editTextField.delegate = newValue
+        }
+    }
+    
+    override var tag: Int {
+        willSet {
+            super.tag = newValue
+            editTextField.tag = newValue
+        }
+    }
+    
+    var keyboardType: UIKeyboardType = .default {
+        willSet {
+            if newValue == .emailAddress {
+                editTextField.autocapitalizationType = .none
+            }
+            editTextField.keyboardType = newValue
+        }
+    }
+    
     var errorMessage: String?
     
     var heightConstraint: NSLayoutConstraint!
@@ -77,6 +99,10 @@ class TextField: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func gainFocus(){
+        editTextField.becomeFirstResponder()
     }
     
     @objc func textFieldDidChanged(_ textField: UITextField){

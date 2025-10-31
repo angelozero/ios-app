@@ -27,22 +27,24 @@ class SignInViewController: UIViewController {
     lazy var emailTextField: TextField = {
         let textField = TextField()
         textField.placeholder = "email"
+        textField.keyboardType = .emailAddress
         textField.returnKeyType = .next
         textField.errorMessage = "Invalid Email"
-        textField.failureFunc = validationCharactersEmailFiedl
-        //        textField.delegate = self
+        textField.failureFunc = validationCharactersEmailField
+        textField.delegate = self
         //        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
-    lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .clear
-        textField.borderStyle = .roundedRect
+    lazy var passwordTextField: TextField = {
+        let textField = TextField()
         textField.placeholder = "password"
         textField.returnKeyType = .done
+        textField.errorMessage = "Invalid Password"
+        textField.failureFunc = {
+            return textField.text != "" && textField.text.count <= 5
+        }
         textField.delegate = self
-        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
@@ -101,7 +103,7 @@ class SignInViewController: UIViewController {
             emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0),
             emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10.0),
             emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100.0),
-            //            emailTextField.heightAnchor.constraint(equalToConstant: 50.0)
+            // emailTextField.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
         let passwordConstraints = [
@@ -109,7 +111,7 @@ class SignInViewController: UIViewController {
             passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
             passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10.0),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 50.0),
+            // passwordTextField.heightAnchor.constraint(equalToConstant: 50.0),
         ]
         
         let logInButtonConstraints = [
@@ -174,7 +176,7 @@ extension SignInViewController: UITextFieldDelegate {
             view.endEditing(true)
             print("Botao Password - Entrando")
         } else {
-            passwordTextField.becomeFirstResponder()
+            passwordTextField.gainFocus()
         }
         return false
     }
@@ -206,7 +208,7 @@ extension SignInViewController: SignInViewModelDelegate {
         }
     }
     
-    func validationCharactersEmailFiedl() -> Bool {
+    func validationCharactersEmailField() -> Bool {
         return emailTextField.text != "" && emailTextField.text.count <= 3
     }
 }
