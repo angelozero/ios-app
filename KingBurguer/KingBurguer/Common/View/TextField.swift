@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol TextFieldDelegate: UITextFieldDelegate {
+    func textFieldDidChanged(isValid: Bool, bitmask: Int)
+}
+
+
 class TextField: UIView {
     
     var text: String {
@@ -27,7 +32,7 @@ class TextField: UIView {
         }
     }
     
-    var delegate: UITextFieldDelegate? {
+    var delegate: TextFieldDelegate? {
         willSet {
             editTextField.delegate = newValue
         }
@@ -48,6 +53,15 @@ class TextField: UIView {
             editTextField.keyboardType = newValue
         }
     }
+    
+    var secureTextEntry: Bool = false {
+        willSet {
+            editTextField.isSecureTextEntry = newValue
+            editTextField.textContentType = .oneTimeCode
+        }
+    }
+    
+    var bitmask: Int = 0
     
     var errorMessage: String?
     
@@ -111,9 +125,11 @@ class TextField: UIView {
         if failFunc() {
             errorLabel.text = errorMessage
             heightConstraint.constant = 70
+            delegate?.textFieldDidChanged(isValid: false, bitmask: bitmask)
         } else {
             errorLabel.text = ""
             heightConstraint.constant = 50
+            delegate?.textFieldDidChanged(isValid: true, bitmask: bitmask)
         }
         
         

@@ -23,6 +23,8 @@ class SignInViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var bitmaskResult: Int = 0
+    
     // declarar o componente como lazy var faz com que ele seja construido apos a inicializacao da classe
     lazy var emailTextField: TextField = {
         let textField = TextField()
@@ -30,9 +32,12 @@ class SignInViewController: UIViewController {
         textField.keyboardType = .emailAddress
         textField.returnKeyType = .next
         textField.errorMessage = "Invalid Email"
-        textField.failureFunc = validationCharactersEmailField
+        textField.bitmask = 1
         textField.delegate = self
-        //        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.errorMessage = "Invalid Email (format: aaa@bbb.com)"
+        textField.failureFunc = {
+            return !textField.text.isEmpty && !textField.text.isInvalidEmail
+        }
         return textField
     }()
     
@@ -41,9 +46,11 @@ class SignInViewController: UIViewController {
         textField.placeholder = "password"
         textField.returnKeyType = .done
         textField.errorMessage = "Invalid Password"
+        textField.bitmask = 2
         textField.failureFunc = {
             return textField.text != "" && textField.text.count <= 5
         }
+        textField.secureTextEntry = true
         textField.delegate = self
         return textField
     }()
@@ -170,7 +177,19 @@ class SignInViewController: UIViewController {
 }
 
 // Evento para alternar campos entre campos
-extension SignInViewController: UITextFieldDelegate {
+extension SignInViewController: TextFieldDelegate {
+    func textFieldDidChanged(isValid: Bool, bitmask: Int) {
+        if isValid {
+            self.bitmaskResult = self.bitmaskResult | bitmask
+            print("is valid ---> \(bitmaskResult)")
+            
+        } else  {
+            self.bitmaskResult = self.bitmaskResult & ~bitmask
+            print("is invalid ---> \(bitmaskResult)")
+            
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if(textField.returnKeyType == .done){
             view.endEditing(true)
