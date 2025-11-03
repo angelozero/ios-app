@@ -186,7 +186,6 @@ extension SignInViewController: TextFieldDelegate {
         } else  {
             self.bitmaskResult = self.bitmaskResult & ~bitmask
             print("is invalid ---> \(bitmaskResult)")
-            
         }
     }
     
