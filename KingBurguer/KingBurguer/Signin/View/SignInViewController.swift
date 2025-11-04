@@ -32,7 +32,7 @@ class SignInViewController: UIViewController {
         textField.keyboardType = .emailAddress
         textField.returnKeyType = .next
         textField.errorMessage = "Invalid Email"
-        textField.bitmask = 1
+        textField.bitmaskValue = SignInBitmaskValue(SignInBitmaskValueEnum.email)
         textField.delegate = self
         textField.errorMessage = "Invalid Email (format: aaa@bbb.com)"
         textField.failureFunc = {
@@ -46,7 +46,7 @@ class SignInViewController: UIViewController {
         textField.placeholder = "password"
         textField.returnKeyType = .done
         textField.errorMessage = "Invalid Password"
-        textField.bitmask = 2
+        textField.bitmaskValue = SignInBitmaskValue(SignInBitmaskValueEnum.password)
         textField.failureFunc = {
             return textField.text != "" && textField.text.count <= 5
         }
@@ -59,7 +59,8 @@ class SignInViewController: UIViewController {
         let button = LoadingButton()
         button.title = "log in"
         button.titleColor = .white
-        button.backgroundColor = .systemRed
+        button.backgroundColor = .systemGray
+        button.isEnable = false
         button.addTarget(self, action: #selector(didTapLogInButton))
         button.roundedButton(button)
         return button
@@ -151,6 +152,15 @@ class SignInViewController: UIViewController {
         
     }
     
+    func enableLoginButton(_ isEnabled: Bool){
+        logInButton.isEnable = isEnabled
+        if isEnabled {
+            logInButton.backgroundColor = .systemRed
+        } else {
+            logInButton.backgroundColor = .systemGray
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -187,6 +197,11 @@ extension SignInViewController: TextFieldDelegate {
             self.bitmaskResult = self.bitmaskResult & ~bitmask
             print("is invalid ---> \(bitmaskResult)")
         }
+
+        let isEnabled = (SignInBitmaskValueEnum.email.rawValue & self.bitmaskResult != 0)
+                        && (SignInBitmaskValueEnum.password.rawValue & self.bitmaskResult != 0)
+        
+        enableLoginButton(isEnabled)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

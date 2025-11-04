@@ -61,7 +61,14 @@ class TextField: UIView {
         }
     }
     
-    var bitmask: Int = 0
+    var bitmaskValue: BaseBitmaskValue? {
+        willSet {
+            guard let bitmasktResult: Int = newValue?.getBitmaskValue() else {return}
+            bitmask = bitmasktResult
+        }
+    }
+    
+    private var bitmask: Int = 0
     
     var errorMessage: String?
     
@@ -121,6 +128,7 @@ class TextField: UIView {
     
     @objc func textFieldDidChanged(_ textField: UITextField){
         guard let failFunc = failureFunc else { return }
+        
         
         if failFunc() {
             errorLabel.text = errorMessage

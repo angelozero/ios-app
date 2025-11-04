@@ -35,6 +35,12 @@ class LoadingButton: UIView {
         }
     }
     
+    var isEnable: Bool = true {
+        willSet {
+            button.isEnabled = newValue
+        }
+    }
+    
     override var backgroundColor: UIColor? {
         willSet {
             button.backgroundColor = newValue
