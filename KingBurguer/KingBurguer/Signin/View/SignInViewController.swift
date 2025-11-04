@@ -197,9 +197,10 @@ extension SignInViewController: TextFieldDelegate {
             self.bitmaskResult = self.bitmaskResult & ~bitmask
             print("is invalid ---> \(bitmaskResult)")
         }
+        
+        let requiredMask: Int = SignInBitmaskValueEnum.email.rawValue | SignInBitmaskValueEnum.password.rawValue
 
-        let isEnabled = (SignInBitmaskValueEnum.email.rawValue & self.bitmaskResult != 0)
-                        && (SignInBitmaskValueEnum.password.rawValue & self.bitmaskResult != 0)
+        let isEnabled = (self.bitmaskResult & requiredMask) == requiredMask
         
         enableLoginButton(isEnabled)
     }

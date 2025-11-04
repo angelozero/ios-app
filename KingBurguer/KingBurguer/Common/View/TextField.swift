@@ -61,7 +61,7 @@ class TextField: UIView {
         }
     }
     
-    var bitmaskValue: BaseBitmaskValue? {
+    var bitmaskValue: BaseBitmaskProtocol? {
         willSet {
             guard let bitmasktResult: Int = newValue?.getBitmaskValue() else {return}
             bitmask = bitmasktResult

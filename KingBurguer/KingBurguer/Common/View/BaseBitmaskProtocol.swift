@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol BaseBitmaskValue {
+protocol BaseBitmaskProtocol {
     
     func getBitmaskValue() -> Int
 }

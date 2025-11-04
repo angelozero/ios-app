@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SignInBitmaskValue: BaseBitmaskValue {
+class SignInBitmaskValue: BaseBitmaskProtocol {
     
     var bitmaskValue: SignInBitmaskValueEnum
     
