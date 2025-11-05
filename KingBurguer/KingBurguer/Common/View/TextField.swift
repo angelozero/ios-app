@@ -14,6 +14,8 @@ protocol TextFieldDelegate: UITextFieldDelegate {
 
 class TextField: UIView {
     
+    var maskField: MaskUtil? 
+    
     var text: String {
         get{
             return editTextField.text!
@@ -127,8 +129,13 @@ class TextField: UIView {
     }
     
     @objc func textFieldDidChanged(_ textField: UITextField){
-        guard let failFunc = failureFunc else { return }
+        if let mask = maskField {
+            if let res = mask.process(value: textField.text!) {
+                textField.text = res
+            }
+        }
         
+        guard let failFunc = failureFunc else { return }
         
         if failFunc() {
             errorLabel.text = errorMessage

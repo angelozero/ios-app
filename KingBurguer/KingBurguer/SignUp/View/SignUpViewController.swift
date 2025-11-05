@@ -22,6 +22,8 @@ class SignUpViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var bitmaskResult: Int = 0
+    
     let scroll: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -41,6 +43,7 @@ class SignUpViewController: UIViewController {
         textField.returnKeyType = .next
         textField.delegate = self
         textField.tag = 1
+        textField.bitmaskValue = SignUpBitmaskValue(SignUpBitmaskValueEnum.name)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.errorMessage = "Invalid Name"
         textField.failureFunc = {
@@ -56,6 +59,7 @@ class SignUpViewController: UIViewController {
         textField.returnKeyType = .next
         textField.delegate = self
         textField.tag = 2
+        textField.bitmaskValue = SignUpBitmaskValue(SignUpBitmaskValueEnum.email)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.errorMessage = "Invalid Email (format: aaa@bbb.com)"
         textField.failureFunc = {
@@ -70,6 +74,7 @@ class SignUpViewController: UIViewController {
         textField.returnKeyType = .next
         textField.delegate = self
         textField.tag = 3
+        textField.bitmaskValue = SignUpBitmaskValue(SignUpBitmaskValueEnum.password)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.errorMessage = "Invalid Password"
         textField.failureFunc = {
@@ -84,6 +89,9 @@ class SignUpViewController: UIViewController {
         textField.returnKeyType = .next
         textField.delegate = self
         textField.tag = 4
+        textField.bitmaskValue = SignUpBitmaskValue(SignUpBitmaskValueEnum.cpf)
+        textField.maskField = MaskUtil(mask: "###.###.###-##")
+        textField.keyboardType = .numberPad
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.errorMessage = "Invalid CPF (format: 000.000.000-00)"
         textField.failureFunc = {
@@ -98,10 +106,13 @@ class SignUpViewController: UIViewController {
         textField.returnKeyType = .done
         textField.delegate = self
         textField.tag = 5
+        textField.bitmaskValue = SignUpBitmaskValue(SignUpBitmaskValueEnum.birthday)
+        textField.maskField = MaskUtil(mask: "##/##/####")
+        textField.keyboardType = .numberPad
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.errorMessage = "Invalid Birthday (format: DD/MM/YYYY)"
         textField.failureFunc = {
-            return !textField.text.isEmpty && !textField.text.isInvalidBirthDate
+            return !textField.text.isEmpty && !textField.text.isValidBirthDateFormat
         }
         return textField
     }()
@@ -110,7 +121,7 @@ class SignUpViewController: UIViewController {
         let button = LoadingButton()
         button.title = "save"
         button.titleColor = .white
-        button.backgroundColor = .systemRed
+        button.backgroundColor = .systemGray
         button.addTarget(self, action: #selector(didTapSaveButton))
         button.roundedButton(button)
         return button
@@ -242,11 +253,38 @@ class SignUpViewController: UIViewController {
             scroll.scrollIndicatorInsets = contentInsets
         }
     }
+    
+    func enableLoginButton(_ isEnabled: Bool){
+        saveButton.isEnable = isEnabled
+        if isEnabled {
+            saveButton.backgroundColor = .systemRed
+        } else {
+            saveButton.backgroundColor = .systemGray
+        }
+    }
 }
 
 extension SignUpViewController: TextFieldDelegate {
     func textFieldDidChanged(isValid: Bool, bitmask: Int) {
-        //ok
+        if isValid {
+            self.bitmaskResult = self.bitmaskResult | bitmask
+            print("is valid ---> \(bitmaskResult)")
+            
+        } else  {
+            self.bitmaskResult = self.bitmaskResult & ~bitmask
+            print("is invalid ---> \(bitmaskResult)")
+        }
+        
+        let requiredMask: Int =
+            SignUpBitmaskValueEnum.name.rawValue
+            | SignUpBitmaskValueEnum.email.rawValue
+            | SignUpBitmaskValueEnum.password.rawValue
+            | SignUpBitmaskValueEnum.cpf.rawValue
+            | SignUpBitmaskValueEnum.birthday.rawValue
+        
+        let isEnabled = (self.bitmaskResult & requiredMask) == requiredMask
+        
+        enableLoginButton(isEnabled)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

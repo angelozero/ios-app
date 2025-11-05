@@ -27,6 +27,9 @@
 		176660DA2E95F47D00DBC79A /* HomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660D92E95F47D00DBC79A /* HomeViewModelDelegate.swift */; };
 		176660DC2E95F48F00DBC79A /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660DB2E95F48F00DBC79A /* HomeState.swift */; };
 		176660DF2E95F55B00DBC79A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176660DE2E95F55B00DBC79A /* HomeViewController.swift */; };
+		176F59502EBADADC00563EA7 /* SignUpBitmaskEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176F594F2EBADADC00563EA7 /* SignUpBitmaskEnum.swift */; };
+		176F59522EBADC1100563EA7 /* SignUpBitmaskValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176F59512EBADC1100563EA7 /* SignUpBitmaskValue.swift */; };
+		176F59542EBAE53800563EA7 /* MaskUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176F59532EBAE53800563EA7 /* MaskUtil.swift */; };
 		17D6AD062EA85E3200B8891B /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD052EA85E3200B8891B /* FeedCoordinator.swift */; };
 		17D6AD0B2EA85E7A00B8891B /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD0A2EA85E7A00B8891B /* ProfileCoordinator.swift */; };
 		17D6AD102EA85ED700B8891B /* CoupomCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD0F2EA85ED700B8891B /* CoupomCoordinator.swift */; };
@@ -71,6 +74,9 @@
 		176660D92E95F47D00DBC79A /* HomeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelDelegate.swift; sourceTree = "<group>"; };
 		176660DB2E95F48F00DBC79A /* HomeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
 		176660DE2E95F55B00DBC79A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		176F594F2EBADADC00563EA7 /* SignUpBitmaskEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpBitmaskEnum.swift; sourceTree = "<group>"; };
+		176F59512EBADC1100563EA7 /* SignUpBitmaskValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpBitmaskValue.swift; sourceTree = "<group>"; };
+		176F59532EBAE53800563EA7 /* MaskUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskUtil.swift; sourceTree = "<group>"; };
 		17D6AD052EA85E3200B8891B /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		17D6AD0A2EA85E7A00B8891B /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		17D6AD0F2EA85ED700B8891B /* CoupomCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupomCoordinator.swift; sourceTree = "<group>"; };
@@ -189,6 +195,7 @@
 			children = (
 				170E535D2EA468D300D3CF32 /* View */,
 				171B51572EB4482800AD3595 /* StringUtil.swift */,
+				176F59532EBAE53800563EA7 /* MaskUtil.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -340,6 +347,8 @@
 				17EEBFEB2E91971F00CAC9C7 /* SignUpViewModel.swift */,
 				1716C1362E94904800CBA6AB /* SignUpViewModelDelegate.swift */,
 				1716C1392E94988200CBA6AB /* SignUpState.swift */,
+				176F594F2EBADADC00563EA7 /* SignUpBitmaskEnum.swift */,
+				176F59512EBADC1100563EA7 /* SignUpBitmaskValue.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -462,13 +471,16 @@
 				1716C13A2E94988200CBA6AB /* SignUpState.swift in Sources */,
 				176660DA2E95F47D00DBC79A /* HomeViewModelDelegate.swift in Sources */,
 				176660D52E95F3FA00DBC79A /* HomeCoordinator.swift in Sources */,
+				176F59502EBADADC00563EA7 /* SignUpBitmaskEnum.swift in Sources */,
 				17EB3D442EAC4F6F0001A188 /* HighlightView.swift in Sources */,
 				17D6AD0B2EA85E7A00B8891B /* ProfileCoordinator.swift in Sources */,
 				176660D82E95F46600DBC79A /* HomeViewModel.swift in Sources */,
 				171130E02EB19CF50052F860 /* FeedCollectionViewCell.swift in Sources */,
 				170E535B2EA3CF4000D3CF32 /* InfiniteScrollModel.swift in Sources */,
+				176F59522EBADC1100563EA7 /* SignUpBitmaskValue.swift in Sources */,
 				17F48F722EB980F700EFB8D8 /* BaseBitmaskProtocol.swift in Sources */,
 				170E535F2EA468E200D3CF32 /* LoadingButton.swift in Sources */,
+				176F59542EBAE53800563EA7 /* MaskUtil.swift in Sources */,
 				17DBBE9A2EAB023600871E5B /* FeedTableViewCell.swift in Sources */,
 				17D6AD102EA85ED700B8891B /* CoupomCoordinator.swift in Sources */,
 				17FED1E62E8DFEF600C877E9 /* SignInState.swift in Sources */,
