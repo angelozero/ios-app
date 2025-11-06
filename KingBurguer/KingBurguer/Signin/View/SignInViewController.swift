@@ -191,11 +191,11 @@ extension SignInViewController: TextFieldDelegate {
     func textFieldDidChanged(isValid: Bool, bitmask: Int) {
         if isValid {
             self.bitmaskResult = self.bitmaskResult | bitmask
-            print("is valid ---> \(bitmaskResult)")
+            //print("is valid ---> \(bitmaskResult)")
             
         } else  {
             self.bitmaskResult = self.bitmaskResult & ~bitmask
-            print("is invalid ---> \(bitmaskResult)")
+            //print("is invalid ---> \(bitmaskResult)")
         }
         
         let requiredMask: Int = SignInBitmaskValueEnum.email.rawValue | SignInBitmaskValueEnum.password.rawValue

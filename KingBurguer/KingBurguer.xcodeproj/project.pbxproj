@@ -37,6 +37,7 @@
 		17D6AD162EA85FB800B8891B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD152EA85FB800B8891B /* ProfileViewController.swift */; };
 		17D6AD182EA85FC800B8891B /* CoupomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD172EA85FC800B8891B /* CoupomViewController.swift */; };
 		17DBBE9A2EAB023600871E5B /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DBBE992EAB023500871E5B /* FeedTableViewCell.swift */; };
+		17E4200D2EBC2A4200D20F93 /* WebServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E4200C2EBC2A4200D20F93 /* WebServiceAPI.swift */; };
 		17E62F912EB2CE7100AF96F6 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E62F902EB2CE7100AF96F6 /* TextField.swift */; };
 		17EB3D442EAC4F6F0001A188 /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EB3D432EAC4F6F0001A188 /* HighlightView.swift */; };
 		17EEBFE72E91588E00CAC9C7 /* SigninViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */; };
@@ -84,6 +85,7 @@
 		17D6AD152EA85FB800B8891B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		17D6AD172EA85FC800B8891B /* CoupomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupomViewController.swift; sourceTree = "<group>"; };
 		17DBBE992EAB023500871E5B /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		17E4200C2EBC2A4200D20F93 /* WebServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceAPI.swift; sourceTree = "<group>"; };
 		17E62F902EB2CE7100AF96F6 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		17EB3D432EAC4F6F0001A188 /* HighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
 		17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModelDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				170E535D2EA468D300D3CF32 /* View */,
 				171B51572EB4482800AD3595 /* StringUtil.swift */,
 				176F59532EBAE53800563EA7 /* MaskUtil.swift */,
+				17E4200C2EBC2A4200D20F93 /* WebServiceAPI.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				17F48F722EB980F700EFB8D8 /* BaseBitmaskProtocol.swift in Sources */,
 				170E535F2EA468E200D3CF32 /* LoadingButton.swift in Sources */,
 				176F59542EBAE53800563EA7 /* MaskUtil.swift in Sources */,
+				17E4200D2EBC2A4200D20F93 /* WebServiceAPI.swift in Sources */,
 				17DBBE9A2EAB023600871E5B /* FeedTableViewCell.swift in Sources */,
 				17D6AD102EA85ED700B8891B /* CoupomCoordinator.swift in Sources */,
 				17FED1E62E8DFEF600C877E9 /* SignInState.swift in Sources */,

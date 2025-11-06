@@ -21,10 +21,12 @@ class SignUpViewModel {
     func send(){
         state =  .loading
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-//            self.state = .error(errorMessage: "Fail to save user")
-            self.state = .success
-        }
+//        simulando delay de 2 segs
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+//            self.state = .success
+//        }
+        
+        WebServiceAPI.shared.createUser()
     }
    
     func registerUser(){
