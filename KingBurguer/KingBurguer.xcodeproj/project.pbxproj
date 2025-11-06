@@ -38,6 +38,8 @@
 		17D6AD182EA85FC800B8891B /* CoupomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD172EA85FC800B8891B /* CoupomViewController.swift */; };
 		17DBBE9A2EAB023600871E5B /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DBBE992EAB023500871E5B /* FeedTableViewCell.swift */; };
 		17E4200D2EBC2A4200D20F93 /* WebServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E4200C2EBC2A4200D20F93 /* WebServiceAPI.swift */; };
+		17E420102EBC30B800D20F93 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E4200F2EBC30B800D20F93 /* UserRequest.swift */; };
+		17E420122EBC31F900D20F93 /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E420112EBC31F900D20F93 /* JSONConverter.swift */; };
 		17E62F912EB2CE7100AF96F6 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E62F902EB2CE7100AF96F6 /* TextField.swift */; };
 		17EB3D442EAC4F6F0001A188 /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EB3D432EAC4F6F0001A188 /* HighlightView.swift */; };
 		17EEBFE72E91588E00CAC9C7 /* SigninViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */; };
@@ -86,6 +88,8 @@
 		17D6AD172EA85FC800B8891B /* CoupomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupomViewController.swift; sourceTree = "<group>"; };
 		17DBBE992EAB023500871E5B /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		17E4200C2EBC2A4200D20F93 /* WebServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceAPI.swift; sourceTree = "<group>"; };
+		17E4200F2EBC30B800D20F93 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
+		17E420112EBC31F900D20F93 /* JSONConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverter.swift; sourceTree = "<group>"; };
 		17E62F902EB2CE7100AF96F6 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		17EB3D432EAC4F6F0001A188 /* HighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
 		17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModelDelegate.swift; sourceTree = "<group>"; };
@@ -195,10 +199,10 @@
 		170E535C2EA468C700D3CF32 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				17E4200E2EBC30A600D20F93 /* API */,
 				170E535D2EA468D300D3CF32 /* View */,
 				171B51572EB4482800AD3595 /* StringUtil.swift */,
 				176F59532EBAE53800563EA7 /* MaskUtil.swift */,
-				17E4200C2EBC2A4200D20F93 /* WebServiceAPI.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -344,6 +348,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		17E4200E2EBC30A600D20F93 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				17E4200C2EBC2A4200D20F93 /* WebServiceAPI.swift */,
+				17E4200F2EBC30B800D20F93 /* UserRequest.swift */,
+				17E420112EBC31F900D20F93 /* JSONConverter.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		17EEBFEA2E9196A400CAC9C7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17E420122EBC31F900D20F93 /* JSONConverter.swift in Sources */,
 				17FABE3A2E8F50C40055ADD2 /* SignUpViewController.swift in Sources */,
 				17EF70662E8CA940004C077E /* SignInViewModel.swift in Sources */,
 				170E53592EA3CE4100D3CF32 /* InfiniteScrollViewController.swift in Sources */,
@@ -476,6 +491,7 @@
 				176660D52E95F3FA00DBC79A /* HomeCoordinator.swift in Sources */,
 				176F59502EBADADC00563EA7 /* SignUpBitmaskEnum.swift in Sources */,
 				17EB3D442EAC4F6F0001A188 /* HighlightView.swift in Sources */,
+				17E420102EBC30B800D20F93 /* UserRequest.swift in Sources */,
 				17D6AD0B2EA85E7A00B8891B /* ProfileCoordinator.swift in Sources */,
 				176660D82E95F46600DBC79A /* HomeViewModel.swift in Sources */,
 				171130E02EB19CF50052F860 /* FeedCollectionViewCell.swift in Sources */,

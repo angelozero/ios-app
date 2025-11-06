@@ -26,7 +26,8 @@ class SignUpViewModel {
 //            self.state = .success
 //        }
         
-        WebServiceAPI.shared.createUser()
+        var userRequest = UserRequest(name: "Test", password: "123456", email: "test@test.com", document: "93122232081", birthday: getDate("01/01/2000"))
+        WebServiceAPI.shared.createUser(userRequest: userRequest)
     }
    
     func registerUser(){
@@ -37,4 +38,11 @@ class SignUpViewModel {
         signUpcoordinator?.goToHome()
     }
     
+    private func getDate(_ date: String) -> String{
+        do {
+            return try date.reformatDateToISO8601()
+        } catch {
+            return "2000-01-01"
+        }
+    }
 }
