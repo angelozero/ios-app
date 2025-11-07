@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TextFieldDelegate: UITextFieldDelegate {
-    func textFieldDidChanged(isValid: Bool, bitmask: Int)
+    func textFieldDidChanged(isValid: Bool, bitmask: Int, text: String)
 }
 
 
@@ -140,11 +140,11 @@ class TextField: UIView {
         if failFunc() {
             errorLabel.text = errorMessage
             heightConstraint.constant = 70
-            delegate?.textFieldDidChanged(isValid: false, bitmask: bitmask)
+            delegate?.textFieldDidChanged(isValid: false, bitmask: bitmask, text: textField.text!)
         } else {
             errorLabel.text = ""
             heightConstraint.constant = 50
-            delegate?.textFieldDidChanged(isValid: true, bitmask: bitmask)
+            delegate?.textFieldDidChanged(isValid: true, bitmask: bitmask, text: textField.text!)
         }
         
         

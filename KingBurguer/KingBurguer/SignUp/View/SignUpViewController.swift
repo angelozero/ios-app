@@ -11,7 +11,7 @@ import UIKit
 class SignUpViewController: UIViewController {
     
     let signUpViewModel: SignUpViewModel
-    
+        
     init(signUpViewModel: SignUpViewModel) {
         self.signUpViewModel = signUpViewModel
         super.init(nibName: nil, bundle: nil)
@@ -265,7 +265,7 @@ class SignUpViewController: UIViewController {
 }
 
 extension SignUpViewController: TextFieldDelegate {
-    func textFieldDidChanged(isValid: Bool, bitmask: Int) {
+    func textFieldDidChanged(isValid: Bool, bitmask: Int, text: String) {
         if isValid {
             self.bitmaskResult = self.bitmaskResult | bitmask
             //print("is valid ---> \(bitmaskResult)")
@@ -276,15 +276,31 @@ extension SignUpViewController: TextFieldDelegate {
         }
         
         let requiredMask: Int =
-            SignUpBitmaskValueEnum.name.rawValue
-            | SignUpBitmaskValueEnum.email.rawValue
-            | SignUpBitmaskValueEnum.password.rawValue
-            | SignUpBitmaskValueEnum.cpf.rawValue
-            | SignUpBitmaskValueEnum.birthday.rawValue
+        SignUpBitmaskValueEnum.name.rawValue
+        | SignUpBitmaskValueEnum.email.rawValue
+        | SignUpBitmaskValueEnum.password.rawValue
+        | SignUpBitmaskValueEnum.cpf.rawValue
+        | SignUpBitmaskValueEnum.birthday.rawValue
         
         let isEnabled = (self.bitmaskResult & requiredMask) == requiredMask
         
         enableLoginButton(isEnabled)
+        
+        if bitmask == SignUpBitmaskValueEnum.name.rawValue {
+            signUpViewModel.userData.name = text
+            
+        } else if bitmask == SignUpBitmaskValueEnum.password.rawValue {
+            signUpViewModel.userData.password = text
+            
+        } else if bitmask == SignUpBitmaskValueEnum.email.rawValue {
+            signUpViewModel.userData.email = text
+            
+        } else if bitmask == SignUpBitmaskValueEnum.cpf.rawValue {
+            signUpViewModel.userData.document = text
+            
+        } else if bitmask == SignUpBitmaskValueEnum.birthday.rawValue {
+            signUpViewModel.userData.birthday = text
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

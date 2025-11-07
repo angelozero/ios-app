@@ -188,7 +188,7 @@ class SignInViewController: UIViewController {
 
 // Evento para alternar campos entre campos
 extension SignInViewController: TextFieldDelegate {
-    func textFieldDidChanged(isValid: Bool, bitmask: Int) {
+    func textFieldDidChanged(isValid: Bool, bitmask: Int, text: String) {
         if isValid {
             self.bitmaskResult = self.bitmaskResult | bitmask
             //print("is valid ---> \(bitmaskResult)")

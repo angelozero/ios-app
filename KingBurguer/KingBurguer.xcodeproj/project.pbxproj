@@ -41,6 +41,8 @@
 		17E420102EBC30B800D20F93 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E4200F2EBC30B800D20F93 /* UserRequest.swift */; };
 		17E420122EBC31F900D20F93 /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E420112EBC31F900D20F93 /* JSONConverter.swift */; };
 		17E62F912EB2CE7100AF96F6 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E62F902EB2CE7100AF96F6 /* TextField.swift */; };
+		17E672942EBD724000794A55 /* SignUpUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E672932EBD724000794A55 /* SignUpUserModel.swift */; };
+		17E672962EBD815800794A55 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E672952EBD815800794A55 /* APIError.swift */; };
 		17EB3D442EAC4F6F0001A188 /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EB3D432EAC4F6F0001A188 /* HighlightView.swift */; };
 		17EEBFE72E91588E00CAC9C7 /* SigninViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */; };
 		17EEBFE92E91969600CAC9C7 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE82E91969600CAC9C7 /* SignUpCoordinator.swift */; };
@@ -91,6 +93,8 @@
 		17E4200F2EBC30B800D20F93 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
 		17E420112EBC31F900D20F93 /* JSONConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverter.swift; sourceTree = "<group>"; };
 		17E62F902EB2CE7100AF96F6 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		17E672932EBD724000794A55 /* SignUpUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserModel.swift; sourceTree = "<group>"; };
+		17E672952EBD815800794A55 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		17EB3D432EAC4F6F0001A188 /* HighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
 		17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModelDelegate.swift; sourceTree = "<group>"; };
 		17EEBFE82E91969600CAC9C7 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
@@ -354,6 +358,7 @@
 				17E4200C2EBC2A4200D20F93 /* WebServiceAPI.swift */,
 				17E4200F2EBC30B800D20F93 /* UserRequest.swift */,
 				17E420112EBC31F900D20F93 /* JSONConverter.swift */,
+				17E672952EBD815800794A55 /* APIError.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				1716C1392E94988200CBA6AB /* SignUpState.swift */,
 				176F594F2EBADADC00563EA7 /* SignUpBitmaskEnum.swift */,
 				176F59512EBADC1100563EA7 /* SignUpBitmaskValue.swift */,
+				17E672932EBD724000794A55 /* SignUpUserModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -478,6 +484,7 @@
 				17EEBFEC2E91971F00CAC9C7 /* SignUpViewModel.swift in Sources */,
 				176660DF2E95F55B00DBC79A /* HomeViewController.swift in Sources */,
 				17F48F762EB992E500EFB8D8 /* SignInBitmaskValueEnum.swift in Sources */,
+				17E672962EBD815800794A55 /* APIError.swift in Sources */,
 				170572DC2E877F43009A53B2 /* SignInViewController.swift in Sources */,
 				176660DC2E95F48F00DBC79A /* HomeState.swift in Sources */,
 				17D6AD182EA85FC800B8891B /* CoupomViewController.swift in Sources */,
@@ -508,6 +515,7 @@
 				171B51582EB4482800AD3595 /* StringUtil.swift in Sources */,
 				17D6AD062EA85E3200B8891B /* FeedCoordinator.swift in Sources */,
 				170E53552EA3CB2D00D3CF32 /* InfiniteScrollCoordinator.swift in Sources */,
+				17E672942EBD724000794A55 /* SignUpUserModel.swift in Sources */,
 				1721F4432EA9C03300140F97 /* GridViewController.swift in Sources */,
 				17D6AD142EA85FA000B8891B /* FeedViewController.swift in Sources */,
 				1721F4452EA9C05000140F97 /* GridViewCoordinator.swift in Sources */,

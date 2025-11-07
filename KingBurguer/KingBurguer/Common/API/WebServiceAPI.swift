@@ -18,7 +18,7 @@ class WebServiceAPI {
     // SINGLETON pattern
     static let shared = WebServiceAPI()
     
-    func createUser(userRequest: UserRequest){
+    func createUser(userRequest: UserRequest, completion: @escaping (Result<Void, Error>) -> Void){
         let endpoint = "https://hades.tiagoaguiar.co/kingburguer/users"
         
         let userRequestJson = JSONConverter().encode(encodable: userRequest)
@@ -26,6 +26,7 @@ class WebServiceAPI {
         
         guard let url = URL(string: endpoint) else {
             print("URL Error!!!")
+            completion(.failure(APIError.invalidURL))
             return
         }
         
@@ -38,24 +39,27 @@ class WebServiceAPI {
         
         // essa chamada é executada assincronamente
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//            print("Response ---> \(String(describing: response))")
-//            print("")
             
-            if let error = error {
-                print("Erro WEB-SERVICE-API")
-                print(error)
-                return
-            }
-            
-            guard let data = data else {
-                print("NO DATA FOUND")
-                return
-            }
-            
-            print("Success WEB-SERVICE-API")
-            if let responseValue = String(data: data, encoding: .utf8) {
-                print(responseValue)
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Erro WEB-SERVICE-API")
+                    print(error)
+                    completion(.failure(error))
+                    return
+                }
                 
+                guard let data = data else {
+                    print("NO DATA FOUND")
+                    completion(.failure(APIError.noData))
+                    return
+                }
+                
+                print("Success WEB-SERVICE-API")
+                if let responseValue = String(data: data, encoding: .utf8) {
+                    print(responseValue)
+                }
+                
+                completion(.success(()))
             }
         }
         
