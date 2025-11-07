@@ -47,26 +47,50 @@ extension String {
         return date <= Date()
     }
     
-    func reformatDateToISO8601() throws -> String {
-            
-            let formatterEntrada = DateFormatter()
-            formatterEntrada.dateFormat = "dd/MM/yyyy"
-            formatterEntrada.locale = Locale(identifier: "en_US_POSIX")
-            formatterEntrada.isLenient = false
-
-            // Tenta converter a string de entrada para um objeto Date
-            guard let dataObjeto = formatterEntrada.date(from: self) else {
-                // Se falhar, lança o erro
-                throw DateFormattingError.invalidInputFormat
-            }
-            
-            let formatterSaida = DateFormatter()
-            formatterSaida.dateFormat = "yyyy-MM-dd"
-            formatterSaida.locale = Locale(identifier: "en_US_POSIX")
-
-            // Retorna a string formatada (sem ser opcional)
-            return formatterSaida.string(from: dataObjeto)
+    func reformatDateToISO8601() -> String {
+        
+        let formatterEntrada = DateFormatter()
+        formatterEntrada.dateFormat = "dd/MM/yyyy"
+        formatterEntrada.locale = Locale(identifier: "en_US_POSIX")
+        formatterEntrada.isLenient = false
+        
+        // Tenta converter a string de entrada para um objeto Date
+        guard let dataObjeto = formatterEntrada.date(from: self) else {
+            return getCurrentDateAsString()
         }
+        
+        let formatterSaida = DateFormatter()
+        formatterSaida.dateFormat = "yyyy-MM-dd"
+        formatterSaida.locale = Locale(identifier: "en_US_POSIX")
+        
+        // Retorna a string formatada (sem ser opcional)
+        return formatterSaida.string(from: dataObjeto)
+    }
+    
+    func getCurrentDateAsString() -> String {
+        
+        let dateFormatter = DateFormatter()
+        
+        // 1. Define o formato exato "YYYY-MM-DD"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        // 2. Define o Locale para evitar problemas com fusos horários e garantir o padrão.
+        // O Locale 'en_US_POSIX' é a melhor prática para formatar datas fixas para APIs.
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        
+        // 3. Pega o momento atual (Date())
+        let currentDate = Date()
+        
+        // 4. Converte e retorna a String
+        let dateString = dateFormatter.string(from: currentDate)
+        
+        // Exemplo: "2025-11-06"
+        return dateString
+    }
+    
+    func removeCPFSpecialCharacters() -> String {
+        return self.replacingOccurrences(of: ".", with: "").replacingOccurrences(of: "-", with: "")
+    }
     
     func charAtIndex(index: Int) -> Character? {
         var indexCurrent = 0
