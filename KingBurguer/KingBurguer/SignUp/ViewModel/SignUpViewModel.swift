@@ -70,6 +70,7 @@ class SignUpViewModel {
                 print("Usuário criado com sucesso, definindo estado .success")
                 self.state = .success
                 
+                
             case .failure(let error):
                 // CHAMA UM ESTADO DE FALHA (ou lida com o erro)
                 print("Falha ao criar usuário: \(error)")
