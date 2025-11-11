@@ -9,6 +9,6 @@ import Foundation
 
 enum APIError: Error {
     case invalidURL
-    case noData
+    case errorData(message: String)
     case invalidResponseStatus(Int)
 }

@@ -287,19 +287,19 @@ extension SignUpViewController: TextFieldDelegate {
         enableLoginButton(isEnabled)
         
         if bitmask == SignUpBitmaskValueEnum.name.rawValue {
-            signUpViewModel.userData.name = text
+            signUpViewModel.signUpUserModel.name = text
             
         } else if bitmask == SignUpBitmaskValueEnum.password.rawValue {
-            signUpViewModel.userData.password = text
+            signUpViewModel.signUpUserModel.password = text
             
         } else if bitmask == SignUpBitmaskValueEnum.email.rawValue {
-            signUpViewModel.userData.email = text
+            signUpViewModel.signUpUserModel.email = text
             
         } else if bitmask == SignUpBitmaskValueEnum.cpf.rawValue {
-            signUpViewModel.userData.document = text
+            signUpViewModel.signUpUserModel.document = text
             
         } else if bitmask == SignUpBitmaskValueEnum.birthday.rawValue {
-            signUpViewModel.userData.birthday = text
+            signUpViewModel.signUpUserModel.birthday = text
         }
     }
     
@@ -341,11 +341,12 @@ extension SignUpViewController: SignUpViewModelDelegate {
         switch(state){
             
         case .none:
-            printState(state: SignUpState.none)
+            print("Status \(state)")
             break
             
         case .loading:
-            printState(state: SignUpState.loading)
+            print("Status \(state)")
+            saveButton.startLoading(true)
             break
             
         case .success:
@@ -360,9 +361,4 @@ extension SignUpViewController: SignUpViewModelDelegate {
             
         }
     }
-}
-
-
-func printState(state: SignUpState){
-    print("Status \(state)")
 }

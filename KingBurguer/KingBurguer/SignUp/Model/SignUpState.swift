@@ -12,4 +12,5 @@ enum SignUpState {
     case loading
     case success
     case error(errorMessage: String)
+    
 }
