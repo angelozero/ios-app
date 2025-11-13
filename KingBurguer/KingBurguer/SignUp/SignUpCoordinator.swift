@@ -32,4 +32,5 @@ class SignUpCoordinator {
     func goToHome(){
         parentCoordinator?.goToHome()
     }
+    
 }

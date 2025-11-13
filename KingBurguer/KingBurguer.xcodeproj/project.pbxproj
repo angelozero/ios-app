@@ -49,6 +49,9 @@
 		17EEBFE72E91588E00CAC9C7 /* SigninViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */; };
 		17EEBFE92E91969600CAC9C7 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFE82E91969600CAC9C7 /* SignUpCoordinator.swift */; };
 		17EEBFEC2E91971F00CAC9C7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEBFEB2E91971F00CAC9C7 /* SignUpViewModel.swift */; };
+		17EF0EC32EC564DE008B882B /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF0EC22EC564DE008B882B /* UserResponse.swift */; };
+		17EF0EC52EC5705B008B882B /* SignUpResponseNotAuthorized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF0EC42EC5705B008B882B /* SignUpResponseNotAuthorized.swift */; };
+		17EF0EC72EC5734B008B882B /* SignUpResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF0EC62EC5734B008B882B /* SignUpResponseError.swift */; };
 		17EF70662E8CA940004C077E /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF70652E8CA940004C077E /* SignInViewModel.swift */; };
 		17F0C1DC2E90AF1300D63FF7 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F0C1DB2E90AF1300D63FF7 /* SignInCoordinator.swift */; };
 		17F48F722EB980F700EFB8D8 /* BaseBitmaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F48F712EB980F700EFB8D8 /* BaseBitmaskProtocol.swift */; };
@@ -103,6 +106,9 @@
 		17EEBFE62E91588E00CAC9C7 /* SigninViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModelDelegate.swift; sourceTree = "<group>"; };
 		17EEBFE82E91969600CAC9C7 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		17EEBFEB2E91971F00CAC9C7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		17EF0EC22EC564DE008B882B /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
+		17EF0EC42EC5705B008B882B /* SignUpResponseNotAuthorized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponseNotAuthorized.swift; sourceTree = "<group>"; };
+		17EF0EC62EC5734B008B882B /* SignUpResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponseError.swift; sourceTree = "<group>"; };
 		17EF70652E8CA940004C077E /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		17F0C1DB2E90AF1300D63FF7 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		17F48F712EB980F700EFB8D8 /* BaseBitmaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBitmaskProtocol.swift; sourceTree = "<group>"; };
@@ -361,11 +367,12 @@
 			isa = PBXGroup;
 			children = (
 				17E4200C2EBC2A4200D20F93 /* WebServiceAPI.swift */,
-				17E4200F2EBC30B800D20F93 /* UserRequest.swift */,
 				17E420112EBC31F900D20F93 /* JSONConverter.swift */,
 				17E672952EBD815800794A55 /* APIError.swift */,
 				17E741E42EC2AB2100714C4C /* EndpointEnum.swift */,
 				17E741E62EC2B1EA00714C4C /* HttpRequestTypeEnum.swift */,
+				17E4200F2EBC30B800D20F93 /* UserRequest.swift */,
+				17EF0EC22EC564DE008B882B /* UserResponse.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -377,6 +384,8 @@
 				176F594F2EBADADC00563EA7 /* SignUpBitmaskEnum.swift */,
 				17E672932EBD724000794A55 /* SignUpUserModel.swift */,
 				17EEBFEB2E91971F00CAC9C7 /* SignUpViewModel.swift */,
+				17EF0EC42EC5705B008B882B /* SignUpResponseNotAuthorized.swift */,
+				17EF0EC62EC5734B008B882B /* SignUpResponseError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -509,6 +518,7 @@
 				17E672962EBD815800794A55 /* APIError.swift in Sources */,
 				170572DC2E877F43009A53B2 /* SignInViewController.swift in Sources */,
 				176660DC2E95F48F00DBC79A /* HomeState.swift in Sources */,
+				17EF0EC32EC564DE008B882B /* UserResponse.swift in Sources */,
 				17D6AD182EA85FC800B8891B /* CoupomViewController.swift in Sources */,
 				170572C62E876BD9009A53B2 /* AppDelegate.swift in Sources */,
 				17F0C1DC2E90AF1300D63FF7 /* SignInCoordinator.swift in Sources */,
@@ -531,6 +541,7 @@
 				170E535F2EA468E200D3CF32 /* LoadingButton.swift in Sources */,
 				176F59542EBAE53800563EA7 /* MaskUtil.swift in Sources */,
 				17E4200D2EBC2A4200D20F93 /* WebServiceAPI.swift in Sources */,
+				17EF0EC52EC5705B008B882B /* SignUpResponseNotAuthorized.swift in Sources */,
 				17DBBE9A2EAB023600871E5B /* FeedTableViewCell.swift in Sources */,
 				17D6AD102EA85ED700B8891B /* CoupomCoordinator.swift in Sources */,
 				17FED1E62E8DFEF600C877E9 /* SignInState.swift in Sources */,
@@ -541,6 +552,7 @@
 				17E672942EBD724000794A55 /* SignUpUserModel.swift in Sources */,
 				1721F4432EA9C03300140F97 /* GridViewController.swift in Sources */,
 				17D6AD142EA85FA000B8891B /* FeedViewController.swift in Sources */,
+				17EF0EC72EC5734B008B882B /* SignUpResponseError.swift in Sources */,
 				1721F4452EA9C05000140F97 /* GridViewCoordinator.swift in Sources */,
 				17EEBFE92E91969600CAC9C7 /* SignUpCoordinator.swift in Sources */,
 				1716C1372E94904800CBA6AB /* SignUpViewModelDelegate.swift in Sources */,
