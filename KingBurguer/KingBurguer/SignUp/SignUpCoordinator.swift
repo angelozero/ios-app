@@ -33,4 +33,8 @@ class SignUpCoordinator {
         parentCoordinator?.goToHome()
     }
     
+    func goToLogin() {
+        navigationController.popViewController(animated: true)
+    }
+    
 }

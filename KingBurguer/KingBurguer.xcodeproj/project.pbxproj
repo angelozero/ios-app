@@ -37,6 +37,11 @@
 		17D6AD162EA85FB800B8891B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD152EA85FB800B8891B /* ProfileViewController.swift */; };
 		17D6AD182EA85FC800B8891B /* CoupomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6AD172EA85FC800B8891B /* CoupomViewController.swift */; };
 		17DBBE9A2EAB023600871E5B /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DBBE992EAB023500871E5B /* FeedTableViewCell.swift */; };
+		17E1E25D2EC6BF1100E9E71D /* SignInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1E25C2EC6BF1100E9E71D /* SignInRequest.swift */; };
+		17E1E25F2EC6BFC300E9E71D /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1E25E2EC6BFC300E9E71D /* SignInResponse.swift */; };
+		17E1E2612EC6C3AE00E9E71D /* SignInResponseNotAuthorized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1E2602EC6C3AE00E9E71D /* SignInResponseNotAuthorized.swift */; };
+		17E1E2632EC6C3F600E9E71D /* SignInResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1E2622EC6C3F600E9E71D /* SignInResponseError.swift */; };
+		17E1E2652EC6C57700E9E71D /* SignInLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1E2642EC6C57700E9E71D /* SignInLoginModel.swift */; };
 		17E4200D2EBC2A4200D20F93 /* WebServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E4200C2EBC2A4200D20F93 /* WebServiceAPI.swift */; };
 		17E420102EBC30B800D20F93 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E4200F2EBC30B800D20F93 /* UserRequest.swift */; };
 		17E420122EBC31F900D20F93 /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E420112EBC31F900D20F93 /* JSONConverter.swift */; };
@@ -94,6 +99,11 @@
 		17D6AD152EA85FB800B8891B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		17D6AD172EA85FC800B8891B /* CoupomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupomViewController.swift; sourceTree = "<group>"; };
 		17DBBE992EAB023500871E5B /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		17E1E25C2EC6BF1100E9E71D /* SignInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequest.swift; sourceTree = "<group>"; };
+		17E1E25E2EC6BFC300E9E71D /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
+		17E1E2602EC6C3AE00E9E71D /* SignInResponseNotAuthorized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponseNotAuthorized.swift; sourceTree = "<group>"; };
+		17E1E2622EC6C3F600E9E71D /* SignInResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponseError.swift; sourceTree = "<group>"; };
+		17E1E2642EC6C57700E9E71D /* SignInLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInLoginModel.swift; sourceTree = "<group>"; };
 		17E4200C2EBC2A4200D20F93 /* WebServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceAPI.swift; sourceTree = "<group>"; };
 		17E4200F2EBC30B800D20F93 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
 		17E420112EBC31F900D20F93 /* JSONConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverter.swift; sourceTree = "<group>"; };
@@ -383,7 +393,6 @@
 				1716C1392E94988200CBA6AB /* SignUpState.swift */,
 				176F594F2EBADADC00563EA7 /* SignUpBitmaskEnum.swift */,
 				17E672932EBD724000794A55 /* SignUpUserModel.swift */,
-				17EEBFEB2E91971F00CAC9C7 /* SignUpViewModel.swift */,
 				17EF0EC42EC5705B008B882B /* SignUpResponseNotAuthorized.swift */,
 				17EF0EC62EC5734B008B882B /* SignUpResponseError.swift */,
 			);
@@ -395,6 +404,11 @@
 			children = (
 				17F48F752EB992E500EFB8D8 /* SignInBitmaskValueEnum.swift */,
 				17FED1E52E8DFEF600C877E9 /* SignInState.swift */,
+				17E1E25C2EC6BF1100E9E71D /* SignInRequest.swift */,
+				17E1E25E2EC6BFC300E9E71D /* SignInResponse.swift */,
+				17E1E2602EC6C3AE00E9E71D /* SignInResponseNotAuthorized.swift */,
+				17E1E2622EC6C3F600E9E71D /* SignInResponseError.swift */,
+				17E1E2642EC6C57700E9E71D /* SignInLoginModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -402,6 +416,7 @@
 		17EEBFEA2E9196A400CAC9C7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				17EEBFEB2E91971F00CAC9C7 /* SignUpViewModel.swift */,
 				1716C1362E94904800CBA6AB /* SignUpViewModelDelegate.swift */,
 				176F59512EBADC1100563EA7 /* SignUpBitmaskValue.swift */,
 			);
@@ -530,6 +545,7 @@
 				176660D52E95F3FA00DBC79A /* HomeCoordinator.swift in Sources */,
 				176F59502EBADADC00563EA7 /* SignUpBitmaskEnum.swift in Sources */,
 				17EB3D442EAC4F6F0001A188 /* HighlightView.swift in Sources */,
+				17E1E2632EC6C3F600E9E71D /* SignInResponseError.swift in Sources */,
 				17E420102EBC30B800D20F93 /* UserRequest.swift in Sources */,
 				17D6AD0B2EA85E7A00B8891B /* ProfileCoordinator.swift in Sources */,
 				17E741E72EC2B1EA00714C4C /* HttpRequestTypeEnum.swift in Sources */,
@@ -547,15 +563,19 @@
 				17FED1E62E8DFEF600C877E9 /* SignInState.swift in Sources */,
 				17EEBFE72E91588E00CAC9C7 /* SigninViewModelDelegate.swift in Sources */,
 				171B51582EB4482800AD3595 /* StringUtil.swift in Sources */,
+				17E1E2652EC6C57700E9E71D /* SignInLoginModel.swift in Sources */,
 				17D6AD062EA85E3200B8891B /* FeedCoordinator.swift in Sources */,
 				170E53552EA3CB2D00D3CF32 /* InfiniteScrollCoordinator.swift in Sources */,
 				17E672942EBD724000794A55 /* SignUpUserModel.swift in Sources */,
 				1721F4432EA9C03300140F97 /* GridViewController.swift in Sources */,
 				17D6AD142EA85FA000B8891B /* FeedViewController.swift in Sources */,
 				17EF0EC72EC5734B008B882B /* SignUpResponseError.swift in Sources */,
+				17E1E25D2EC6BF1100E9E71D /* SignInRequest.swift in Sources */,
 				1721F4452EA9C05000140F97 /* GridViewCoordinator.swift in Sources */,
 				17EEBFE92E91969600CAC9C7 /* SignUpCoordinator.swift in Sources */,
+				17E1E2612EC6C3AE00E9E71D /* SignInResponseNotAuthorized.swift in Sources */,
 				1716C1372E94904800CBA6AB /* SignUpViewModelDelegate.swift in Sources */,
+				17E1E25F2EC6BFC300E9E71D /* SignInResponse.swift in Sources */,
 				17E741E52EC2AB2100714C4C /* EndpointEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

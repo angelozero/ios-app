@@ -9,4 +9,5 @@ import Foundation
 
 enum EndpointEnum: String {
     case createUser = "/users"
+    case login = "/auth/login"
 }

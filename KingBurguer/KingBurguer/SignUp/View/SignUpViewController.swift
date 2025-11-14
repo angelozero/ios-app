@@ -73,6 +73,7 @@ class SignUpViewController: UIViewController {
         textField.placeholder = "enter your password..."
         textField.returnKeyType = .next
         textField.delegate = self
+        textField.secureTextEntry = true
         textField.tag = 3
         textField.bitmaskValue = SignUpBitmaskValue(SignUpBitmaskValueEnum.password)
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -341,19 +342,24 @@ extension SignUpViewController: SignUpViewModelDelegate {
         switch(state){
             
         case .none:
-            print("Status \(state)")
             break
             
         case .loading:
-            print("Status \(state)")
             saveButton.startLoading(true)
             break
             
         case .success:
-            signUpViewModel.goToHome()
+            saveButton.startLoading(false)
+            let alert  = UIAlertController(title: "Success", message: "User created with success", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                self.signUpViewModel.goToLogin()
+
+            }))
+            self.present(alert, animated: true)
             break
             
         case .error(errorMessage: let errorMessage):
+            saveButton.startLoading(false)
             let alert  = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default))
             self.present(alert, animated: true)

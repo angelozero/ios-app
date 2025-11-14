@@ -203,6 +203,13 @@ extension SignInViewController: TextFieldDelegate {
         let isEnabled = (self.bitmaskResult & requiredMask) == requiredMask
         
         enableLoginButton(isEnabled)
+        
+        if bitmask == SignInBitmaskValueEnum.email.rawValue {
+            signInViewModel.signInLoginModel.username = text
+            
+        } else if bitmask == SignInBitmaskValueEnum.password.rawValue {
+            signInViewModel.signInLoginModel.password = text
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -232,9 +239,11 @@ extension SignInViewController: SignInViewModelDelegate {
             break
             
         case .success:
+            logInButton.startLoading(false)
             signInViewModel.goToHome()
             
         case .error(errorMessage: let errorMessage):
+            logInButton.startLoading(false)
             let alert  = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default))
             self.present(alert, animated: true)

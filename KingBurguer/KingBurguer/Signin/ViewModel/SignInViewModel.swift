@@ -12,6 +12,7 @@ class SignInViewModel {
     
     weak var signInViewModelDelegate: SignInViewModelDelegate?
     var coordinatorSignIn: SignInCoordinator?
+    var signInLoginModel = SignInLoginModel()
     
     var state: SignInState = .none {
         didSet {
@@ -20,11 +21,30 @@ class SignInViewModel {
     }
     
     func send(){
-        state = .loading
+        state =  .loading
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            //self.state = .error(errorMessage: "Not Authorized")
-            self.state = .success
+        guard let username = signInLoginModel.username,
+              let password = signInLoginModel.password
+        else {
+            
+            self.state = .error(errorMessage: "Dados incompletos para login.")
+            return
+        }
+        
+        let signInRequest = SignInRequest(username: username, password: password)
+        
+        
+        WebServiceAPI.shared.login(request: signInRequest) { data, error in
+            
+            DispatchQueue.main.async {
+                if let errorMessage = error {
+                    self.state = .error(errorMessage: errorMessage)
+                    
+                } else if let createdData = data {
+                    print(data?.accessToken ?? "access+token")
+                    self.state = .success
+                }
+            }
         }
     }
     
