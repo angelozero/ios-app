@@ -28,92 +28,12 @@ class WebServiceAPI {
         case failure(NetworkError , Data?)
     }
     
-    static let shared = WebServiceAPI() // SINGLETON pattern
+    static let shared = WebServiceAPI()
     private static let API_KEY = "af13bbda-2c03-4bde-899b-317aacf7a21a"
     private static let URL_SERVICE = "https://hades.tiagoaguiar.co/kingburguer"
     
-    func login(request: SignInRequest, completion: @escaping (SignInResponse?, String?) -> Void){
-        call(path: .login, httpRequestType: .POST, data: request) { result in
-            switch result {
-                
-            case .success(let data):
-                guard let data = data else { return }
-                let response = try? JSONDecoder().decode(SignInResponse.self, from: data)
-                completion(response, nil)
-                break
-                
-            case .failure(let error, let data):
-                print("ERROR LOGIN \(error)")
-                guard let data = data else { return }
-                switch error {
-                
-                case .unauthorized:
-                    let response = try? JSONDecoder().decode(SignInResponseNotAuthorized.self, from: data)
-                    print(response?.detail ?? "Unauthorized")
-                    completion(nil, response?.detail.message ?? "Unauthorized")
-                    break
-                
-                default:
-                    let response = try? JSONDecoder().decode(SignInResponseErro.self, from: data)
-                    print(response?.detail ?? "Unknown Login Error")
-                    completion(nil, response?.detail ?? "Unknown Login Error")
-                    break
-                }
-                break
-            }
-        }
-    }
-    
-    func createUser(data: UserRequest, completion: @escaping (Bool?, String?) -> Void)  {
-        call (path: .createUser, httpRequestType: .POST, data: data) { result in
-            
-            switch result {
-                
-            case .success(let data):
-                if let dataValue = data {
-                    print("SUCESS: \(String(describing: String(data: dataValue, encoding: .utf8)))")
-                    let response = try? JSONDecoder().decode(UserResponse.self, from: dataValue)
-                    print("RESPONSE ---> \(String(describing: response))")
-                    completion(true, nil)
-                    break
-                }
-                break
-                
-            case .failure(let error, let data):
-                guard let dataValue = data else { return }
-                
-                switch error {
-                case .unauthorized:
-                    let response = try? JSONDecoder().decode(SignUpResponseNotAuthorized.self, from: dataValue)
-                    print(response?.detail ?? "Unauthorized")
-                    completion(false, response?.detail.message ?? "Unauthorized")
-                    break
-                case .badRequest:
-                    let response = try? JSONDecoder().decode(SignUpResponseError.self, from: dataValue)
-                    print(response?.detail ?? "Bad Request")
-                    completion(false, response?.detail ?? "Bad Request")
-                    break
-                    
-                case .notFound:
-                    let response = try? JSONDecoder().decode(SignUpResponseError.self, from: dataValue)
-                    print(response?.detail ?? "Not Found")
-                    completion(false, response?.detail ?? "Not Found")
-                    break
-                    
-                default:
-                    let response = try? JSONDecoder().decode(SignUpResponseError.self, from: dataValue)
-                    print(response?.detail ?? "Unknown Error")
-                    completion(false, response?.detail ?? "Unknown Error")
-                    break
-                }
-                
-                break
-            }
-        }
-    }
-    
     // @escaping ---> é um callback, é um bloco assincrono que sera executado
-    private func call <T: Encodable>(path: EndpointEnum, httpRequestType: HttpRequestTypeEnum, data: T?, completion: @escaping (Result) -> Void){
+    func call <T: Encodable>(path: EndpointEnum, httpRequestType: HttpRequestTypeEnum, data: T?, completion: @escaping (Result) -> Void){
         guard let request = generateRequest(path: path, httpRequestType: httpRequestType, data: data) else { return }
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in

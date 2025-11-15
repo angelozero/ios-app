@@ -20,6 +20,13 @@ class SignInViewModel {
         }
     }
     
+    
+    private let interactor: SignInInteractor
+    
+    init(interactor: SignInInteractor){
+        self.interactor = interactor
+    }
+    
     func send(){
         state =  .loading
         
@@ -34,7 +41,7 @@ class SignInViewModel {
         let signInRequest = SignInRequest(username: username, password: password)
         
         
-        WebServiceAPI.shared.login(request: signInRequest) { data, error in
+        interactor.login(request: signInRequest) { data, error in
             
             DispatchQueue.main.async {
                 if let errorMessage = error {

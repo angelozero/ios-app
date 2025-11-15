@@ -21,6 +21,12 @@ class SignUpViewModel {
         }
     }
     
+    private let interactor: SignUpInteractor
+    
+    init(interactor: SignUpInteractor){
+        self.interactor = interactor
+    }
+    
     func send(){
         state =  .loading
         
@@ -41,7 +47,7 @@ class SignUpViewModel {
                                       birthday: birthday.reformatDateToISO8601())
         
         
-        WebServiceAPI.shared.createUser(data: userRequest) { created, error in
+        interactor.createUser(data: userRequest) { created, error in
             
             DispatchQueue.main.async {
                 if let errorMessage = error {
