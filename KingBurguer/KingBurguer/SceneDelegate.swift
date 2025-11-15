@@ -9,6 +9,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
+    let localDataSource: LocalDataSource = .shared
     var window: UIWindow?
     var signInCoordinator: SignInCoordinator?
     
@@ -16,6 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
+        
+        if let userAuth = localDataSource.getUserAuth() {
+            print("User Authenticated ---> \(userAuth.accessToken)")
+        } else {
+            print("User not authenticated")
+        }
         
         let coordinator = SignInCoordinator(window: window)
         self.signInCoordinator = coordinator

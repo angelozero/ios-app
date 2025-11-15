@@ -63,6 +63,8 @@
 		17F3152E2EC80E3900BFB117 /* SignUpRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F3152D2EC80E3900BFB117 /* SignUpRemoteDataSource.swift */; };
 		17F315312EC8127400BFB117 /* SignInInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F315302EC8127400BFB117 /* SignInInteractor.swift */; };
 		17F315332EC812CD00BFB117 /* SignInRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F315322EC812CD00BFB117 /* SignInRemoteDataSource.swift */; };
+		17F315362EC8158C00BFB117 /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F315352EC8158C00BFB117 /* LocalDataSource.swift */; };
+		17F315392EC8162700BFB117 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F315382EC8162700BFB117 /* UserAuth.swift */; };
 		17F48F722EB980F700EFB8D8 /* BaseBitmaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F48F712EB980F700EFB8D8 /* BaseBitmaskProtocol.swift */; };
 		17F48F742EB989D700EFB8D8 /* SignInBitmaskValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F48F732EB989D700EFB8D8 /* SignInBitmaskValue.swift */; };
 		17F48F762EB992E500EFB8D8 /* SignInBitmaskValueEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F48F752EB992E500EFB8D8 /* SignInBitmaskValueEnum.swift */; };
@@ -129,6 +131,8 @@
 		17F3152D2EC80E3900BFB117 /* SignUpRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRemoteDataSource.swift; sourceTree = "<group>"; };
 		17F315302EC8127400BFB117 /* SignInInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInInteractor.swift; sourceTree = "<group>"; };
 		17F315322EC812CD00BFB117 /* SignInRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRemoteDataSource.swift; sourceTree = "<group>"; };
+		17F315352EC8158C00BFB117 /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
+		17F315382EC8162700BFB117 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		17F48F712EB980F700EFB8D8 /* BaseBitmaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBitmaskProtocol.swift; sourceTree = "<group>"; };
 		17F48F732EB989D700EFB8D8 /* SignInBitmaskValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInBitmaskValue.swift; sourceTree = "<group>"; };
 		17F48F752EB992E500EFB8D8 /* SignInBitmaskValueEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInBitmaskValueEnum.swift; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 		170E535C2EA468C700D3CF32 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				17F315342EC8158200BFB117 /* DataSource */,
 				17E4200E2EBC30A600D20F93 /* API */,
 				170E535D2EA468D300D3CF32 /* View */,
 				171B51572EB4482800AD3595 /* StringUtil.swift */,
@@ -392,6 +397,7 @@
 				17E741E62EC2B1EA00714C4C /* HttpRequestTypeEnum.swift */,
 				17E4200F2EBC30B800D20F93 /* UserRequest.swift */,
 				17EF0EC22EC564DE008B882B /* UserResponse.swift */,
+				17F315382EC8162700BFB117 /* UserAuth.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -458,6 +464,14 @@
 				17F315322EC812CD00BFB117 /* SignInRemoteDataSource.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		17F315342EC8158200BFB117 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				17F315352EC8158C00BFB117 /* LocalDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		17FABE372E8F50980055ADD2 /* SignUp */ = {
@@ -580,6 +594,7 @@
 				17D6AD0B2EA85E7A00B8891B /* ProfileCoordinator.swift in Sources */,
 				17F3152C2EC80D2E00BFB117 /* SignUpInteractor.swift in Sources */,
 				17E741E72EC2B1EA00714C4C /* HttpRequestTypeEnum.swift in Sources */,
+				17F315362EC8158C00BFB117 /* LocalDataSource.swift in Sources */,
 				176660D82E95F46600DBC79A /* HomeViewModel.swift in Sources */,
 				171130E02EB19CF50052F860 /* FeedCollectionViewCell.swift in Sources */,
 				170E535B2EA3CF4000D3CF32 /* InfiniteScrollModel.swift in Sources */,
@@ -600,6 +615,7 @@
 				170E53552EA3CB2D00D3CF32 /* InfiniteScrollCoordinator.swift in Sources */,
 				17E672942EBD724000794A55 /* SignUpUserModel.swift in Sources */,
 				1721F4432EA9C03300140F97 /* GridViewController.swift in Sources */,
+				17F315392EC8162700BFB117 /* UserAuth.swift in Sources */,
 				17D6AD142EA85FA000B8891B /* FeedViewController.swift in Sources */,
 				17EF0EC72EC5734B008B882B /* SignUpResponseError.swift in Sources */,
 				17E1E25D2EC6BF1100E9E71D /* SignInRequest.swift in Sources */,
