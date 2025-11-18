@@ -47,8 +47,8 @@ class SignInViewModel {
                 if let errorMessage = error {
                     self.state = .error(errorMessage: errorMessage)
                     
-                } else if let createdData = data {
-                    print(data?.accessToken ?? "access+token")
+                } else if let data {
+                    print(data.accessToken)
                     self.state = .success
                 }
             }

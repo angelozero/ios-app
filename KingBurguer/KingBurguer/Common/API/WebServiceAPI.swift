@@ -33,8 +33,8 @@ class WebServiceAPI {
     private static let URL_SERVICE = "https://hades.tiagoaguiar.co/kingburguer"
     
     // @escaping ---> é um callback, é um bloco assincrono que sera executado
-    func call <T: Encodable>(path: EndpointEnum, httpRequestType: HttpRequestTypeEnum, data: T?, completion: @escaping (Result) -> Void){
-        guard let request = generateRequest(path: path, httpRequestType: httpRequestType, data: data) else { return }
+    func call <T: Encodable>(path: EndpointEnum, httpRequestType: HttpRequestTypeEnum, accessToken: String? = nil, data: T?, completion: @escaping (Result) -> Void){
+        guard let request = generateRequest(path: path, httpRequestType: httpRequestType, accessToken: accessToken, data: data) else { return }
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -75,8 +75,8 @@ class WebServiceAPI {
         
         task.resume()
     }
-    
-    private func generateRequest(path: EndpointEnum, httpRequestType: HttpRequestTypeEnum, data: Encodable?) -> URLRequest? {
+
+    private func generateRequest(path: EndpointEnum, httpRequestType: HttpRequestTypeEnum, accessToken: String? = nil, data: Encodable?) -> URLRequest? {
         guard let url = URL(string: WebServiceAPI.URL_SERVICE + path.rawValue) else {
             print("URL Error!!!")
             return nil
@@ -86,6 +86,10 @@ class WebServiceAPI {
         request.setValue(WebServiceAPI.API_KEY, forHTTPHeaderField: "x-secret-key")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "accept")
+        
+        if let accessToken {
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField:  "Authorization")
+        }
         
         request.httpMethod = httpRequestType.rawValue
         if let dataJson = data {

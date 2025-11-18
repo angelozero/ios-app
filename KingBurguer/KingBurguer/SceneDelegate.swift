@@ -13,6 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     var homeCoordinator: HomeCoordinator!
+    private var splashInteractor = SplashInteractor()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -20,19 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         
         if let userAuth = localDataSource.getUserAuth() {
-            print("User Authenticated ---> \(userAuth.accessToken)")
-            
-            if Date().timeIntervalSince1970 > Double(userAuth.expiresSeconds) {
-                print("Login token expired")
-            } else {
-                homeCoordinator = HomeCoordinator(window: window)
-                homeCoordinator.start()
-            }
+            userAuthenticated(userAuth: userAuth)
             
         } else {
-            print("User not authenticated")
-            let signInCoordinator = SignInCoordinator(window: window)
-            signInCoordinator.start()
+            userNotAuthenticated()
         }
         
         window?.makeKeyAndVisible()
@@ -56,6 +48,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func sceneDidEnterBackground(_ scene: UIScene) {
         
+    }
+    
+    private func userAuthenticated(userAuth: UserAuth){
+        print("User Authenticated ---> \(userAuth.accessToken)")
+        
+        if Date().timeIntervalSince1970 > Double(userAuth.expiresSeconds) {
+            print("Login token expired")
+            let refreshTokenRequest = RefreshTokenRequest(refreshToken: userAuth.refreshToken)
+            DispatchQueue.main.async {
+                self.splashInteractor.refreshToken(request: refreshTokenRequest) { response, isFail in
+                    if isFail {
+                        let signInCoordinator = SignInCoordinator(window: self.window)
+                        signInCoordinator.start()
+                        
+                    } else {
+                        self.homeCoordinator = HomeCoordinator(window: self.window)
+                        self.homeCoordinator.start()
+                    }
+                }
+            }
+        } else {
+            homeCoordinator = HomeCoordinator(window: window)
+            homeCoordinator.start()
+        }
+    }
+    
+    private func userNotAuthenticated(){
+        print("User not authenticated")
+        let signInCoordinator = SignInCoordinator(window: window)
+        signInCoordinator.start()
     }
     
 }

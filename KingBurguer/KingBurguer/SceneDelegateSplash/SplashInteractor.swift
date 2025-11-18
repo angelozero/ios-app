@@ -1,23 +1,29 @@
 //
-//  SignInInteractor.swift
+//  SceneDelegateInteractor.swift
 //  KingBurguer
 //
-//  Created by angelo on 14/11/25.
+//  Created by angelo on 17/11/25.
 //
 
 import Foundation
 
-
-class SignInInteractor {
-    
-    private let remote: SignInRemoteDataSource = .shared
+class SplashInteractor {
+    private let remote: SplashRemoteDataSource = .shared
     private let local: LocalDataSource = .shared
     
-    func login(request: SignInRequest, completion: @escaping (SignInResponse?, String?) -> Void){
-        remote.login(request: request) { signInResponse, error in
+    func refreshToken(request: RefreshTokenRequest, completion: @escaping (SignInResponse?, Bool) -> Void){
+        
+        let data = local.getUserAuth()
+        
+        guard let userAccessToken = data?.accessToken else {
+            completion(nil, true)
+            return
+        }
+        
+        remote.refreshToken(request: request, accessToken: userAccessToken) { signInResponse, isFail in
             
             guard let response = signInResponse else {
-                completion(nil, error)
+                completion(nil, true)
                 return
             }
             
@@ -29,7 +35,7 @@ class SignInInteractor {
             
             self.local.insertUserAuth(userAuth: userAuth)
             
-            completion(signInResponse, error)
+            completion(signInResponse, isFail)
         }
     }
 }
