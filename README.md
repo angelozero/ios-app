@@ -1,3 +1,5 @@
+![MVVM-C](./MVVM-c.drawio.png)
+
 1.  **Fundamentos do Projeto:** Ciclo de Vida (`AppDelegate`, `SceneDelegate`).
 2.  **Visual:** Gerenciamento de Recursos (`Assets`, `Storyboards`).
 3.  **Desenvolvimento de Tela:** Ciclo de Vida da `ViewController` e Construção da UI (`Auto Layout`).
