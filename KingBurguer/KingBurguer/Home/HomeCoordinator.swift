@@ -20,6 +20,5 @@ class HomeCoordinator {
         homeViewController.navigationItem.title = "Home"
 
         window?.rootViewController = homeViewController
-        window?.makeKeyAndVisible()
     }
 }

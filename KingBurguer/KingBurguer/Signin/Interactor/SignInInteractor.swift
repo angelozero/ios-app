@@ -20,7 +20,7 @@ class SignInInteractor {
             
             let userAuth = UserAuth(accessToken: response.accessToken,
                                     refreshToken: response.refreshToken,
-                                    expiresSeconds: response.expiresSeconds,
+                                    expiresSeconds: Int(Date().timeIntervalSince1970 + Double(response.expiresSeconds)),
                                     tokenType: response.tokenType)
             
             

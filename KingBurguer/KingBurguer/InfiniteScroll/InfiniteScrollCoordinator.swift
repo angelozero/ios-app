@@ -28,6 +28,5 @@ class InfiniteScrollCoordinator {
         self.navigationController.pushViewController(infiniteScrollController, animated: true)
         
         window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
     }
 }

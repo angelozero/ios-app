@@ -32,7 +32,6 @@ class SignInCoordinator {
         self.navigationController.pushViewController(signInViewController, animated: true)
         
         window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
     }
     
     
