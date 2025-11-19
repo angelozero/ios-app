@@ -379,9 +379,6 @@ Apesar de o código estar atualmente em `SignInViewController`, a navegação re
 
 Essa estrutura garante que a View Controller não precise saber nada sobre os resultados da ViewModel, e o Coordinator não precise saber nada sobre a lógica interna da ViewModel.
 
-Claro, aqui está o item 8 do seu README, explicando a nova implementação e as correções arquiteturais necessárias.
-
-````markdown
 ## 7\. Orquestração de Fluxo (Coordinator e Reatividade)
 
 O projeto migrou para o **Padrão Coordinator**, que separa a lógica de navegação dos View Controllers, garantindo que cada classe mantenha uma única responsabilidade.
