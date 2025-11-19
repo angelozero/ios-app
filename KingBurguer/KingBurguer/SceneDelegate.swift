@@ -69,8 +69,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 }
             }
         } else {
-            homeCoordinator = HomeCoordinator(window: window)
-            homeCoordinator.start()
+            let signInCoordinator = SignInCoordinator(window: self.window)
+            signInCoordinator.start()
         }
     }
     

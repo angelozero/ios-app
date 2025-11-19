@@ -11,13 +11,20 @@ import UIKit
 class HomeCoordinator {
     private let window: UIWindow?
     
+    private let feedCoordinator: FeedCoordinator!
+    
     init(window: UIWindow?){
         self.window = window
+        self.feedCoordinator = FeedCoordinator()
     }
     
     func start(){
         let homeViewController = HomeViewController()
         homeViewController.navigationItem.title = "Home"
+        
+        let accessToken = feedCoordinator.getUserAccessToken()
+        
+        feedCoordinator.fetchFeed(accesToken: accessToken)
 
         window?.rootViewController = homeViewController
     }

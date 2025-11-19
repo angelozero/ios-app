@@ -33,7 +33,7 @@ class WebServiceAPI {
     private static let URL_SERVICE = "https://hades.tiagoaguiar.co/kingburguer"
     
     // @escaping ---> é um callback, é um bloco assincrono que sera executado
-    func call <T: Encodable>(path: EndpointEnum, httpRequestType: HttpRequestTypeEnum, accessToken: String? = nil, data: T?, completion: @escaping (Result) -> Void){
+    func call <T: Encodable>(path: EndpointEnum, httpRequestType: HttpRequestTypeEnum, accessToken: String? = nil, data: T? = Data(), completion: @escaping (Result) -> Void){
         guard let request = generateRequest(path: path, httpRequestType: httpRequestType, accessToken: accessToken, data: data) else { return }
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -92,8 +92,10 @@ class WebServiceAPI {
         }
         
         request.httpMethod = httpRequestType.rawValue
-        if let dataJson = data {
-            request.httpBody = JSONConverter().encode(encodable: dataJson)
+        if httpRequestType != .GET && httpRequestType != .DELETE {
+            if let dataJson = data {
+                request.httpBody = JSONConverter().encode(encodable: dataJson)
+            }
         }
         
         return request

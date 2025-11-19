@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17000EB32ECD4DEF00E70AF4 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17000EB22ECD4DEF00E70AF4 /* FeedViewModel.swift */; };
+		17000EB62ECD4E5C00E70AF4 /* FeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17000EB52ECD4E5C00E70AF4 /* FeedInteractor.swift */; };
+		17000EB82ECD506400E70AF4 /* FeedRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17000EB72ECD506400E70AF4 /* FeedRemoteDataSource.swift */; };
+		17000EBA2ECD513600E70AF4 /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17000EB92ECD513600E70AF4 /* FeedResponse.swift */; };
+		17000EBD2ECD52AD00E70AF4 /* FeedCategoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17000EBC2ECD52AD00E70AF4 /* FeedCategoriesResponse.swift */; };
+		17000EBF2ECD530900E70AF4 /* FeedProductsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17000EBE2ECD530900E70AF4 /* FeedProductsResponse.swift */; };
 		170572C62E876BD9009A53B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170572C52E876BD9009A53B2 /* AppDelegate.swift */; };
 		170572C82E876BD9009A53B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170572C72E876BD9009A53B2 /* SceneDelegate.swift */; };
 		170572CF2E876BDA009A53B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170572CE2E876BDA009A53B2 /* Assets.xcassets */; };
@@ -76,6 +82,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17000EB22ECD4DEF00E70AF4 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		17000EB52ECD4E5C00E70AF4 /* FeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInteractor.swift; sourceTree = "<group>"; };
+		17000EB72ECD506400E70AF4 /* FeedRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRemoteDataSource.swift; sourceTree = "<group>"; };
+		17000EB92ECD513600E70AF4 /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
+		17000EBC2ECD52AD00E70AF4 /* FeedCategoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCategoriesResponse.swift; sourceTree = "<group>"; };
+		17000EBE2ECD530900E70AF4 /* FeedProductsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedProductsResponse.swift; sourceTree = "<group>"; };
 		170572C22E876BD9009A53B2 /* KingBurguer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KingBurguer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		170572C52E876BD9009A53B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		170572C72E876BD9009A53B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +169,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17000EB42ECD4E5100E70AF4 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				17000EB52ECD4E5C00E70AF4 /* FeedInteractor.swift */,
+				17000EB72ECD506400E70AF4 /* FeedRemoteDataSource.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		17000EBB2ECD523000E70AF4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				17000EB92ECD513600E70AF4 /* FeedResponse.swift */,
+				17000EBC2ECD52AD00E70AF4 /* FeedCategoriesResponse.swift */,
+				17000EBE2ECD530900E70AF4 /* FeedProductsResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		170572B92E876BD9009A53B2 = {
 			isa = PBXGroup;
 			children = (
@@ -176,21 +207,21 @@
 		170572C42E876BD9009A53B2 /* KingBurguer */ = {
 			isa = PBXGroup;
 			children = (
-				1721F43F2EA9BFED00140F97 /* Grid */,
-				17D6AD0E2EA85EC600B8891B /* Coupom */,
-				17D6AD092EA85E6100B8891B /* Profile */,
-				17D6AD042EA85E0D00B8891B /* Feed */,
-				170E535C2EA468C700D3CF32 /* Common */,
-				170E53532EA3CB0500D3CF32 /* InfiniteScroll */,
-				176660D32E95F37600DBC79A /* Home */,
-				17FABE372E8F50980055ADD2 /* SignUp */,
-				170572D92E877F06009A53B2 /* Signin */,
-				170C4CCB2ECC03AC0053A034 /* SceneDelegateSplash */,
-				170572C72E876BD9009A53B2 /* SceneDelegate.swift */,
 				170572C52E876BD9009A53B2 /* AppDelegate.swift */,
 				170572CE2E876BDA009A53B2 /* Assets.xcassets */,
-				170572D02E876BDA009A53B2 /* LaunchScreen.storyboard */,
+				170E535C2EA468C700D3CF32 /* Common */,
+				17D6AD0E2EA85EC600B8891B /* Coupom */,
+				17D6AD042EA85E0D00B8891B /* Feed */,
+				1721F43F2EA9BFED00140F97 /* Grid */,
+				176660D32E95F37600DBC79A /* Home */,
+				170E53532EA3CB0500D3CF32 /* InfiniteScroll */,
 				170572D32E876BDA009A53B2 /* Info.plist */,
+				170572D02E876BDA009A53B2 /* LaunchScreen.storyboard */,
+				17D6AD092EA85E6100B8891B /* Profile */,
+				170572C72E876BD9009A53B2 /* SceneDelegate.swift */,
+				170C4CCB2ECC03AC0053A034 /* SceneDelegateSplash */,
+				170572D92E877F06009A53B2 /* Signin */,
+				17FABE372E8F50980055ADD2 /* SignUp */,
 			);
 			path = KingBurguer;
 			sourceTree = "<group>";
@@ -329,6 +360,8 @@
 		17D6AD042EA85E0D00B8891B /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				17000EBB2ECD523000E70AF4 /* Model */,
+				17000EB42ECD4E5100E70AF4 /* Interactor */,
 				17D6AD082EA85E4900B8891B /* View */,
 				17D6AD072EA85E3B00B8891B /* ViewModel */,
 				17D6AD052EA85E3200B8891B /* FeedCoordinator.swift */,
@@ -339,6 +372,7 @@
 		17D6AD072EA85E3B00B8891B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				17000EB22ECD4DEF00E70AF4 /* FeedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -583,12 +617,14 @@
 			files = (
 				17E420122EBC31F900D20F93 /* JSONConverter.swift in Sources */,
 				170C4CCF2ECC046F0053A034 /* RefreshTokenRequest.swift in Sources */,
+				17000EB62ECD4E5C00E70AF4 /* FeedInteractor.swift in Sources */,
 				17FABE3A2E8F50C40055ADD2 /* SignUpViewController.swift in Sources */,
 				17EF70662E8CA940004C077E /* SignInViewModel.swift in Sources */,
 				170E53592EA3CE4100D3CF32 /* InfiniteScrollViewController.swift in Sources */,
 				17F48F742EB989D700EFB8D8 /* SignInBitmaskValue.swift in Sources */,
 				17EEBFEC2E91971F00CAC9C7 /* SignUpViewModel.swift in Sources */,
 				17F315312EC8127400BFB117 /* SignInInteractor.swift in Sources */,
+				17000EBD2ECD52AD00E70AF4 /* FeedCategoriesResponse.swift in Sources */,
 				176660DF2E95F55B00DBC79A /* HomeViewController.swift in Sources */,
 				17F48F762EB992E500EFB8D8 /* SignInBitmaskValueEnum.swift in Sources */,
 				17E672962EBD815800794A55 /* APIError.swift in Sources */,
@@ -597,6 +633,7 @@
 				17EF0EC32EC564DE008B882B /* UserResponse.swift in Sources */,
 				17D6AD182EA85FC800B8891B /* CoupomViewController.swift in Sources */,
 				170572C62E876BD9009A53B2 /* AppDelegate.swift in Sources */,
+				17000EBF2ECD530900E70AF4 /* FeedProductsResponse.swift in Sources */,
 				17F0C1DC2E90AF1300D63FF7 /* SignInCoordinator.swift in Sources */,
 				170572C82E876BD9009A53B2 /* SceneDelegate.swift in Sources */,
 				17D6AD162EA85FB800B8891B /* ProfileViewController.swift in Sources */,
@@ -604,8 +641,10 @@
 				1716C13A2E94988200CBA6AB /* SignUpState.swift in Sources */,
 				176660DA2E95F47D00DBC79A /* HomeViewModelDelegate.swift in Sources */,
 				176660D52E95F3FA00DBC79A /* HomeCoordinator.swift in Sources */,
+				17000EB82ECD506400E70AF4 /* FeedRemoteDataSource.swift in Sources */,
 				176F59502EBADADC00563EA7 /* SignUpBitmaskEnum.swift in Sources */,
 				17F315332EC812CD00BFB117 /* SignInRemoteDataSource.swift in Sources */,
+				17000EB32ECD4DEF00E70AF4 /* FeedViewModel.swift in Sources */,
 				17EB3D442EAC4F6F0001A188 /* HighlightView.swift in Sources */,
 				17E1E2632EC6C3F600E9E71D /* SignInResponseError.swift in Sources */,
 				17E420102EBC30B800D20F93 /* UserRequest.swift in Sources */,
@@ -622,6 +661,7 @@
 				176F59542EBAE53800563EA7 /* MaskUtil.swift in Sources */,
 				17E4200D2EBC2A4200D20F93 /* WebServiceAPI.swift in Sources */,
 				17EF0EC52EC5705B008B882B /* SignUpResponseNotAuthorized.swift in Sources */,
+				17000EBA2ECD513600E70AF4 /* FeedResponse.swift in Sources */,
 				17DBBE9A2EAB023600871E5B /* FeedTableViewCell.swift in Sources */,
 				17F3152E2EC80E3900BFB117 /* SignUpRemoteDataSource.swift in Sources */,
 				17D6AD102EA85ED700B8891B /* CoupomCoordinator.swift in Sources */,
