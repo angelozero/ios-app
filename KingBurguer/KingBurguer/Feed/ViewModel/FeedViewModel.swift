@@ -23,7 +23,7 @@ class FeedViewModel {
             DispatchQueue.main.async {
                 if let dataResponse = data {
                     print("FIM FEED")
-                    print("TOTAL CATEGORIAS: \(dataResponse.categories)")
+                    print("TOTAL CATEGORIAS: \(dataResponse.categories.count)")
                     
                 } else {
                     print("ERRO FIM FEED")
