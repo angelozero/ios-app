@@ -26,6 +26,7 @@ class FeedViewModel {
                     print("TOTAL CATEGORIAS: \(dataResponse.categories.count)")
                     
                 } else {
+
                     print("ERRO FIM FEED")
                 }
             }
