@@ -34,6 +34,12 @@ class FeedViewController: UIViewController {
         return tableView
     }()
     
+    var viewModel: FeedViewModel? {
+        didSet {
+            viewModel?.delegate = self
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +55,8 @@ class FeedViewController: UIViewController {
         homeFeedTable.dataSource = self
         
         configureNavBar()
+        
+        viewModel?.fetchFeed()
     }
     
     override func viewDidLayoutSubviews() {
@@ -92,7 +100,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         40
     }
-
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 40))
@@ -114,4 +122,20 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+}
+
+extension FeedViewController: FeedViewModelDelegate {
+    func viewModelDidChanged(state: FeedState) {
+        switch(state) {
+        case .loading:
+            print("OK!!!")
+            break
+        case .success:
+            print("NOK!!!")
+            break
+        case .error(let errorMessage):
+            print("ERROR!!! \(errorMessage)")
+            break
+        }
+    }
 }

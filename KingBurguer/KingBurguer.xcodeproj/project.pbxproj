@@ -67,6 +67,8 @@
 		17EF0EC52EC5705B008B882B /* SignUpResponseNotAuthorized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF0EC42EC5705B008B882B /* SignUpResponseNotAuthorized.swift */; };
 		17EF0EC72EC5734B008B882B /* SignUpResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF0EC62EC5734B008B882B /* SignUpResponseError.swift */; };
 		17EF70662E8CA940004C077E /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF70652E8CA940004C077E /* SignInViewModel.swift */; };
+		17F097AE2ED68170000D17FF /* FeedViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F097AD2ED68170000D17FF /* FeedViewModelDelegate.swift */; };
+		17F097B02ED681B5000D17FF /* FeedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F097AF2ED681B5000D17FF /* FeedState.swift */; };
 		17F0C1DC2E90AF1300D63FF7 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F0C1DB2E90AF1300D63FF7 /* SignInCoordinator.swift */; };
 		17F3152C2EC80D2E00BFB117 /* SignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F3152B2EC80D2E00BFB117 /* SignUpInteractor.swift */; };
 		17F3152E2EC80E3900BFB117 /* SignUpRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F3152D2EC80E3900BFB117 /* SignUpRemoteDataSource.swift */; };
@@ -144,6 +146,8 @@
 		17EF0EC42EC5705B008B882B /* SignUpResponseNotAuthorized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponseNotAuthorized.swift; sourceTree = "<group>"; };
 		17EF0EC62EC5734B008B882B /* SignUpResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponseError.swift; sourceTree = "<group>"; };
 		17EF70652E8CA940004C077E /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		17F097AD2ED68170000D17FF /* FeedViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelDelegate.swift; sourceTree = "<group>"; };
+		17F097AF2ED681B5000D17FF /* FeedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedState.swift; sourceTree = "<group>"; };
 		17F0C1DB2E90AF1300D63FF7 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		17F3152B2EC80D2E00BFB117 /* SignUpInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInteractor.swift; sourceTree = "<group>"; };
 		17F3152D2EC80E3900BFB117 /* SignUpRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRemoteDataSource.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				17000EB92ECD513600E70AF4 /* FeedResponse.swift */,
 				17000EBC2ECD52AD00E70AF4 /* FeedCategoriesResponse.swift */,
 				17000EBE2ECD530900E70AF4 /* FeedProductsResponse.swift */,
+				17F097AF2ED681B5000D17FF /* FeedState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				17000EB22ECD4DEF00E70AF4 /* FeedViewModel.swift */,
+				17F097AD2ED68170000D17FF /* FeedViewModelDelegate.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -646,6 +652,7 @@
 				17F315332EC812CD00BFB117 /* SignInRemoteDataSource.swift in Sources */,
 				17000EB32ECD4DEF00E70AF4 /* FeedViewModel.swift in Sources */,
 				17EB3D442EAC4F6F0001A188 /* HighlightView.swift in Sources */,
+				17F097AE2ED68170000D17FF /* FeedViewModelDelegate.swift in Sources */,
 				17E1E2632EC6C3F600E9E71D /* SignInResponseError.swift in Sources */,
 				17E420102EBC30B800D20F93 /* UserRequest.swift in Sources */,
 				17D6AD0B2EA85E7A00B8891B /* ProfileCoordinator.swift in Sources */,
@@ -653,6 +660,7 @@
 				17E741E72EC2B1EA00714C4C /* HttpRequestTypeEnum.swift in Sources */,
 				17F315362EC8158C00BFB117 /* LocalDataSource.swift in Sources */,
 				176660D82E95F46600DBC79A /* HomeViewModel.swift in Sources */,
+				17F097B02ED681B5000D17FF /* FeedState.swift in Sources */,
 				171130E02EB19CF50052F860 /* FeedCollectionViewCell.swift in Sources */,
 				170E535B2EA3CF4000D3CF32 /* InfiniteScrollModel.swift in Sources */,
 				176F59522EBADC1100563EA7 /* SignUpBitmaskValue.swift in Sources */,

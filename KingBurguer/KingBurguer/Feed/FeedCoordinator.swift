@@ -12,14 +12,11 @@ class FeedCoordinator {
     private let feedViewModel: FeedViewModel
     
     init() {
-        self.feedViewModel = FeedViewModel()
+        self.feedViewModel = FeedViewModel(interactor: FeedInteractor())
     }
     
-    func fetchFeed(accesToken: String){
-        feedViewModel.fetchFeed(accessToken: accesToken)
+    func fetchFeed(){
+        feedViewModel.fetchFeed()
     }
     
-    func getUserAccessToken() -> String {
-        return feedViewModel.getUserAccessToken()
-    }
 }

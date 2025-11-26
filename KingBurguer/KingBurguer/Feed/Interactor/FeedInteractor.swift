@@ -12,18 +12,14 @@ class FeedInteractor {
     private let remote: FeedRemoteDataSource = .shared
     private let local: LocalDataSource = .shared
     
-    func fetchFeed(accessToken: String, completion: @escaping (FeedResponse?, String?) -> Void){
-        remote.fetchFeed(accessToken: accessToken) { fetchFeedResponse, error in
-            if let fetchFeedResponse {
-                completion(fetchFeedResponse, nil)
-                
-            } else {
-                completion(nil, "SEM FEED RETORNADO")
-            }
+    func fetchFeed(completion: @escaping (FeedResponse?, String?) -> Void){
+        let userAuth = local.getUserAuth()
+        
+        guard let accessToken = userAuth?.accessToken else {
+            completion(nil, "Access Token not found to feed service")
+            return
         }
-    }
-    
-    func getUserAccessToken() -> String {
-        return local.getUserAuth()?.accessToken ?? ""
+
+        remote.fetchFeed(accessToken: accessToken, completion: completion)
     }
 }

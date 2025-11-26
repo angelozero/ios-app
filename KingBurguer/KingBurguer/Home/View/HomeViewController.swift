@@ -16,7 +16,7 @@ class HomeViewController: UITabBarController {
         
         view.tintColor = .systemRed
 
-        let feedViewController = UINavigationController(rootViewController: FeedViewController())
+        let feedViewController = UINavigationController(rootViewController: getFeedViewController())
         let coupomViewController = UINavigationController(rootViewController: CoupomViewController())
         let profileViewController = UINavigationController(rootViewController: ProfileViewController())
         let gridViewController = UINavigationController(rootViewController: GridViewController())
@@ -33,5 +33,12 @@ class HomeViewController: UITabBarController {
         gridViewController.tabBarItem.image = UIImage(systemName: "square.grid.3x3")
         
         setViewControllers([feedViewController, coupomViewController, profileViewController, gridViewController], animated: true)
+    }
+    
+    func getFeedViewController() -> FeedViewController {
+        let feedViewController = FeedViewController()
+        feedViewController.viewModel = FeedViewModel(interactor: FeedInteractor())
+
+        return feedViewController
     }
 }

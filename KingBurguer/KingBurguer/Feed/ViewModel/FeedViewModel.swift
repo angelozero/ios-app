@@ -11,14 +11,20 @@ import Foundation
 class FeedViewModel {
     
     private let feedInteractor: FeedInteractor
-    
-    init() {
-        self.feedInteractor = FeedInteractor()
+    var delegate: FeedViewModelDelegate?
+    var state: FeedState = .loading {
+        didSet {
+            delegate?.viewModelDidChanged(state: state)
+        }
     }
     
-    func fetchFeed(accessToken: String){
+    init(interactor: FeedInteractor) {
+        self.feedInteractor = interactor
+    }
+    
+    func fetchFeed(){
         
-        feedInteractor.fetchFeed(accessToken: accessToken){ data, error in
+        feedInteractor.fetchFeed(){ data, error in
             
             DispatchQueue.main.async {
                 if let dataResponse = data {
@@ -30,9 +36,5 @@ class FeedViewModel {
                 }
             }
         }
-    }
-    
-    func getUserAccessToken() -> String {
-        return feedInteractor.getUserAccessToken()
     }
 }

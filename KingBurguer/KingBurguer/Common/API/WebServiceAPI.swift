@@ -92,6 +92,7 @@ class WebServiceAPI {
         }
         
         request.httpMethod = httpRequestType.rawValue
+        
         if httpRequestType != .GET && httpRequestType != .DELETE {
             if let dataJson = data {
                 request.httpBody = JSONConverter().encode(encodable: dataJson)

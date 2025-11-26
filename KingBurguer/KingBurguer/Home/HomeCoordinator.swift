@@ -22,9 +22,7 @@ class HomeCoordinator {
         let homeViewController = HomeViewController()
         homeViewController.navigationItem.title = "Home"
         
-        let accessToken = feedCoordinator.getUserAccessToken()
-        
-        feedCoordinator.fetchFeed(accesToken: accessToken)
+        feedCoordinator.fetchFeed()
 
         window?.rootViewController = homeViewController
     }
