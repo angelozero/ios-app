@@ -9,6 +9,6 @@ import Foundation
 
 enum FeedState {
     case loading
-    case success
+    case success(FeedResponse)
     case error(errorMessage: String)
 }

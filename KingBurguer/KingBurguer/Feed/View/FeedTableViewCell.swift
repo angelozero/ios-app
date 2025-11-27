@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FeedTableViewCell: UITableViewCell {
     
     static let identifier = "FeedTableViewCell"
+    
+    var products: [FeedProductsResponse] = []
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -44,22 +47,19 @@ class FeedTableViewCell: UITableViewCell {
 
 extension FeedTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 17
+        return products.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCollectionViewCell.identifier, for: indexPath) as! FeedCollectionViewCell
         
-        if(indexPath.row % 2 == 0){
-            cell.imageView.image =  UIImage(named: "example")
-        } else {
-            cell.imageView.image =  UIImage(named: "logo")
-        }
         
-        cell.backgroundColor = .systemRed
+        let product = products[indexPath.row]
+        
+        if let url = URL(string: product.pictureUrl){
+            cell.imageView.sd_setImage(with: url)
+        }
         
         return cell
     }
-    
-    
 }

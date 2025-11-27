@@ -9,6 +9,9 @@
  * URL: https://hades.tiagoaguiar.co/hades/users/kingburguer/apikey?email=angelo.akm@gmail.com
  * RESPONSE POST ---> {"id":247,"name":"Test","email":"test@test.com", "password": "123456", "document":"93122232081","birthday":"2000-01-01"}
  * JSON para STRING --> let userRequestString = JSONConverter().convertDataToString(data: userRequestJson!)
+ *
+ * 𝐂𝐚𝐫𝐨𝐮𝐬𝐞𝐥 𝐏𝐚𝐫𝐚𝐥𝐥𝐚𝐱 𝐄𝐟𝐟𝐞𝐜𝐭 swift
+ * https://www.youtube.com/watch?v=ZObqzVCHPeE
  */
 
 import Foundation

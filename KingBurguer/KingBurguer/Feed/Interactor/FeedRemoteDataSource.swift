@@ -23,8 +23,8 @@ class FeedRemoteDataSource {
                 }
                 break
             
-            case .failure(let error, let data):
-                guard let data else {
+            case .failure(_, let data):
+                guard data != nil else {
                     completion(nil, "SEM FEED")
                     break
                 }

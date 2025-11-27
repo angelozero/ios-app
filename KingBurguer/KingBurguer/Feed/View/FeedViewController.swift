@@ -8,6 +8,17 @@
 import UIKit
 
 class FeedViewController: UIViewController {
+
+    var sections: [FeedCategoriesResponse] = []
+    
+    private let progress: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.backgroundColor = .systemBackground
+        activityIndicatorView.startAnimating()
+        
+        return activityIndicatorView
+    }()
+
     // Para que uma UITableView funcione é necessário
     
     // 1 - registrar uma classe que seja uma UITableViewCell ou filha dela
@@ -21,9 +32,7 @@ class FeedViewController: UIViewController {
     // --- qual é a celula especifica daquela linha com 'cellForRowAt' aonde o 'indexPath' devolve a celula correta sendo renderizada
     // nesse caso voce ira visualizar apenas 14 linhas mas ao rolar as proximas serao geradas apartir de linhas que ja foram anteriormente criadas
     // por exemplo: a linha 0 sai da vizualizacao da tela na rolagem e a linha 15 surge, e assim por diante
-    
-    let sections = ["Top Burguers", "Vegan", "Meat", "Dessert"]
-    
+        
     // UITableView só funciona se houver uma UITableViewCell
     private let homeFeedTable: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -46,6 +55,7 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         view.addSubview(homeFeedTable)
+        view.addSubview(progress)
         
         let headerView = HighlightView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 350))
         headerView.backgroundColor = .black
@@ -62,6 +72,7 @@ class FeedViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         homeFeedTable.frame = view.bounds
+        progress.frame = view.bounds
     }
     
     private func configureNavBar(){
@@ -108,7 +119,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         let label = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.bounds.width, height: 40))
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         label.textColor = .label
-        label.text = sections[section].uppercased()
+        label.text = sections[section].name.uppercased()
         
         view.addSubview(label)
         
@@ -118,7 +129,10 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     // celulas das linhas
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as! FeedTableViewCell
-        //cell.textLabel?.text = "sessão: \(indexPath.section) - linha: \(indexPath.row)"
+        
+        //cell.products.removeAll()
+        cell.products.append(contentsOf: sections[indexPath.section].products)
+        
         return cell
     }
     
@@ -127,13 +141,19 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
 extension FeedViewController: FeedViewModelDelegate {
     func viewModelDidChanged(state: FeedState) {
         switch(state) {
+        
         case .loading:
             print("OK!!!")
             break
-        case .success:
-            print("NOK!!!")
+        
+        case .success(let response):
+            progress.stopAnimating()
+            self.sections = response.categories
+            self.homeFeedTable.reloadData()
             break
+        
         case .error(let errorMessage):
+            progress.stopAnimating()
             print("ERROR!!! \(errorMessage)")
             break
         }

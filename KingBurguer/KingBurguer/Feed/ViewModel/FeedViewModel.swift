@@ -28,11 +28,11 @@ class FeedViewModel {
             
             DispatchQueue.main.async {
                 if let dataResponse = data {
-                    print("FIM FEED")
-                    print("TOTAL CATEGORIAS: \(dataResponse.categories.count)")
+                    self.state = .success(dataResponse)
                     
-                } else {
+                } else if let error {
                     print("ERRO FIM FEED")
+                    self.state = .error(errorMessage: "Fail to recover feed: \(error)")
                 }
             }
         }
